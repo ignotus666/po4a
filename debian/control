@@ -1,0 +1,33 @@
+Source: po4a
+Section: text
+Priority: optional
+Maintainer: Martin Quinson <mquinson#debian.org>
+Build-Depends: debhelper-compat (= 12)
+Standards-Version: 4.4.1
+Homepage: <https://github.com/mquinson/po4a>
+#Vcs-Browser: https://salsa.debian.org/debian/po4a
+#Vcs-Git: https://salsa.debian.org/debian/po4a.git
+
+Package: po4a
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Tools to ease the translation of documentation
+ po4a eases the translation of documentation and other textual document.
+ Even more interestingly, it makes it easy to maintain these
+ translations when the original document changes. This is done by
+ using the gettext tools in this new domain.
+ .
+ This package contains the main libraries of po4a, and the necessary
+ sub-modules to handle the following formats:
+ .
+  - Dia: uncompressed Dia diagrams.
+  - INI: the INI format
+  - KernelHelp: Help messages of each kernel compilation option.
+  - LaTeX: generic TeX or LaTeX format.
+  - Man: either roff or mdoc format.
+  - POD: Perl documentation format.
+  - SGML: either DebianDoc or DocBook DTD.
+  - RubyDoc: Ruby documentation format.
+  - Texinfo: the info page format.
+  - XML: very configurable (preconfigured for DocBook, XHTML, Guide, WML).
+  - Yaml: Yaml documents.
