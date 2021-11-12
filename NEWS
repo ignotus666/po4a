@@ -15,10 +15,25 @@ Asciidoc:
    Avila for the fix!
  * Add an "nolinting" option to disable lint messages.
 
+po4a runner:
+ * In split mode, allow to group several files within the same POT file.
+ * Rename the option 'master:file' to 'pot' for clarity. The old name
+   still works (with a warning).
+
+Tex:
+ * Don't use the full absolute file path in #: references of PO files.
+   (Debian's #998196, Github's #281)
+
 Translations:
  * Updated: Croatian, thanks Milo Ivir.
+ * Updated: Dutch, thanks Frans Spiesschaert.
+ * Updated: French, thanks brandelune.
  * Updated: German, thanks Helge Kreutzmann.
+ * Updated: Hungarian, thanks Balázs Úr.
  * Updated: Italian, thanks Marco Ciampa.
+ * Updated: Portuguese (Brazil), thanks Rafael Fontenelle.
+ * Updated: Russian, thanks Edward Smirnov and Azamat H. Hackimov.
+ * Updated: Serbian (cyrillic), thanks Ivan Pesic.
  * Updated: Ukrainian, thanks Yuri Chornoivan (українська).
 
 Status of the binary translation:

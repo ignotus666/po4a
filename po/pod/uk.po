@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ukrainian (po4a)\n"
 "Report-Msgid-Bugs-To: devel@lists.po4a.org\n"
-"POT-Creation-Date: 2021-09-14 20:15+0200\n"
-"PO-Revision-Date: 2021-09-14 18:31+0000\n"
+"POT-Creation-Date: 2021-11-06 11:27+0100\n"
+"PO-Revision-Date: 2021-11-09 11:51+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/po4a/po4a-doc/"
 "uk/>\n"
@@ -1268,13 +1268,23 @@ msgstr ""
 #. type: textblock
 #: po4a:115
 msgid ""
-"If there are name conflicts because several files have the same filename, "
-"the name of the master file can be specified by adding a C<master:"
-"file=>I<name> option:"
+"With this line, po4a will produce separate POT and PO files for each "
+"document to translate.  For example, if you have 3 documents and 5 "
+"languages, this will result in 3 POT files and 15 PO files. These files are "
+"named as specified on the C<po4a_paths> template, with C<$master> "
+"substituted to the basename of each document to translate. In case of name "
+"conflict, you can specify the POT file to use as follows, with the C<pot=> "
+"parameter.  This feature can also be used to group several translated files "
+"into the same POT file."
 msgstr ""
-"Якщо існуватимуть конфлікти назв, пов'язані із тим, що декілька з файлів "
-"матимуть однакові назви, назву основного файла можна вказати за допомогою "
-"параметра C<master:file=>I<назва>:"
+"Якщо використати цей рядок, po4a створюватиме окремі файли POT і PO для "
+"кожного документа, який слід перекласти. Наприклад, якщо у вас є 3 документи "
+"та 5 мов, буде створено 3 файли POT та 15 файлів PO. Назви для цих файлів "
+"буде вибрано за шаблоном C<po4a_paths>, а C<$master> буде замінено на базову "
+"назву кожного документа, який слід перекласти. Якщо виникне конфлікт назв, "
+"ви можете вказати файл POT, який слід використати, так, як це показано "
+"нижче, за допомогою параметра C<pot = >. Цією можливістю також можна "
+"скористатися для групування декількох файлів перекладу в один файл POT."
 
 #. type: verbatim
 #: po4a:116
@@ -1282,14 +1292,16 @@ msgstr ""
 msgid ""
 " [po4a_langs] de fr ja\n"
 " [po4a_paths] l10n/po/$master.pot $lang:l10n/po/$master.$lang.po\n"
-" [type: xml] foo/gui.xml $lang:foo/gui.$lang.xml master:file=foo-gui\n"
-" [type: xml] bar/gui.xml $lang:bar/gui.$lang.xml master:file=bar-gui\n"
+" [type: xml] foo/gui.xml $lang:foo/gui.$lang.xml pot=foo-gui\n"
+" [type: xml] bar/gui.xml $lang:bar/gui.$lang.xml pot=bar\n"
+" [type: xml] bar/cli.xml $lang:bar/cli.$lang.xml pot=bar\n"
 "\n"
 msgstr ""
 " [po4a_langs] de fr ja\n"
 " [po4a_paths] l10n/po/$master.pot $lang:l10n/po/$master.$lang.po\n"
-" [type: xml] foo/gui.xml $lang:foo/gui.$lang.xml master:file=foo-gui\n"
-" [type: xml] bar/gui.xml $lang:bar/gui.$lang.xml master:file=bar-gui\n"
+" [type: xml] foo/gui.xml $lang:foo/gui.$lang.xml pot=foo-gui\n"
+" [type: xml] bar/gui.xml $lang:bar/gui.$lang.xml pot=bar\n"
+" [type: xml] bar/cli.xml $lang:bar/cli.$lang.xml pot=bar\n"
 "\n"
 
 #. type: textblock
@@ -2044,7 +2056,7 @@ msgstr ""
 #. type: =head1
 #: po4a:191 po4a-gettextize:73 po4a-normalize:31 po4a-translate:56
 #: po4a-updatepo:55 msguntypot:32 doc/po4a.7.pod:183
-#: lib/Locale/Po4a/AsciiDoc.pm:50 lib/Locale/Po4a/BibTeX.pm:11
+#: lib/Locale/Po4a/AsciiDoc.pm:52 lib/Locale/Po4a/BibTeX.pm:11
 #: lib/Locale/Po4a/Chooser.pm:12 lib/Locale/Po4a/Common.pm:28
 #: lib/Locale/Po4a/Dia.pm:14 lib/Locale/Po4a/Docbook.pm:17
 #: lib/Locale/Po4a/Guide.pm:12 lib/Locale/Po4a/Halibut.pm:16
@@ -2075,7 +2087,7 @@ msgstr ""
 
 #. type: =head1
 #: po4a:193 po4a-gettextize:75 po4a-normalize:33 po4a-translate:58
-#: po4a-updatepo:57 msguntypot:34 lib/Locale/Po4a/AsciiDoc.pm:52
+#: po4a-updatepo:57 msguntypot:34 lib/Locale/Po4a/AsciiDoc.pm:54
 #: lib/Locale/Po4a/BibTeX.pm:13 lib/Locale/Po4a/Chooser.pm:14
 #: lib/Locale/Po4a/Common.pm:30 lib/Locale/Po4a/Dia.pm:16
 #: lib/Locale/Po4a/Docbook.pm:19 lib/Locale/Po4a/Guide.pm:14
@@ -2097,7 +2109,7 @@ msgstr "© SPI, inc., 2002–2020."
 
 #. type: textblock
 #: po4a:195 po4a-gettextize:77 po4a-normalize:35 po4a-translate:60
-#: po4a-updatepo:59 msguntypot:36 lib/Locale/Po4a/AsciiDoc.pm:54
+#: po4a-updatepo:59 msguntypot:36 lib/Locale/Po4a/AsciiDoc.pm:56
 #: lib/Locale/Po4a/BibTeX.pm:15 lib/Locale/Po4a/Chooser.pm:16
 #: lib/Locale/Po4a/Common.pm:32 lib/Locale/Po4a/Dia.pm:18
 #: lib/Locale/Po4a/Docbook.pm:21 lib/Locale/Po4a/Guide.pm:16
@@ -3684,18 +3696,20 @@ msgid ""
 "up until at least March 2016 (Based on the Wayback Machine). Gentoo have "
 "since moved to the DevBook XML format."
 msgstr ""
+"Формат документації XML. Цей модуль розроблявся спеціально для того, щоб "
+"допомогти із підтримкою та супроводом перекладів документації Gentoo Linux, "
+"принаймні до березня 2016 року (дані засновано на даних Wayback Machine). З "
+"того часу Gentoo перейшла на формат XML DevBook."
 
 #. type: textblock
 #: doc/po4a.7.pod:47
 msgid "See L<Locale::Po4a:Guide> for greater details."
-msgstr ""
+msgstr "Див. L<Locale::Po4a:Guide>, щоб дізнатися більше."
 
 #. type: =item
 #: doc/po4a.7.pod:48
-#, fuzzy
-#| msgid "xml and XHMTL (probably mature parser)"
 msgid "Wml (probably mature parser)"
-msgstr "xml і XHMTL (ймовірно, надійний обробник)"
+msgstr "Wml (ймовірно, надійний обробник)"
 
 #. type: textblock
 #: doc/po4a.7.pod:49
@@ -3704,20 +3718,19 @@ msgid ""
 "phones.  This module relies on the Xhtml module, which itself relies on the "
 "XmL module."
 msgstr ""
+"Мова розмітки інтернету (Web Markup Language), не плутати з WML із WAP, яку "
+"використовують для стільникового зв'язку. Роботу цього модуля засновано на "
+"роботі модуля Xhtml, який сам є надбудовою над модулем XML."
 
 #. type: textblock
 #: doc/po4a.7.pod:50
-#, fuzzy
-#| msgid "Locale::Po4a::Pod - convert POD data from/to PO files"
 msgid "See L<Locale::Po4a::Wml> for greater details."
-msgstr "Locale::Po4a::Pod — перетворення даних POD на файли PO, і навпаки"
+msgstr "Див. L<Locale::Po4a::Wml>, щоб дізнатися більше."
 
 #. type: =item
 #: doc/po4a.7.pod:51
-#, fuzzy
-#| msgid "xml and XHMTL (probably mature parser)"
 msgid "Yaml (probably mature parser)"
-msgstr "xml і XHMTL (ймовірно, надійний обробник)"
+msgstr "Yaml (ймовірно, надійний обробник)"
 
 #. type: textblock
 #: doc/po4a.7.pod:52
@@ -3725,20 +3738,18 @@ msgid ""
 "A strict superset of JSON. YAML is often used as systems or configuration "
 "projects.  YAML is at the core of Red Hat's Ansible."
 msgstr ""
+"Строго обмежена надбудова над JSON. YAML часто використовують для проєктів "
+"систем або налаштувань. YAML є частиною ядра Ansible від Red Hat."
 
 #. type: textblock
 #: doc/po4a.7.pod:53
-#, fuzzy
-#| msgid "Locale::Po4a::Pod - convert POD data from/to PO files"
 msgid "See L<Locale::Po4a::Yaml> for greater details."
-msgstr "Locale::Po4a::Pod — перетворення даних POD на файли PO, і навпаки"
+msgstr "Див. L<Locale::Po4a::Yaml>, щоб дізнатися більше."
 
 #. type: =item
 #: doc/po4a.7.pod:54
-#, fuzzy
-#| msgid "xml and XHMTL (probably mature parser)"
 msgid "RubyDoc (probably mature parser)"
-msgstr "xml і XHMTL (ймовірно, надійний обробник)"
+msgstr "RubyDoc (ймовірно, надійний обробник)"
 
 #. type: textblock
 #: doc/po4a.7.pod:55
@@ -3747,20 +3758,19 @@ msgid ""
 "for Ruby and Ruby projects before converted to RDoc in 2002. Though "
 "apparently the Japanese version of the Ruby Reference Manual still use RD."
 msgstr ""
+"Формат документів Ruby (RD), розроблено як типовий формат документації до "
+"Ruby і проєктів на Ruby до переходу на RDoc у 2002 році. Втім, принаймні "
+"японська версія підручника-довідника з Ruby усе ще використовує RD."
 
 #. type: textblock
 #: doc/po4a.7.pod:56
-#, fuzzy
-#| msgid "Locale::Po4a::Pod - convert POD data from/to PO files"
 msgid "See L<Locale::Po4a::RubyDoc> for greater details."
-msgstr "Locale::Po4a::Pod — перетворення даних POD на файли PO, і навпаки"
+msgstr "Див. L<Locale::Po4a::RubyDoc>, щоб дізнатися більше."
 
 #. type: =item
 #: doc/po4a.7.pod:57
-#, fuzzy
-#| msgid "texinfo (very highly experimental parser)"
 msgid "Halibut (probably experimental parser)"
-msgstr "texinfo (дуже експериментальний обробник)"
+msgstr "Halibut (ймовірно, експериментальний обробник)"
 
 #. type: textblock
 #: doc/po4a.7.pod:58
@@ -3768,28 +3778,29 @@ msgid ""
 "A documentation production system, with elements similar to TeX, debiandoc-"
 "sgml, TeXinfo, and others, developed by Simon Tatham, the developer of PuTTY."
 msgstr ""
+"Система створення документації із елементами, подібними до TeX, debiandoc-"
+"sgml, TeXinfo та інших систем. Розроблено Саймоном Тетгемом (Simon Tatham), "
+"розробником PuTTY."
 
 #. type: textblock
 #: doc/po4a.7.pod:59
 msgid "See L<Locale::Po4a:Halibut> for greater details."
-msgstr ""
+msgstr "Див. L<Locale::Po4a:Halibut>, щоб дізнатися більше."
 
 #. type: =item
 #: doc/po4a.7.pod:60
-#, fuzzy
-#| msgid "texinfo (very highly experimental parser)"
 msgid "Ini (probably experimental parser)"
-msgstr "texinfo (дуже експериментальний обробник)"
+msgstr "Ini (ймовірно, експериментальний обробник)"
 
 #. type: textblock
 #: doc/po4a.7.pod:61
 msgid "Configuration file format popularized by MS-DOS."
-msgstr ""
+msgstr "Формат файлів налаштувань, який став популярним завдяки MS-DOS."
 
 #. type: textblock
 #: doc/po4a.7.pod:62
 msgid "See L<Locale::Po4a::Ini> for greater details."
-msgstr ""
+msgstr "Див. L<Locale::Po4a::Ini>, щоб дізнатися більше."
 
 #. type: =item
 #: doc/po4a.7.pod:63
@@ -3817,13 +3828,6 @@ msgstr "Інші підтримувані формати"
 
 #. type: textblock
 #: doc/po4a.7.pod:66
-#, fuzzy
-#| msgid ""
-#| "Po4a can also handle some more rare or specialized formats, such as the "
-#| "documentation of compilation options for the 2.4+ Linux kernels or the "
-#| "diagrams produced by the dia tool. Adding a new format is often very easy "
-#| "and the main task is to come up with a parser for your target format. See "
-#| "L<Locale::Po4a::TransTractor(3pm)> for more information about this."
 msgid ""
 "Po4a can also handle some more rare or specialized formats, such as the "
 "documentation of compilation options for the 2.4+ Linux kernels (L<Locale::"
@@ -3833,11 +3837,11 @@ msgid ""
 "TransTractor(3pm)> for more information about this."
 msgstr ""
 "Крім того, po4a також може працювати із іншими рідкісними і спеціалізованими "
-"форматами, зокрема документацією до параметрів компіляції ядер Linux 2.4+ та "
-"діаграмами, які створено за допомогою програми Dia. Додати новий формат "
-"часто доволі просто. Основним у цьому є є створення обробника початкового "
-"формату. Докладніший опис цього можна знайти у розділі L<Locale::Po4a::"
-"TransTractor(3pm)>."
+"форматами, зокрема документацією до параметрів компіляції ядер Linux 2.4+ "
+"(L<Locale::Po4a::KernelHelp>) та діаграмами, які створено за допомогою "
+"програми Dia (L<Locale::Po4a:Dia>). Додати новий формат часто доволі просто. "
+"Основним у цьому є є створення обробника початкового формату. Докладніший "
+"опис цього можна знайти у розділі L<Locale::Po4a::TransTractor(3pm)>."
 
 #. type: =item
 #: doc/po4a.7.pod:67
@@ -4926,16 +4930,12 @@ msgstr ""
 
 #. type: textblock
 #: doc/po4a.7.pod:152
-#, fuzzy
-#| msgid ""
-#| "Other item to sort out: https://gitlab.com/fdroid/fdroid-website/ https://"
-#| "github.com/fsfe/reuse-docs/pull/61"
 msgid ""
 "Other item to sort out: L<https://gitlab.com/fdroid/fdroid-website/> "
 "L<https://github.com/fsfe/reuse-docs/pull/61>"
 msgstr ""
-"Інші проєкти: https://gitlab.com/fdroid/fdroid-website/ https://github.com/"
-"fsfe/reuse-docs/pull/61"
+"Інші пункти для упорядковування: L<https://gitlab.com/fdroid/fdroid-website/"
+"> L<https://github.com/fsfe/reuse-docs/pull/61>"
 
 #. type: =head1
 #: doc/po4a.7.pod:153
@@ -5474,21 +5474,36 @@ msgstr ""
 
 #. type: =item
 #: lib/Locale/Po4a/AsciiDoc.pm:33
+msgid "B<nolinting>"
+msgstr "B<nolinting>"
+
+#. type: textblock
+#: lib/Locale/Po4a/AsciiDoc.pm:34
+msgid ""
+"Disable linting messages. When the source code cannot be fixed for clearer "
+"document structure, these messages are useless."
+msgstr ""
+"Вимкнути повідомлення щодо правильності коду. Якщо початковий код не можна "
+"виправити з метою поліпшення структурування документа, ці повідомлення не "
+"мають сенсу."
+
+#. type: =item
+#: lib/Locale/Po4a/AsciiDoc.pm:35
 msgid "B<yfm_skip_array>"
 msgstr "B<yfm_skip_array>"
 
 #. type: textblock
-#: lib/Locale/Po4a/AsciiDoc.pm:34 lib/Locale/Po4a/Text.pm:33
+#: lib/Locale/Po4a/AsciiDoc.pm:36 lib/Locale/Po4a/Text.pm:33
 msgid "Do not translate array values in the YAML Front Matter section."
 msgstr "Не перекладати значення масивів у вступному розділі YAML."
 
 #. type: =head1
-#: lib/Locale/Po4a/AsciiDoc.pm:35 lib/Locale/Po4a/TeX.pm:27
+#: lib/Locale/Po4a/AsciiDoc.pm:37 lib/Locale/Po4a/TeX.pm:27
 msgid "INLINE CUSTOMIZATION"
 msgstr "НАЛАШТОВУВАННЯ НА МІСЦІ"
 
 #. type: textblock
-#: lib/Locale/Po4a/AsciiDoc.pm:36
+#: lib/Locale/Po4a/AsciiDoc.pm:38
 msgid ""
 "The AsciiDoc module can be customized with lines starting by B<//po4a:>.  "
 "These lines are interpreted as commands to the parser.  The following "
@@ -5499,12 +5514,12 @@ msgstr ""
 "Передбачено такі команди:"
 
 #. type: =item
-#: lib/Locale/Po4a/AsciiDoc.pm:37
+#: lib/Locale/Po4a/AsciiDoc.pm:39
 msgid "B<//po4a: macro >I<name>B<[>I<attribute list>B<]>"
 msgstr "B<//po4a: macro >I<назва>B<[>I<список атрибутів>B<]>"
 
 #. type: textblock
-#: lib/Locale/Po4a/AsciiDoc.pm:38
+#: lib/Locale/Po4a/AsciiDoc.pm:40
 msgid ""
 "This permits to describe in detail the parameters of a B<macro>; I<name> "
 "must be a valid macro name, and it ends with an underscore if the target "
@@ -5515,7 +5530,7 @@ msgstr ""
 "якщо ціль має бути перекладено."
 
 #. type: textblock
-#: lib/Locale/Po4a/AsciiDoc.pm:39
+#: lib/Locale/Po4a/AsciiDoc.pm:41
 msgid ""
 "The I<attribute list> argument is a comma separated list which contains "
 "informations about translatable arguments.  This list contains either "
@@ -5527,7 +5542,7 @@ msgstr ""
 "атрибути."
 
 #. type: textblock
-#: lib/Locale/Po4a/AsciiDoc.pm:40
+#: lib/Locale/Po4a/AsciiDoc.pm:42
 msgid ""
 "If a plus sign (B<+>) is prepended to I<name>, then the macro and its "
 "arguments are translated as a whole.  There is no need to define attribute "
@@ -5538,12 +5553,12 @@ msgstr ""
 "атрибутів, але квадратні дужки все ж доведеться дописати."
 
 #. type: =item
-#: lib/Locale/Po4a/AsciiDoc.pm:41
+#: lib/Locale/Po4a/AsciiDoc.pm:43
 msgid "B<//po4a: style >B<[>I<attribute list>B<]>"
 msgstr "B<//po4a: style >B<[>I<список атрибутів>B<]>"
 
 #. type: textblock
-#: lib/Locale/Po4a/AsciiDoc.pm:42
+#: lib/Locale/Po4a/AsciiDoc.pm:44
 msgid ""
 "This permits to describe in detail which attributes of a style must be "
 "translated."
@@ -5551,7 +5566,7 @@ msgstr ""
 "Цей рядок надає змогу докладно описати атрибути стилю, які слід перекласти."
 
 #. type: textblock
-#: lib/Locale/Po4a/AsciiDoc.pm:43
+#: lib/Locale/Po4a/AsciiDoc.pm:45
 msgid ""
 "The I<attribute list> argument is a comma separated list which contains "
 "informations about translatable arguments.  This list contains either "
@@ -5564,7 +5579,7 @@ msgstr ""
 "атрибути. Перший атрибут є назвою стилю, його не буде перекладено."
 
 #. type: textblock
-#: lib/Locale/Po4a/AsciiDoc.pm:44
+#: lib/Locale/Po4a/AsciiDoc.pm:46
 msgid ""
 "If a plus sign (B<+>) is prepended to the style name, then the attribute "
 "list is translated as a whole.  There is no need to define translatable "
@@ -5575,7 +5590,7 @@ msgstr ""
 "атрибутів, які слід перекладати."
 
 #. type: textblock
-#: lib/Locale/Po4a/AsciiDoc.pm:45
+#: lib/Locale/Po4a/AsciiDoc.pm:47
 msgid ""
 "If a minus sign (B<->) is prepended to the style name, then this attribute "
 "is not translated."
@@ -5584,12 +5599,12 @@ msgstr ""
 "перекладається."
 
 #. type: =item
-#: lib/Locale/Po4a/AsciiDoc.pm:46
+#: lib/Locale/Po4a/AsciiDoc.pm:48
 msgid "B<//po4a: entry >I<name>"
 msgstr "B<//po4a: entry >I<назва>"
 
 #. type: textblock
-#: lib/Locale/Po4a/AsciiDoc.pm:47
+#: lib/Locale/Po4a/AsciiDoc.pm:49
 msgid ""
 "This declares an attribute entry as being translatable.  By default, they "
 "are not translated."
@@ -5598,7 +5613,7 @@ msgstr ""
 "атрибутів не перекладаються."
 
 #. type: =head1
-#: lib/Locale/Po4a/AsciiDoc.pm:48 lib/Locale/Po4a/BibTeX.pm:9
+#: lib/Locale/Po4a/AsciiDoc.pm:50 lib/Locale/Po4a/BibTeX.pm:9
 #: lib/Locale/Po4a/Dia.pm:10 lib/Locale/Po4a/Docbook.pm:6
 #: lib/Locale/Po4a/Guide.pm:7 lib/Locale/Po4a/Halibut.pm:7
 #: lib/Locale/Po4a/KernelHelp.pm:5 lib/Locale/Po4a/Man.pm:96
@@ -5610,12 +5625,12 @@ msgid "STATUS OF THIS MODULE"
 msgstr "СТАН ЦЬОГО МОДУЛЯ"
 
 #. type: textblock
-#: lib/Locale/Po4a/AsciiDoc.pm:49
+#: lib/Locale/Po4a/AsciiDoc.pm:51
 msgid "Tested successfully on simple AsciiDoc files."
 msgstr "Успішно перевірено на простих файлах AsciiDoc."
 
 #. type: verbatim
-#: lib/Locale/Po4a/AsciiDoc.pm:51
+#: lib/Locale/Po4a/AsciiDoc.pm:53
 #, no-wrap
 msgid ""
 " Nicolas François <nicolas.francois@centraliens.net>\n"
@@ -5627,7 +5642,7 @@ msgstr ""
 "\n"
 
 #. type: verbatim
-#: lib/Locale/Po4a/AsciiDoc.pm:53
+#: lib/Locale/Po4a/AsciiDoc.pm:55
 #, no-wrap
 msgid ""
 " Copyright © 2005-2008 Nicolas FRANÇOIS <nicolas.francois@centraliens.net>.\n"
@@ -12296,6 +12311,15 @@ msgstr ""
 " © Jordi Vilalta  <jvprat@gmail.com>, 2004\n"
 " © Nicolas François <nicolas.francois@centraliens.net>, 2008—2009\n"
 "\n"
+
+#~ msgid ""
+#~ "If there are name conflicts because several files have the same filename, "
+#~ "the name of the master file can be specified by adding a C<master:"
+#~ "file=>I<name> option:"
+#~ msgstr ""
+#~ "Якщо існуватимуть конфлікти назв, пов'язані із тим, що декілька з файлів "
+#~ "матимуть однакові назви, назву основного файла можна вказати за допомогою "
+#~ "параметра C<master:file=>I<назва>:"
 
 #~ msgid ""
 #~ "If you prefer, you can give the same information explicitly as follows:"
