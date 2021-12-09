@@ -12,8 +12,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: po4a 0.52-pre\n"
-"Report-Msgid-Bugs-To: martin.quinson@debian.org\n"
-"POT-Creation-Date: 2021-11-06 11:27+0100\n"
+"Report-Msgid-Bugs-To: po4a@packages.debian.org\n"
+"POT-Creation-Date: 2021-11-24 15:38+0100\n"
 "PO-Revision-Date: 2021-11-09 11:51+0000\n"
 "Last-Translator: Azamat H. Hackimov <azamat.hackimov@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/po4a/po4a/ru/>\n"
@@ -29,7 +29,7 @@ msgstr ""
 #: ../../lib/Locale/Po4a/Po.pm:235 ../../lib/Locale/Po4a/RubyDoc.pm:74
 #: ../../lib/Locale/Po4a/Sgml.pm:258 ../../lib/Locale/Po4a/TeX.pm:1664
 #: ../../lib/Locale/Po4a/Text.pm:211 ../../lib/Locale/Po4a/Xml.pm:598
-#: ../../lib/Locale/Po4a/Yaml.pm:39
+#: ../../lib/Locale/Po4a/Yaml.pm:40
 #, perl-format
 msgid "Unknown option: %s"
 msgstr "Неизвестный параметр: %s"
@@ -52,16 +52,19 @@ msgstr "Не удалось разобрать макроопределение:
 msgid "Cannot open %s: %s"
 msgstr "Не удалось открыть %s: %s"
 
-#: ../../lib/Locale/Po4a/AsciiDoc.pm:365
-#, perl-format
+#: ../../lib/Locale/Po4a/AsciiDoc.pm:366
+#, fuzzy, perl-format
+#| msgid ""
+#| "Detection of two line titles failed at %s\n"
+#| "Please install the Unicode::GCString module."
 msgid ""
 "Detection of two line titles failed at %s\n"
-"Please install the Unicode::GCString module."
+"Please install the Unicode::GCString module (error: %s)."
 msgstr ""
 "Ошибка при обнаружении двухстрочных заголовков у %s\n"
 "Установите модуль Unicode::GCString."
 
-#: ../../lib/Locale/Po4a/AsciiDoc.pm:512
+#: ../../lib/Locale/Po4a/AsciiDoc.pm:513
 #, perl-format
 msgid ""
 "'%s' seems to be a two-lines title underlined with '%s', but the underlines "
@@ -72,7 +75,7 @@ msgstr ""
 "но длина подчёркивания не совпадает с длиной заголовка. Возможно, вам "
 "следует исправить это в мастер-документе."
 
-#: ../../lib/Locale/Po4a/AsciiDoc.pm:991
+#: ../../lib/Locale/Po4a/AsciiDoc.pm:992
 msgid ""
 "It seems that you are adding unindented content to an item. The standard "
 "allows this, but you may still want to change your document to use indented "
@@ -1427,33 +1430,33 @@ msgstr "PO-файл «%s» для языка «%s» не найден — про
 msgid "%s doesn't need to be updated."
 msgstr "%s не требует обновления."
 
-#: ../../po4a:1885
+#: ../../po4a:1881
 #, perl-format
 msgid "Discard %s (%s of %s strings; only %s%% translated; need %s%%)."
 msgstr ""
 "Отброшено %s (%s из %s строк; переведено только %s%%; необходимо %s%%)."
 
-#: ../../po4a:1895
+#: ../../po4a:1891
 #, perl-format
 msgid "Timestamp %s created."
 msgstr "Создана временная метка %s."
 
-#: ../../po4a:1906
+#: ../../po4a:1902
 #, perl-format
 msgid "Timestamp %s removed."
 msgstr "Удалена временная метка %s."
 
-#: ../../po4a:1920
+#: ../../po4a:1916
 #, perl-format
 msgid "Addendum %s does NOT apply to %s (translation discarded)."
 msgstr "Дополнение %s НЕ применено к %s (перевод отброшен)."
 
-#: ../../po4a:1929
+#: ../../po4a:1925
 #, perl-format
 msgid "%s is 100%% translated (%s strings)."
 msgstr "%s переведено на 100%% (%s строк)."
 
-#: ../../po4a:1933 ../../po4a-translate:275
+#: ../../po4a:1929 ../../po4a-translate:275
 #, perl-format
 msgid "%s is %s%% translated (%s of %s strings)."
 msgstr "%s переведено %s%% (%s из %s строк)."

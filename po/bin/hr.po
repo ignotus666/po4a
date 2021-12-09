@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: po4a: translate documents using the gettext tools\n"
 "Report-Msgid-Bugs-To: po4a@packages.debian.org\n"
-"POT-Creation-Date: 2021-11-06 11:27+0100\n"
-"PO-Revision-Date: 2021-09-14 18:21+0000\n"
+"POT-Creation-Date: 2021-11-24 15:38+0100\n"
+"PO-Revision-Date: 2021-11-28 15:20+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/po4a/po4a/hr/>\n"
 "Language: hr\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.9-dev\n"
+"X-Generator: Weblate 4.10-dev\n"
 "X-Rosetta-Version: 0.1\n"
 "X-Rosetta-Export-Date: 2007-08-12 16:08:32+0000\n"
 
@@ -25,7 +25,7 @@ msgstr ""
 #: ../../lib/Locale/Po4a/Po.pm:235 ../../lib/Locale/Po4a/RubyDoc.pm:74
 #: ../../lib/Locale/Po4a/Sgml.pm:258 ../../lib/Locale/Po4a/TeX.pm:1664
 #: ../../lib/Locale/Po4a/Text.pm:211 ../../lib/Locale/Po4a/Xml.pm:598
-#: ../../lib/Locale/Po4a/Yaml.pm:39
+#: ../../lib/Locale/Po4a/Yaml.pm:40
 #, perl-format
 msgid "Unknown option: %s"
 msgstr "Nepoznata opcija: %s"
@@ -46,16 +46,19 @@ msgstr "Nemoguće obraditi makro definiciju: %s"
 msgid "Cannot open %s: %s"
 msgstr "Nije moguće otvoriti %s: %s"
 
-#: ../../lib/Locale/Po4a/AsciiDoc.pm:365
-#, perl-format
+#: ../../lib/Locale/Po4a/AsciiDoc.pm:366
+#, fuzzy, perl-format
+#| msgid ""
+#| "Detection of two line titles failed at %s\n"
+#| "Please install the Unicode::GCString module."
 msgid ""
 "Detection of two line titles failed at %s\n"
-"Please install the Unicode::GCString module."
+"Please install the Unicode::GCString module (error: %s)."
 msgstr ""
 "Otkrivanje dvorednih naslova nije uspjelo pri %s\n"
 "Instaliraj modul Unicode::GCString."
 
-#: ../../lib/Locale/Po4a/AsciiDoc.pm:512
+#: ../../lib/Locale/Po4a/AsciiDoc.pm:513
 #, perl-format
 msgid ""
 "'%s' seems to be a two-lines title underlined with '%s', but the underlines "
@@ -66,7 +69,7 @@ msgstr ""
 "prekratko ili predugo u odnosu na duljinu naslova. Predlažemo da popraviš "
 "master dokument."
 
-#: ../../lib/Locale/Po4a/AsciiDoc.pm:991
+#: ../../lib/Locale/Po4a/AsciiDoc.pm:992
 msgid ""
 "It seems that you are adding unindented content to an item. The standard "
 "allows this, but you may still want to change your document to use indented "
@@ -1284,6 +1287,8 @@ msgid ""
 "Option 'master:file' is deprecated. Please use 'pot' instead for the same "
 "effect."
 msgstr ""
+"Opcija 'master:file' je zastarjela. Za isti učinak umjesto toga koristi "
+"'pot'."
 
 #: ../../po4a:1292
 #, perl-format
@@ -1409,32 +1414,32 @@ msgstr "Nedostaje PO datoteka %s za %s jezik – preskače se."
 msgid "%s doesn't need to be updated."
 msgstr "%s se ne mora aktualizirati."
 
-#: ../../po4a:1885
+#: ../../po4a:1881
 #, perl-format
 msgid "Discard %s (%s of %s strings; only %s%% translated; need %s%%)."
 msgstr "Odbaci %s (%s od %s nizova; samo %s %% prevedeno; potrebno je %s %%)."
 
-#: ../../po4a:1895
+#: ../../po4a:1891
 #, perl-format
 msgid "Timestamp %s created."
 msgstr "Vremenska oznaka %s stvorena."
 
-#: ../../po4a:1906
+#: ../../po4a:1902
 #, perl-format
 msgid "Timestamp %s removed."
 msgstr "Vremenska oznaka %s uklonjena."
 
-#: ../../po4a:1920
+#: ../../po4a:1916
 #, perl-format
 msgid "Addendum %s does NOT apply to %s (translation discarded)."
 msgstr "Nadopuna %s NIJE primjenjiva na %s (prijevod odbačen)."
 
-#: ../../po4a:1929
+#: ../../po4a:1925
 #, perl-format
 msgid "%s is 100%% translated (%s strings)."
 msgstr "%s je 100 %% prevedeno (%s nizova)."
 
-#: ../../po4a:1933 ../../po4a-translate:275
+#: ../../po4a:1929 ../../po4a-translate:275
 #, perl-format
 msgid "%s is %s%% translated (%s of %s strings)."
 msgstr "%s je %s %% prevedeno (%s od %s nizova)."
