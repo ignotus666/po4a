@@ -9,9 +9,50 @@ __   __/ _ \ / /_  ( _ )
   \_/  \___(_)___/ \___/          (unreleased)
 
 
+Project organization:
+ * Add a deprecation warning to po4a-translate and po4a-updatepo stating
+   that po4a is the prefered interface.
+ * Rewrite the po4a-gettextize documentation (Debian's #1016695) [Mt].
+ * Rewrite the intro of po4a doc, and add a Quick start tutorial [Mt].
+
+gettextization:
+ * Rework completely the deduplication of msgids introduced in v0.67.
+   - Instead of adding spaces and require the users to merge them
+     manually after an extremely painful analysis of the produced file,
+     automatically merge the msgstr together.
+   - The result will look something like:
+
+     #, fuzzy
+     msgid "hello"
+     msgstr ""
+     "#-#-#-#-#  file reference 1 (type: Title #)  #-#-#-#-#\n"
+     "HELLO\n"
+     "#-#-#-#-#  file reference 2 (type: Title ##)  #-#-#-#-#\n"
+     "SUBTITLE\n"
+
+   - Closes Debian's #1017742, that was asking for help in the review [Mt].
+
+Markdown:
+ * Allow lists to start the line with no leading spaces before the '-'
+   sign (Github's #378). This uncovers a bug in our test suite that
+   was enforcing the buggy behavior :( [Mt]
+ * Properly deal with fenced div blocks (Github's #381) [Mt]
+
+Man:
+ * Bold text should never be wrapped as groff seems to reset the font
+   on new line (Debian's #1016753) [Mt].
+ * Properly deal with comments around macro definitions [Mt]
+   (Debian's #1017837).
+
 Translations:
+ * Updated: Croatian, thanks Milo Ivir.
+ * Updated: Esperanto, thanks Marco Ciampa.
  * Updated: German, thanks Helge Kreutzmann.
  * Updated: Italian, thanks Marco Ciampa.
+ * Updated: Japanese, thanks gemmaro.
+ * Updated: Portuguese, thanks Hugo Carvalho.
+ * Updated: Serbian (cyrillic), thanks Ivan Pesic.
+ * Updated: Ukrainian, thanks Yuri Chornoivan (українська) & Artem.
 
 Status of the binary translation:
 

@@ -92,13 +92,6 @@ Set the package name for the POT header. The default is "PACKAGE".
 
 Set the package version for the POT header. The default is "VERSION".
 
-=item B<dedup>
-
-Boolean indicating whether we should deduplicate msgids.
-If true, when the same string is added again, a space is appended to deduplicate it.
-This is probably only useful in the gettextization context, where dupplicate msgids break the string pairing algorithm.
-See https://github.com/mquinson/po4a/issues/334 for more info.
-
 =back
 
 =cut
@@ -234,7 +227,6 @@ sub initialize {
     $self->{options}{'wrap-po'}            = 76;
     $self->{options}{'pot-charset'}        = "UTF-8";
     $self->{options}{'pot-language'}       = "";
-    $self->{options}{'dedup'}              = 0;
 
     foreach my $opt ( keys %$options ) {
 
@@ -273,6 +265,9 @@ sub initialize {
                                                      # count_doc: number of strings in the document
                                                      # (duplicate strings counted multiple times)
     $self->{count_doc} = 0;
+    $self->{gettextize_types} = (); # Type of each msgid found in the doc, in order
+    # We cannot use {$msgid}{'type'} as a type because for duplicate entries, the type is overwritten.
+    # So we have to copy the same info to this separate array, which is accessed through type_doc()
     $self->{header_comment} =
         " SOME DESCRIPTIVE TITLE\n"
       . " Copyright (C) YEAR "
@@ -663,169 +658,6 @@ sub write_if_needed {
     } else {
         $self->write($filename);
     }
-}
-
-=item gettextize($$)
-
-This function produces one translated message catalog from two catalogs, an
-original and a translation. This process is described in L<po4a(7)|po4a.7>,
-section I<Gettextization: how does it work?>.
-
-=cut
-
-sub gettextize {
-    my $this  = shift;
-    my $class = ref($this) || $this;
-    my ( $poorig, $potrans ) = ( shift, shift );
-
-    my $pores = Locale::Po4a::Po->new();
-
-    my $please_fail = 0;
-    my $toobad      = dgettext( "po4a",
-            "\nThe gettextization failed (once again). Don't give up, "
-          . "gettextizing is a subtle art, but this is only needed once "
-          . "to convert a project to the gorgeous luxus offered by po4a "
-          . "to translators."
-          . "\nPlease refer to the po4a(7) documentation, the section "
-          . "\"HOWTO convert a pre-existing translation to po4a?\" "
-          . "contains several hints to help you in your task" );
-
-    # Don't fail right now when the entry count does not match. Instead, give
-    # it a try so that the user can see where we fail (which is probably where
-    # the problem is).
-    if ( $poorig->count_entries_doc() > $potrans->count_entries_doc() ) {
-        warn wrap_mod(
-            "po4a gettextize",
-            dgettext(
-                "po4a",
-                "Original has more strings than the translation (%d>%d). "
-                  . "Please fix it by editing the translated version to add "
-                  . "some dummy entry."
-            ),
-            $poorig->count_entries_doc(),
-            $potrans->count_entries_doc()
-        );
-        $please_fail = 1;
-    } elsif ( $poorig->count_entries_doc() < $potrans->count_entries_doc() ) {
-        warn wrap_mod(
-            "po4a gettextize",
-            dgettext(
-                "po4a",
-                "Original has less strings than the translation (%d<%d). "
-                  . "Please fix it by removing the extra entry from the "
-                  . "translated file. You may need an addendum (cf po4a(7)) "
-                  . "to reput the chunk in place after gettextization. A "
-                  . "possible cause is that a text duplicated in the original "
-                  . "is not translated the same way each time. Remove one of "
-                  . "the translations, and you're fine."
-            ),
-            $poorig->count_entries_doc(),
-            $potrans->count_entries_doc()
-        );
-        $please_fail = 1;
-    }
-
-    if ( $poorig->get_charset =~ /^utf-8$/i ) {
-        $potrans->to_utf8;
-        $pores->set_charset("UTF-8");
-    } else {
-        my $charset = $potrans->get_charset();
-        $charset = "UTF-8" if $charset eq "CHARSET";
-        $pores->set_charset($charset);
-    }
-    print "Po character sets:\n"
-      . "  original="
-      . $poorig->get_charset . "\n"
-      . "  translated="
-      . $potrans->get_charset . "\n"
-      . "  result="
-      . $pores->get_charset . "\n"
-      if $debug{'encoding'};
-
-    for (
-        my ( $o, $t ) = ( 0, 0 ) ;
-        $o < $poorig->count_entries_doc() && $t < $potrans->count_entries_doc() ;
-        $o++, $t++
-      )
-    {
-        #
-        # Extract some informations
-
-        my ( $orig, $trans ) = ( $poorig->msgid_doc($o), $potrans->msgid_doc($t) );
-
-        #       print STDERR "Matches [[$orig]]<<$trans>>\n";
-
-        my ( $reforig,  $reftrans )  = ( $poorig->{po}{$orig}{'reference'}, $potrans->{po}{$trans}{'reference'} );
-        my ( $typeorig, $typetrans ) = ( $poorig->{po}{$orig}{'type'},      $potrans->{po}{$trans}{'type'} );
-
-        #
-        # Make sure the type of both string exist
-        #
-        die wrap_mod( "po4a gettextize", "Internal error: type of original string number %s " . "isn't provided", $o )
-          if ( $typeorig eq '' );
-
-        die wrap_mod( "po4a gettextize", "Internal error: type of translated string number %s " . "isn't provided", $o )
-          if ( $typetrans eq '' );
-
-        #
-        # Make sure both type are the same
-        #
-        if ( $typeorig ne $typetrans ) {
-            $pores->write("gettextization.failed.po");
-            eval {
-                # Recode $trans into current charset, if possible
-                require I18N::Langinfo;
-                I18N::Langinfo->import(qw(langinfo CODESET));
-                my $codeset = langinfo( CODESET() );
-                Encode::from_to( $trans, $potrans->get_charset, $codeset );
-            };
-            die wrap_msg(
-                dgettext( "po4a",
-                        "po4a gettextization: Structure disparity between "
-                      . "original and translated files:\n"
-                      . "msgid (at %s) is of type '%s' while\n"
-                      . "msgstr (at %s) is of type '%s'.\n"
-                      . "Original text: %s\n"
-                      . "Translated text: %s\n"
-                      . "(result so far dumped to gettextization.failed.po)" )
-                  . "%s",
-                $reforig,
-                $typeorig,
-                $reftrans,
-                $typetrans,
-                $orig, $trans, $toobad
-            );
-        }
-
-        #
-        # Push the entry
-        #
-        my $flags;
-        if ( defined $poorig->{po}{$orig}{'flags'} ) {
-            $flags = $poorig->{po}{$orig}{'flags'} . " fuzzy";
-        } else {
-            $flags = "fuzzy";
-        }
-        $pores->push_raw(
-            'msgid'     => $orig,
-            'msgstr'    => $trans,
-            'flags'     => $flags,
-            'type'      => $typeorig,
-            'reference' => $reforig,
-            'conflict'  => 1,
-            'transref'  => $potrans->{po}{$trans}{'reference'}
-          )
-          unless ( defined( $pores->{po}{$orig} )
-            and ( $pores->{po}{$orig}{'msgstr'} eq $trans ) )
-
-          # FIXME: maybe we should be smarter about what reference should be
-          #        sent to push_raw.
-    }
-
-    # make sure we return a useful error message when entry count differ
-    die "$toobad\n" if $please_fail;
-
-    return $pores;
 }
 
 =item filter($)
@@ -1392,11 +1224,6 @@ sub push_raw {
         $reference =~ s/:\d+//g;
     }
 
-    # If asked to dedup the msgid, append a '_' as long as the string is still a dupplicate
-    while ( defined( $self->{po}{$msgid} ) && $self->{options}{'dedup'} ) {
-        $msgid .= ' ';
-    }
-
     if ( defined( $self->{po}{$msgid} ) ) {
         warn wrap_mod( "po4a::po", dgettext( "po4a", "msgid defined twice: %s" ), $msgid )
           if (0);    # FIXME: put a verbose stuff
@@ -1414,14 +1241,15 @@ sub push_raw {
 
             if ($keep_conflict) {
                 if ( $self->{po}{$msgid}{'msgstr'} =~ m/^#-#-#-#-#  .*  #-#-#-#-#\\n/s ) {
-                    $msgstr = $self->{po}{$msgid}{'msgstr'} . "\\n#-#-#-#-#  $transref  #-#-#-#-#\\n" . $msgstr;
+                    $msgstr = $self->{po}{$msgid}{'msgstr'} . "\\n#-#-#-#-#  $transref (type: $type)  #-#-#-#-#\\n" . $msgstr;
                 } else {
                     $msgstr =
                         "#-#-#-#-#  "
                       . $self->{po}{$msgid}{'transref'}
-                      . "  #-#-#-#-#\\n"
+                      . " (type " . $self->{po}{$msgid}{'type'}
+                      . ")  #-#-#-#-#\\n"
                       . $self->{po}{$msgid}{'msgstr'} . "\\n"
-                      . "#-#-#-#-#  $transref  #-#-#-#-#\\n"
+                      . "#-#-#-#-#  $transref (type: $type)  #-#-#-#-#\\n"
                       . $msgstr;
                 }
 
@@ -1464,11 +1292,11 @@ sub push_raw {
     $self->{po}{$msgid}{'comment'}   = $comment;
     $self->{po}{$msgid}{'automatic'} = $automatic;
     $self->{po}{$msgid}{'previous'}  = $previous;
-    if ( defined( $self->{po}{$msgid}{'pos_doc'} ) ) {
-        $self->{po}{$msgid}{'pos_doc'} .= " " . $self->{count_doc}++;
-    } else {
-        $self->{po}{$msgid}{'pos_doc'} = $self->{count_doc}++;
-    }
+
+    $self->{po}{$msgid}{pos_doc} = () unless (defined( $self->{po}{$msgid}{pos_doc}));
+    CORE::push( @{ $self->{po}{$msgid}{pos_doc} }, $self->{count_doc}++);
+    CORE::push( @{ $self->{gettextize_types} }, $type);
+
     unless ( defined( $self->{po}{$msgid}{'pos'} ) ) {
         $self->{po}{$msgid}{'pos'} = $self->{count}++;
     }
@@ -1555,11 +1383,27 @@ sub msgid_doc($$) {
     my $num  = shift;
 
     foreach my $msgid ( keys %{ $self->{po} } ) {
-        foreach my $pos ( split / /, $self->{po}{$msgid}{'pos_doc'} ) {
+        foreach my $pos ( @{ $self->{po}{$msgid}{'pos_doc'} } ) {
             return $msgid if ( $pos eq $num );
         }
     }
     return undef;
+}
+
+=item type_doc($)
+
+Returns the type of the msgid with the given position in the document. This is
+probably only useful to gettextization, and it's stored separately from
+{$msgid}{'type'} because the later location may be overwritten by another type
+when the $msgid is duplicated in the master document.
+
+=cut
+
+sub type_doc($$) {
+    my $self = shift;
+    my $num  = shift;
+
+    return ${ $self->{gettextize_types} }[$num];
 }
 
 =item get_charset()
