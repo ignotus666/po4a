@@ -149,9 +149,10 @@ my $markdown = 0;
 =item B<yfm_keys> (markdown-only)
 
 Comma-separated list of keys to process for translation in the YAML Front Matter
-section. All other keys are skipped. Keys are matched with a case-insensitive
-match. Array values are always translated, unless the B<yfm_skip_array> option
-is provided.
+section. All other keys are skipped. Keys are matched with a case-sensitive
+match. If B<yfm_paths> and B<yfm_keys> are used together, values are included if
+they are matched by at least one of the options. Array values are always translated,
+unless the B<yfm_skip_array> option is provided.
 
 =cut
 
@@ -167,6 +168,21 @@ ruler.
 =cut
 
 my $yfm_lenient = 0;
+
+=item B<yfm_paths> (markdown only)
+
+=item B<yfm_paths>
+
+Comma-separated list of hash paths to process for extraction in the YAML
+Front Matter section, all other paths are skipped. Paths are matched with a
+case-sensitive match. If B<yfm_paths> and B<yfm_keys> are used together,
+values are included if they are matched by at least one of the options.
+Arrays values are always returned unless the B<yfm_skip_array> option is
+provided.
+
+=cut
+
+my %yfm_paths = ();
 
 =item B<yfm_skip_array> (markdown-only)
 
@@ -213,6 +229,7 @@ sub initialize {
     $self->{options}{'markdown'}        = 1;
     $self->{options}{'yfm_keys'}        = '';
     $self->{options}{'yfm_lenient'}     = 0;
+    $self->{options}{'yfm_paths'}       = '';
     $self->{options}{'yfm_skip_array'}  = 0;
     $self->{options}{'nobullets'}       = 0;
     $self->{options}{'keyvalue'}        = 1;
@@ -242,6 +259,10 @@ sub initialize {
             $_ =~ s/^\s+|\s+$//g;    # Trim the keys before using them
             $yfm_keys{$_} = 1
         } ( split( ',', $self->{options}{'yfm_keys'} ) );
+        map {
+            $_ =~ s/^\s+|\s+$//g;    # Trim the keys before using them
+            $yfm_paths{$_} = 1
+        } ( split( ',', $self->{options}{'yfm_paths'} ) );
 
         #        map { print STDERR "key $_\n"; } (keys %yfm_keys);
         $yfm_skip_array = $self->{options}{'yfm_skip_array'};
@@ -615,7 +636,7 @@ sub parse_markdown_yaml_front_matter {
                 "po4a::text",
                 dgettext(
                     "po4a",
-                    "Processing even if the YAML Front Matter could not be parsed. Remove the 'yfm_lenient' option for a stricter behavior.\nIgnored error: %s"
+                    "Proceeding even if the YAML Front Matter could not be parsed. Remove the 'yfm_lenient' option for a stricter behavior.\nIgnored error: %s"
                 ),
                 $yamlres
             );
@@ -640,7 +661,8 @@ sub parse_markdown_yaml_front_matter {
         }
     }
 
-    $self->handle_yaml( $blockref, $yamlarray, \%yfm_keys, $yfm_skip_array );
+    $self->handle_yaml( 1, $blockref, $yamlarray, \%yfm_keys, $yfm_skip_array, \%yfm_paths );
+    $self->pushline("---\n");
     return 1;    # Valid YAML
 }
 
@@ -744,14 +766,16 @@ sub parse_markdown {
         my $fence               = $2;
         my $fencechar           = $3;
         my $fence_space_between = $4;
-        my $info_string         = $5;
-#        print STDERR "----------------\n";
-#        print STDERR "line: $line\n";
-#        print STDERR "fence: '$fence'; fencechar: '$fencechar'; info: '$info_string'\n";
+        my @info_string         = ($5);
+
+        #        print STDERR "----------------\n";
+        #        print STDERR "line: $line\n";
+        #        print STDERR "fence: '$fence'; fencechar: '$fencechar'; info: '$info_string'\n";
 
         # fenced div block (fenced with ::: where code blocks are fenced with ` or ~)
         # https://pandoc.org/MANUAL.html#divs-and-spans
-        my $type = "Fenced div block" . ( $info_string ? " ($info_string)" : "" );
+        my $info = join( "|" , map {chomp $_;$_} @info_string );
+        my $type = "Fenced div block" . ( $info ? " ($info)" : "" );
         do_paragraph( $self, $paragraph, $wrapped_mode );
         $wrapped_mode = 0;
         $paragraph    = "";
@@ -760,29 +784,45 @@ sub parse_markdown {
         $paragraph = "";
 
         my $lvl = 1;
-        while ( $lvl > 0) {
+        while ( $lvl > 0 ) {
             my ( $nextline, $nextref ) = $self->shiftline();
-            # TODO: Uncomment this once the string freeze is over
-            # die wrap_mod("po4a::text",
-            #             dgettext("po4a",
-            #                      "Malformed fenced div block: Block starting at %s not closed before the end of the file."), $ref)
-            #    unless (defined($nextline));
-#            print STDERR "within $lvl: $nextline";
-            if ($nextline =~ /^\s*:::+\s*$/ ) {
-                $lvl--;
-            } elsif ($nextline =~ /^([ ]{0,3})(([:])\3{2,})(\s*)([^`]*)\s*$/ ) {
-                $lvl++;
-            }
-            if ($lvl > 0) {
-                $paragraph .= $nextline;
-            } else {
-                do_paragraph( $self, $paragraph, $wrapped_mode, $type );
+            die wrap_mod(
+                "po4a::text",
+                dgettext(
+                    "po4a", "Malformed fenced div block: Block starting at %s not closed before the end of the file."
+                ),
+                $ref
+            ) unless ( defined($nextline) );
+
+            #            print STDERR "within $lvl: $nextline";
+            if ( $nextline =~ /^\s*:::+\s*$/ ) {
+                my $info = join( "|" , map {chomp $_;$_} @info_string );
+                $type = "Fenced div block" . ( $info ? " ($info)" : "" );
+                if ($paragraph ne "") {
+                    do_paragraph( $self, $paragraph, $wrapped_mode, $type );
+                    $paragraph        = "";
+                }
                 $self->pushline($nextline);
+                $lvl--;
+                while (scalar @info_string > $lvl) {
+                    pop @info_string;
+                }
+            } elsif ( $nextline =~ /^([ ]{0,3})(([:])\3{2,})(\s*)([^`]*)\s*$/ ) {
+                if ($paragraph ne "") {
+                    do_paragraph( $self, $paragraph, $wrapped_mode, $type );
+                    $paragraph        = "";
+                }
+                $self->pushline($nextline);
+                push @info_string, $5;
+                $lvl++;
+            } else {
+                $paragraph .= $nextline;
             }
         }
         $paragraph        = "";
         $end_of_paragraph = 1;
-#        print STDERR "Out now ------------\n";
+
+        #        print STDERR "Out now ------------\n";
     } elsif (
         $line =~ /^\s*\[\[\!\S+\s*$/       # macro begin
         or $line =~ /^\s*"""\s*\]\]\s*$/

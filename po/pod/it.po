@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: po4a 0.20\n"
 "Report-Msgid-Bugs-To: devel@lists.po4a.org\n"
-"POT-Creation-Date: 2022-09-29 17:26+0200\n"
-"PO-Revision-Date: 2022-09-29 17:39+0200\n"
+"POT-Creation-Date: 2022-12-27 15:09+0100\n"
+"PO-Revision-Date: 2022-12-27 23:31+0100\n"
 "Last-Translator: Marco Ciampa <ciampix@posteo.net>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/po4a/po4a-doc/it/"
 ">\n"
@@ -1458,12 +1458,12 @@ msgstr ""
 #. type: textblock
 #: po4a:126
 msgid ""
-"To have one PO file per master file, you simply have to use the string "
-"C<$master> in the name of your PO files on the C<[po4a_paths]> line, as "
+"To have one PO file per master file, you simply have to use the string C<"
+"$master> in the name of your PO files on the C<[po4a_paths]> line, as "
 "follows."
 msgstr ""
-"Per avere un file PO per file master, basta semplicemente usare la stringa "
-"C<$master> nel nome dei file PO nella riga C<[po4a_paths]>, come di seguito."
+"Per avere un file PO per file master, basta semplicemente usare la stringa C<"
+"$master> nel nome dei file PO nella riga C<[po4a_paths]>, come di seguito."
 
 #. type: verbatim
 #: po4a:127
@@ -1584,8 +1584,8 @@ msgstr ""
 #: po4a:135
 msgid ""
 "But again, these complex lines are difficult to read and modify, e.g. when "
-"adding a new language. It is much simpler to reorganize things using the "
-"C<$lang> template as follows:"
+"adding a new language. It is much simpler to reorganize things using the C<"
+"$lang> template as follows:"
 msgstr ""
 "Ma ancora, queste righe complesse sono difficili da leggere e da modificare, "
 "per es. quando si vuole aggiungere una lingua. È molto più semplice "
@@ -2106,7 +2106,7 @@ msgstr "L<po4a-gettextize(1)>, L<po4a(7)>."
 #. type: =head1
 #: po4a:189 po4a-gettextize:78 po4a-normalize:31 po4a-translate:56
 #: po4a-updatepo:55 msguntypot:32 doc/po4a.7.pod:187
-#: lib/Locale/Po4a/AsciiDoc.pm:52 lib/Locale/Po4a/BibTeX.pm:11
+#: lib/Locale/Po4a/AsciiDoc.pm:54 lib/Locale/Po4a/BibTeX.pm:11
 #: lib/Locale/Po4a/Chooser.pm:12 lib/Locale/Po4a/Common.pm:28
 #: lib/Locale/Po4a/Dia.pm:14 lib/Locale/Po4a/Docbook.pm:17
 #: lib/Locale/Po4a/Guide.pm:12 lib/Locale/Po4a/Halibut.pm:16
@@ -2115,7 +2115,7 @@ msgstr "L<po4a-gettextize(1)>, L<po4a(7)>."
 #: lib/Locale/Po4a/Po.pm:98 lib/Locale/Po4a/Pod.pm:38
 #: lib/Locale/Po4a/RubyDoc.pm:16 lib/Locale/Po4a/Sgml.pm:53
 #: lib/Locale/Po4a/TeX.pm:120 lib/Locale/Po4a/Texinfo.pm:12
-#: lib/Locale/Po4a/Text.pm:42 lib/Locale/Po4a/TransTractor.pm:154
+#: lib/Locale/Po4a/Text.pm:45 lib/Locale/Po4a/TransTractor.pm:154
 #: lib/Locale/Po4a/Wml.pm:11 lib/Locale/Po4a/Xhtml.pm:17
 #: lib/Locale/Po4a/Xml.pm:189 lib/Locale/Po4a/Yaml.pm:17
 msgid "AUTHORS"
@@ -2138,7 +2138,7 @@ msgstr ""
 
 #. type: =head1
 #: po4a:191 po4a-gettextize:80 po4a-normalize:33 po4a-translate:58
-#: po4a-updatepo:57 msguntypot:34 lib/Locale/Po4a/AsciiDoc.pm:54
+#: po4a-updatepo:57 msguntypot:34 lib/Locale/Po4a/AsciiDoc.pm:56
 #: lib/Locale/Po4a/BibTeX.pm:13 lib/Locale/Po4a/Chooser.pm:14
 #: lib/Locale/Po4a/Common.pm:30 lib/Locale/Po4a/Dia.pm:16
 #: lib/Locale/Po4a/Docbook.pm:19 lib/Locale/Po4a/Guide.pm:14
@@ -2147,7 +2147,7 @@ msgstr ""
 #: lib/Locale/Po4a/Man.pm:111 lib/Locale/Po4a/Pod.pm:40
 #: lib/Locale/Po4a/RubyDoc.pm:18 lib/Locale/Po4a/Sgml.pm:58
 #: lib/Locale/Po4a/TeX.pm:122 lib/Locale/Po4a/Texinfo.pm:14
-#: lib/Locale/Po4a/Text.pm:44 lib/Locale/Po4a/Wml.pm:13
+#: lib/Locale/Po4a/Text.pm:47 lib/Locale/Po4a/Wml.pm:13
 #: lib/Locale/Po4a/Xhtml.pm:19 lib/Locale/Po4a/Xml.pm:191
 #: lib/Locale/Po4a/Yaml.pm:19
 msgid "COPYRIGHT AND LICENSE"
@@ -2160,14 +2160,14 @@ msgstr "Copyright 2002-2022 by SPI, inc."
 
 #. type: textblock
 #: po4a:193 po4a-gettextize:82 po4a-normalize:35 po4a-translate:60
-#: po4a-updatepo:59 msguntypot:36 lib/Locale/Po4a/AsciiDoc.pm:56
+#: po4a-updatepo:59 msguntypot:36 lib/Locale/Po4a/AsciiDoc.pm:58
 #: lib/Locale/Po4a/BibTeX.pm:15 lib/Locale/Po4a/Chooser.pm:16
 #: lib/Locale/Po4a/Common.pm:32 lib/Locale/Po4a/Dia.pm:18
 #: lib/Locale/Po4a/Docbook.pm:21 lib/Locale/Po4a/Guide.pm:16
 #: lib/Locale/Po4a/Ini.pm:14 lib/Locale/Po4a/KernelHelp.pm:13
 #: lib/Locale/Po4a/Man.pm:113 lib/Locale/Po4a/Pod.pm:42
 #: lib/Locale/Po4a/Sgml.pm:60 lib/Locale/Po4a/TeX.pm:124
-#: lib/Locale/Po4a/Text.pm:47 lib/Locale/Po4a/Wml.pm:15
+#: lib/Locale/Po4a/Text.pm:50 lib/Locale/Po4a/Wml.pm:15
 #: lib/Locale/Po4a/Xhtml.pm:21 lib/Locale/Po4a/Xml.pm:193
 #: lib/Locale/Po4a/Yaml.pm:21
 msgid ""
@@ -2190,7 +2190,9 @@ msgstr ""
 msgid ""
 "B<po4a-gettextize> B<-f> I<fmt> B<-m> I<master.doc> B<-l> I<XX.doc> B<-p> "
 "I<XX.po>"
-msgstr "B<po4a-gettextize> B<-f> I<formato> B<-m> I<master.doc> B<-l> I<XX.doc> B<-p> I<XX.po>"
+msgstr ""
+"B<po4a-gettextize> B<-f> I<formato> B<-m> I<master.doc> B<-l> I<XX.doc> B<-"
+"p> I<XX.po>"
 
 #. type: textblock
 #: po4a-gettextize:5
@@ -3047,8 +3049,8 @@ msgstr "Aggiungere contenuti (oltre alle traduzioni) ai file generati"
 #: po4a-translate:50
 msgid ""
 "To add some extra content to the generated document beside what you "
-"translated (like the name of the translator, or an \"About this "
-"translation\" section), you should use the B<--addendum> option."
+"translated (like the name of the translator, or an \"About this translation"
+"\" section), you should use the B<--addendum> option."
 msgstr ""
 "Per inserire dei contenuti aggiuntivi nel documento generato (come il nome "
 "del traduttore e altre informazioni sulla traduzione), usare l'opzione B<--"
@@ -3174,7 +3176,10 @@ msgstr ""
 msgid ""
 "This option removes B<--previous> from the options passed to B<msgmerge>.  "
 "This helps supporting old versions of B<gettext> (before v0.16)."
-msgstr "Questa opzione rimuove B<--previous> dalle opzioni passate a B<msgmerge>.  Ciò aiuta a supportare le vecchie versioni di B<gettext> (precedenti la 0.16)."
+msgstr ""
+"Questa opzione rimuove B<--previous> dalle opzioni passate a B<msgmerge>.  "
+"Ciò aiuta a supportare le vecchie versioni di B<gettext> (precedenti la "
+"0.16)."
 
 #. type: textblock
 #: po4a-updatepo:54
@@ -4048,7 +4053,19 @@ msgid ""
 "you invoke L<po4a(1)>, it both updates the PO files and regenerate the "
 "translation files that need to. If everything is already up to date, "
 "L<po4a(1)> does not change any file."
-msgstr "La maggior parte dei progetti richiede solo le funzionalità di L<po4a-updatepo(1)> e L<po4a-translate(1)>, ma questi script si sono dimostrati macchinosi e soggetti a errori nell'uso. Se la documentazione da tradurre è suddivisa in più file origine, è difficile mantenere aggiornati i file PO e creare correttamente i file di documentazione. In risposta a questo problema, è stato fornito uno strumento omnicomprensivo: L<po4a(1)>. Questo strumento utilizza un file di configurazione che descrive la struttura del progetto di traduzione: la posizione dei file PO, l'elenco dei file da tradurre e le opzioni da utilizzare, automatizzando completamente il processo. Quando si esegue L<po4a(1)>, esso aggiorna i file PO e rigenera i file di traduzione necessari. Se è tutto già aggiornato, L<po4a(1)> non cambia alcun file."
+msgstr ""
+"La maggior parte dei progetti richiede solo le funzionalità di L<po4a-"
+"updatepo(1)> e L<po4a-translate(1)>, ma questi script si sono dimostrati "
+"macchinosi e soggetti a errori nell'uso. Se la documentazione da tradurre è "
+"suddivisa in più file origine, è difficile mantenere aggiornati i file PO e "
+"creare correttamente i file di documentazione. In risposta a questo "
+"problema, è stato fornito uno strumento omnicomprensivo: L<po4a(1)>. Questo "
+"strumento utilizza un file di configurazione che descrive la struttura del "
+"progetto di traduzione: la posizione dei file PO, l'elenco dei file da "
+"tradurre e le opzioni da utilizzare, automatizzando completamente il "
+"processo. Quando si esegue L<po4a(1)>, esso aggiorna i file PO e rigenera i "
+"file di traduzione necessari. Se è tutto già aggiornato, L<po4a(1)> non "
+"cambia alcun file."
 
 #. type: textblock
 #: doc/po4a.7.pod:72
@@ -4764,8 +4781,8 @@ msgstr ""
 "Se si vuole aggiungere qualcosa alla fine del documento, fare in modo che "
 "B<position> corrisponda a qualunque riga del documento (ma solo una riga. "
 "Po4a non procederà se questa non è univoca), e fare in modo che "
-"B<endboundary> non corrisponda a nulla. Non usare stringhe semplici come "
-"B<\"EOF\">, ma preferire quelle che hanno meno probabilità di esistere nel "
+"B<endboundary> non corrisponda a nulla. Non usare stringhe semplici come B<"
+"\"EOF\">, ma preferire quelle che hanno meno probabilità di esistere nel "
 "documento."
 
 #. type: verbatim
@@ -5630,30 +5647,11 @@ msgstr ""
 
 #. type: =item
 #: lib/Locale/Po4a/AsciiDoc.pm:31
-msgid "B<yfm_keys>"
-msgstr "B<yfm_keys>"
-
-#. type: textblock
-#: lib/Locale/Po4a/AsciiDoc.pm:32 lib/Locale/Po4a/Text.pm:31
-msgid ""
-"Comma-separated list of keys to process for translation in the YAML Front "
-"Matter section. All other keys are skipped. Keys are matched with a case-"
-"insensitive match. Array values are always translated, unless the "
-"B<yfm_skip_array> option is provided."
-msgstr ""
-"Elenco separato da virgole di chiavi da elaborare per la traduzione nella "
-"sezione Front Matter di YAML. Tutte le altre chiavi vengono ignorate. Le "
-"chiavi vengono confrontate senza differenziare tra maiuscolo e minuscolo. I "
-"valori degli array vengono sempre tradotti, a meno che non si usi l'opzione "
-"B<yfm_skip_array>."
-
-#. type: =item
-#: lib/Locale/Po4a/AsciiDoc.pm:33
 msgid "B<nolinting>"
 msgstr "B<nolinting>"
 
 #. type: textblock
-#: lib/Locale/Po4a/AsciiDoc.pm:34
+#: lib/Locale/Po4a/AsciiDoc.pm:32
 msgid ""
 "Disable linting messages. When the source code cannot be fixed for clearer "
 "document structure, these messages are useless."
@@ -5663,23 +5661,55 @@ msgstr ""
 "messaggi sono inutili."
 
 #. type: =item
+#: lib/Locale/Po4a/AsciiDoc.pm:33
+msgid "B<yfm_keys>"
+msgstr "B<yfm_keys>"
+
+#. type: textblock
+#: lib/Locale/Po4a/AsciiDoc.pm:34 lib/Locale/Po4a/Text.pm:31
+msgid ""
+"Comma-separated list of keys to process for translation in the YAML Front "
+"Matter section. All other keys are skipped. Keys are matched with a case-"
+"sensitive match. If B<yfm_paths> and B<yfm_keys> are used together, values "
+"are included if they are matched by at least one of the options. Array "
+"values are always translated, unless the B<yfm_skip_array> option is "
+"provided."
+msgstr "Elenco di chiavi separate da virgole da elaborare per la traduzione nella sezione Front Matter YAML. Tutte le altre chiavi vengono saltate. Le chiavi vengono confrontate distinguendo tra maiuscole e minuscole. Se B<yfm_paths> e B<yfm_keys> vengono utilizzati insieme, i valori vengono inclusi se corrispondono ad almeno una delle opzioni. I valori dell'array vengono sempre tradotti, a meno che non venga fornita l'opzione B<yfm_skip_array>."
+
+#. type: =item
 #: lib/Locale/Po4a/AsciiDoc.pm:35
 msgid "B<yfm_skip_array>"
 msgstr "B<yfm_skip_array>"
 
 #. type: textblock
-#: lib/Locale/Po4a/AsciiDoc.pm:36 lib/Locale/Po4a/Text.pm:35
+#: lib/Locale/Po4a/AsciiDoc.pm:36 lib/Locale/Po4a/Text.pm:38
 msgid "Do not translate array values in the YAML Front Matter section."
 msgstr ""
 "Indica di non tradurre il valori array nella sezione Front Matter di YAML."
 
+#. type: =item
+#: lib/Locale/Po4a/AsciiDoc.pm:37 lib/Locale/Po4a/Text.pm:35
+msgid "B<yfm_paths>"
+msgstr "B<yfm_paths>"
+
+#. type: textblock
+#: lib/Locale/Po4a/AsciiDoc.pm:38 lib/Locale/Po4a/Text.pm:36
+msgid ""
+"Comma-separated list of hash paths to process for extraction in the YAML "
+"Front Matter section, all other paths are skipped. Paths are matched with a "
+"case-sensitive match. If B<yfm_paths> and B<yfm_keys> are used together, "
+"values are included if they are matched by at least one of the options.  "
+"Arrays values are always returned unless the B<yfm_skip_array> option is "
+"provided."
+msgstr "Elenco separato da virgole di percorsi hash da elaborare per l'estrazione nella sezione Front Matter YAML, tutti gli altri percorsi vengono ignorati. I percorsi vengono confrontati con distinzione tra maiuscole e minuscole. Se B<yfm_paths> e B<yfm_keys> vengono utilizzati insieme, i valori vengono inclusi se corrispondono ad almeno una delle opzioni. I valori degli array vengono sempre restituiti a meno che non venga fornita l'opzione B<yfm_skip_array>."
+
 #. type: =head1
-#: lib/Locale/Po4a/AsciiDoc.pm:37 lib/Locale/Po4a/TeX.pm:27
+#: lib/Locale/Po4a/AsciiDoc.pm:39 lib/Locale/Po4a/TeX.pm:27
 msgid "INLINE CUSTOMIZATION"
 msgstr "PERSONALIZZAZIONE INLINE"
 
 #. type: textblock
-#: lib/Locale/Po4a/AsciiDoc.pm:38
+#: lib/Locale/Po4a/AsciiDoc.pm:40
 msgid ""
 "The AsciiDoc module can be customized with lines starting by B<//po4a:>.  "
 "These lines are interpreted as commands to the parser.  The following "
@@ -5690,12 +5720,12 @@ msgstr ""
 "Sono riconosciuti i seguenti comandi:"
 
 #. type: =item
-#: lib/Locale/Po4a/AsciiDoc.pm:39
+#: lib/Locale/Po4a/AsciiDoc.pm:41
 msgid "B<//po4a: macro >I<name>B<[>I<attribute list>B<]>"
 msgstr "B<//po4a: macro >I<nome>B<[>I<elenco attributi>B<]>"
 
 #. type: textblock
-#: lib/Locale/Po4a/AsciiDoc.pm:40
+#: lib/Locale/Po4a/AsciiDoc.pm:42
 msgid ""
 "This describes in detail the parameters of a B<macro>; I<name> must be a "
 "valid macro name, and it ends with an underscore if the target must be "
@@ -5706,7 +5736,7 @@ msgstr ""
 "(underscore) se l'obiettivo va tradotto."
 
 #. type: textblock
-#: lib/Locale/Po4a/AsciiDoc.pm:41
+#: lib/Locale/Po4a/AsciiDoc.pm:43
 msgid ""
 "The I<attribute list> argument is a comma separated list which contains "
 "information about translatable arguments.  This list contains either "
@@ -5717,7 +5747,7 @@ msgstr ""
 "per definire parametri posizionali, o attributi con nome."
 
 #. type: textblock
-#: lib/Locale/Po4a/AsciiDoc.pm:42
+#: lib/Locale/Po4a/AsciiDoc.pm:44
 msgid ""
 "If a plus sign (B<+>) is prepended to I<name>, then the macro and its "
 "arguments are translated as a whole.  There is no need to define attribute "
@@ -5729,12 +5759,12 @@ msgstr ""
 "devono essere presenti."
 
 #. type: =item
-#: lib/Locale/Po4a/AsciiDoc.pm:43
+#: lib/Locale/Po4a/AsciiDoc.pm:45
 msgid "B<//po4a: style >B<[>I<attribute list>B<]>"
 msgstr "B<//po4a: stile >B<[>I<elenco attributi>B<]>"
 
 #. type: textblock
-#: lib/Locale/Po4a/AsciiDoc.pm:44
+#: lib/Locale/Po4a/AsciiDoc.pm:46
 msgid ""
 "This describes in detail which attributes of a style must be translated."
 msgstr ""
@@ -5742,7 +5772,7 @@ msgstr ""
 "tradotti."
 
 #. type: textblock
-#: lib/Locale/Po4a/AsciiDoc.pm:45
+#: lib/Locale/Po4a/AsciiDoc.pm:47
 msgid ""
 "The I<attribute list> argument is a comma separated list which contains "
 "information about translatable arguments.  This list contains either "
@@ -5755,7 +5785,7 @@ msgstr ""
 "attributo, il nome dello stile, non verrà tradotto."
 
 #. type: textblock
-#: lib/Locale/Po4a/AsciiDoc.pm:46
+#: lib/Locale/Po4a/AsciiDoc.pm:48
 msgid ""
 "If a plus sign (B<+>) is prepended to the style name, then the attribute "
 "list is translated as a whole.  There is no need to define translatable "
@@ -5766,7 +5796,7 @@ msgstr ""
 "attributi traducibili."
 
 #. type: textblock
-#: lib/Locale/Po4a/AsciiDoc.pm:47
+#: lib/Locale/Po4a/AsciiDoc.pm:49
 msgid ""
 "If a minus sign (B<->) is prepended to the style name, then this attribute "
 "is not translated."
@@ -5775,12 +5805,12 @@ msgstr ""
 "attributo non viene tradotto."
 
 #. type: =item
-#: lib/Locale/Po4a/AsciiDoc.pm:48
+#: lib/Locale/Po4a/AsciiDoc.pm:50
 msgid "B<//po4a: entry >I<name>"
 msgstr "B<//po4a: voce >I<nome>"
 
 #. type: textblock
-#: lib/Locale/Po4a/AsciiDoc.pm:49
+#: lib/Locale/Po4a/AsciiDoc.pm:51
 msgid ""
 "This declares an attribute entry as being translatable.  By default, they "
 "are not translated."
@@ -5789,25 +5819,25 @@ msgstr ""
 "predefinita, non vengono tradotte."
 
 #. type: =head1
-#: lib/Locale/Po4a/AsciiDoc.pm:50 lib/Locale/Po4a/BibTeX.pm:9
+#: lib/Locale/Po4a/AsciiDoc.pm:52 lib/Locale/Po4a/BibTeX.pm:9
 #: lib/Locale/Po4a/Dia.pm:10 lib/Locale/Po4a/Docbook.pm:6
 #: lib/Locale/Po4a/Guide.pm:7 lib/Locale/Po4a/Halibut.pm:7
 #: lib/Locale/Po4a/KernelHelp.pm:5 lib/Locale/Po4a/Man.pm:96
 #: lib/Locale/Po4a/Pod.pm:9 lib/Locale/Po4a/RubyDoc.pm:6
 #: lib/Locale/Po4a/Sgml.pm:34 lib/Locale/Po4a/TeX.pm:104
-#: lib/Locale/Po4a/Texinfo.pm:8 lib/Locale/Po4a/Text.pm:40
+#: lib/Locale/Po4a/Texinfo.pm:8 lib/Locale/Po4a/Text.pm:43
 #: lib/Locale/Po4a/Wml.pm:9 lib/Locale/Po4a/Xhtml.pm:12
 #: lib/Locale/Po4a/Xml.pm:181
 msgid "STATUS OF THIS MODULE"
 msgstr "STATO DI QUESTO MODULO"
 
 #. type: textblock
-#: lib/Locale/Po4a/AsciiDoc.pm:51
+#: lib/Locale/Po4a/AsciiDoc.pm:53
 msgid "Tested successfully on simple AsciiDoc files."
 msgstr "Testato con successo su semplici file AsciiDoc."
 
 #. type: verbatim
-#: lib/Locale/Po4a/AsciiDoc.pm:53
+#: lib/Locale/Po4a/AsciiDoc.pm:55
 #, no-wrap
 msgid ""
 " Nicolas François <nicolas.francois@centraliens.net>\n"
@@ -5819,7 +5849,7 @@ msgstr ""
 "\n"
 
 #. type: verbatim
-#: lib/Locale/Po4a/AsciiDoc.pm:55
+#: lib/Locale/Po4a/AsciiDoc.pm:57
 #, no-wrap
 msgid ""
 " Copyright © 2005-2008 Nicolas FRANÇOIS <nicolas.francois@centraliens.net>.\n"
@@ -5833,12 +5863,12 @@ msgstr ""
 "\n"
 
 #. type: textblock
-#: lib/Locale/Po4a/AsciiDoc.pm:57
+#: lib/Locale/Po4a/AsciiDoc.pm:59
 msgid "__END__"
 msgstr "__END__"
 
 #. type: textblock
-#: lib/Locale/Po4a/AsciiDoc.pm:58
+#: lib/Locale/Po4a/AsciiDoc.pm:60
 msgid ""
 "# LocalWords: Charset charset AsciiDoc tablecells po UTF gettext msgid "
 "nostrip"
@@ -5878,7 +5908,7 @@ msgstr "È un modulo molto semplice e ancora giovane."
 #. type: verbatim
 #: lib/Locale/Po4a/BibTeX.pm:12 lib/Locale/Po4a/Halibut.pm:17
 #: lib/Locale/Po4a/LaTeX.pm:11 lib/Locale/Po4a/TeX.pm:121
-#: lib/Locale/Po4a/Texinfo.pm:13 lib/Locale/Po4a/Text.pm:43
+#: lib/Locale/Po4a/Texinfo.pm:13 lib/Locale/Po4a/Text.pm:46
 #, no-wrap
 msgid ""
 " Nicolas François <nicolas.francois@centraliens.net>\n"
@@ -6422,9 +6452,9 @@ msgstr ""
 #. type: textblock
 #: lib/Locale/Po4a/Guide.pm:9
 msgid ""
-"The only known issue is that it doesn't include files with the <include "
-"href=\"...\"> tag, but you can translate all those files alone, and it's "
-"usually better to have them separated."
+"The only known issue is that it doesn't include files with the <include href="
+"\"...\"> tag, but you can translate all those files alone, and it's usually "
+"better to have them separated."
 msgstr ""
 "L'unico problema conosciuto è che il tag <include href=\"...\"> non include "
 "nessun file; è comunque possibile tradurre separatamente ciascuno di questi "
@@ -7056,7 +7086,11 @@ msgid ""
 "The following options specify the behavior of a user-defined macro (with a ."
 "de request), or of a classical macro that is not supported by po4a.  They "
 "take as argument a comma-separated list of macros.  For example:"
-msgstr "Le opzioni seguenti specificano il comportamento di una macro personalizzata (definita con una richiesta .de), o di una macro classica non supportata da po4a.  Prendono come argomento un elenco separato da virgole di macro.  Per esempio:"
+msgstr ""
+"Le opzioni seguenti specificano il comportamento di una macro personalizzata "
+"(definita con una richiesta .de), o di una macro classica non supportata da "
+"po4a.  Prendono come argomento un elenco separato da virgole di macro.  Per "
+"esempio:"
 
 #. type: verbatim
 #: lib/Locale/Po4a/Man.pm:56
@@ -8758,9 +8792,9 @@ msgid ""
 "are in an E<lt>aaaE<gt> or a E<lt>bbbE<gt> tag."
 msgstr ""
 "Un elenco di attributi separati da spazi che devono essere tradotti. È "
-"possibile specificare gli attributi in base al loro nome (ad esempio, "
-"\"lang\"), ma è anche possibile anteporre una gerarchia di tag, per "
-"specificare che questo attributo verrà tradotto solo quando si trova nel tag "
+"possibile specificare gli attributi in base al loro nome (ad esempio, \"lang"
+"\"), ma è anche possibile anteporre una gerarchia di tag, per specificare "
+"che questo attributo verrà tradotto solo quando si trova nel tag "
 "specificato. Ad esempio: E<lt>bbbE<gt>E<lt>aaaE<gt>lang specifica che "
 "l'attributo lang verrà tradotto solo se si trova in un tag E<lt>aaaE<gt>, "
 "che è in un tag E<lt>bbbE<gt>. I nomi dei tag sono in realtà espressioni "
@@ -9810,7 +9844,10 @@ msgstr "Alcuni comandi dovrebbero essere aggiunti alla pila dell'ambiente"
 msgid ""
 "These commands should be specified by couples.  This can be used to specify "
 "commands beginning or ending a verbatim environment."
-msgstr "Questi comandi dovrebbero essere specificati da coppie.  Ciò può essere usato per specificare i comandi che iniziano o terminano un ambiente letterale."
+msgstr ""
+"Questi comandi dovrebbero essere specificati da coppie.  Ciò può essere "
+"usato per specificare i comandi che iniziano o terminano un ambiente "
+"letterale."
 
 #. type: =item
 #: lib/Locale/Po4a/TeX.pm:114
@@ -10067,16 +10104,21 @@ msgstr ""
 
 #. type: =item
 #: lib/Locale/Po4a/Text.pm:34
+msgid "B<yfm_paths> (markdown only)"
+msgstr "B<yfm_paths> (solo markdown)"
+
+#. type: =item
+#: lib/Locale/Po4a/Text.pm:37
 msgid "B<yfm_skip_array> (markdown-only)"
 msgstr "B<yfm_skip_array> (solo-markdown)"
 
 #. type: =item
-#: lib/Locale/Po4a/Text.pm:36
+#: lib/Locale/Po4a/Text.pm:39
 msgid "B<control>[B<=>I<taglist>]"
 msgstr "B<control>[B<=>I<elencotag>]"
 
 #. type: textblock
-#: lib/Locale/Po4a/Text.pm:37
+#: lib/Locale/Po4a/Text.pm:40
 msgid ""
 "Handle control files.  A comma-separated list of tags to be translated can "
 "be provided."
@@ -10085,12 +10127,12 @@ msgstr ""
 "virgole di tag da tradurre."
 
 #. type: =item
-#: lib/Locale/Po4a/Text.pm:38
+#: lib/Locale/Po4a/Text.pm:41
 msgid "B<neverwrap>"
 msgstr "B<neverwrap>"
 
 #. type: textblock
-#: lib/Locale/Po4a/Text.pm:39
+#: lib/Locale/Po4a/Text.pm:42
 msgid ""
 "Prevent po4a from wrapping any lines. This means that every content is "
 "handled verbatim, even simple paragraphs."
@@ -10099,12 +10141,12 @@ msgstr ""
 "viene gestito alla lettera, anche i paragrafi semplici."
 
 #. type: textblock
-#: lib/Locale/Po4a/Text.pm:41
+#: lib/Locale/Po4a/Text.pm:44
 msgid "Tested successfully on simple text files and NEWS.Debian files."
 msgstr "Testato con successo su semplici file di testo e file NEWS.Debian."
 
 #. type: verbatim
-#: lib/Locale/Po4a/Text.pm:45
+#: lib/Locale/Po4a/Text.pm:48
 #, no-wrap
 msgid ""
 " Copyright © 2005-2008 Nicolas FRANÇOIS <nicolas.francois@centraliens.net>.\n"
@@ -10114,7 +10156,7 @@ msgstr ""
 "\n"
 
 #. type: verbatim
-#: lib/Locale/Po4a/Text.pm:46
+#: lib/Locale/Po4a/Text.pm:49
 #, no-wrap
 msgid ""
 " Copyright © 2008-2009, 2018 Jonas Smedegaard <dr@jones.dk>.\n"
@@ -12707,17 +12749,11 @@ msgstr "B<keys>"
 #: lib/Locale/Po4a/Yaml.pm:10
 msgid ""
 "Space-separated list of hash keys to process for extraction, all other keys "
-"are skipped.  Keys are matched with a case-insensitive match.  If B<paths> "
-"and B<keys> are used together, values are included if they are matched by at "
+"are skipped.  Keys are matched with a case-sensitive match.  If B<paths> and "
+"B<keys> are used together, values are included if they are matched by at "
 "least one of the options.  Arrays values are always returned unless the "
 "B<skip_array> option is provided."
-msgstr ""
-"Elenco separato da virgole di chiavi hash da elaborare per l'estrazione; "
-"tutte le altre chiavi vengono ignorate. Le chiavi vengono confrontate senza "
-"differenziare tra maiuscolo e minuscolo. Se B<paths> e B<keys> vengono usate "
-"assieme, i valori vengono inclusi se questi corrispondono ad almeno una "
-"delle opzioni. I valori degli array vengono sempre restituiti, a meno che "
-"non si fornisca l'opzione B<skip_array>."
+msgstr "Elenco separato da spazi di chiavi hash da elaborare per l'estrazione, tutte le altre chiavi vengono ignorate. Le chiavi vengono confrontate con distinzione tra maiuscole e minuscole. Se B<paths> e B<keys> vengono utilizzati insieme, i valori vengono inclusi se corrispondono ad almeno una delle opzioni. I valori degli array vengono sempre restituiti a meno che non venga fornita l'opzione B<skip_array>."
 
 #. type: =item
 #: lib/Locale/Po4a/Yaml.pm:11
@@ -12728,17 +12764,11 @@ msgstr "B<paths>"
 #: lib/Locale/Po4a/Yaml.pm:12
 msgid ""
 "Comma-separated list of hash paths to process for extraction, all other "
-"paths are skipped. Paths are matched with a case-insensitive match.  If "
+"paths are skipped. Paths are matched with a case-sensitive match.  If "
 "B<paths> and B<keys> are used together, values are included if they are "
 "matched by at least one of the options.  Arrays values are always returned "
 "unless the B<skip_array> option is provided."
-msgstr ""
-"Elenco separato da virgole di percorsi hash da elaborare per l'estrazione; "
-"tutti gli altri percorsi vengono ignorati. I percorsi vengono confrontati "
-"senza differenziare tra maiuscolo e minuscolo. Se B<paths> e B<keys> vengono "
-"usate assieme, i valori vengono inclusi se questi corrispondono ad almeno "
-"una delle opzioni. I valori degli array vengono sempre restituiti, a meno "
-"che non si fornisca l'opzione B<skip_array>."
+msgstr "Elenco separato da virgole di percorsi hash da elaborare per l'estrazione, tutti gli altri percorsi vengono ignorati. I percorsi vengono confrontati con distinzione tra maiuscole e minuscole. Se B<paths> e B<keys> vengono utilizzati insieme, i valori vengono inclusi se corrispondono ad almeno una delle opzioni. I valori degli array vengono sempre restituiti a meno che non venga fornita l'opzione B<skip_array>."
 
 #. type: =item
 #: lib/Locale/Po4a/Yaml.pm:13
@@ -12762,5 +12792,7 @@ msgstr ""
 
 #. type: textblock
 #: lib/Locale/Po4a/Yaml.pm:20
-msgid "Copyright © 2017 Brian Exelbierd."
-msgstr "Copyright © 2017 Brian Exelbierd."
+msgid ""
+"Copyright © 2017 Brian Exelbierd.  Copyright © 2022 Martin Quinson "
+"<mquinson#debian.org>."
+msgstr "Copyright © 2017 Brian Exelbierd.  Copyright © 2022 Martin Quinson <mquinson#debian.org>."

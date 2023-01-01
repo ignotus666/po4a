@@ -11,7 +11,7 @@ use warnings;
 
 use subs qw(makespace);
 use vars qw($VERSION @ISA @EXPORT);
-$VERSION = "0.69-alpha";
+$VERSION = "0.70-alpha";
 @ISA     = qw(DynaLoader);
 @EXPORT  = qw(new process translate
   read write readpo writepo
@@ -1177,11 +1177,12 @@ sub encode_from_to {
     return $text;
 }
 
-# Push the translation of a Yaml Front-Matter header that was parsed by YAML::Tiny
+# Push the translation of a Yaml document or Yaml Front-Matter header, parsed by YAML::Tiny in any case
+# $is_yfm is a boolean indicating whether we are dealing with a Front Matter (true value) or whole document (false value)
 sub handle_yaml {
-    my ( $self, $blockref, $yamlarray, $yfm_keys, $yfm_skip_array ) = @_;
+    my ( $self, $is_yfm, $blockref, $yamlarray, $yfm_keys, $yfm_skip_array, $yfm_paths ) = @_;
 
-    die "Empty YAML Front Matter" unless ( length($yamlarray) > 0 );
+    die "Empty YAML " . ( $is_yfm ? "Front Matter" : "document" ) unless ( length($yamlarray) > 0 );
 
     my ( $indent, $ctx ) = ( 0, "" );
     foreach my $cursor (@$yamlarray) {
@@ -1196,13 +1197,20 @@ sub handle_yaml {
         } elsif ( !ref $cursor ) {
             $self->pushline("---\n");
             $self->pushline(
-                format_scalar( $self->translate( $cursor, $blockref, "YAML Front Matter (scalar)", "wrap" => 0 ) ) );
+                format_scalar(
+                    $self->translate(
+                        $cursor, $blockref,
+                        "YAML " . ( $is_yfm ? "Front Matter " : "" ) . "(scalar)",
+                        "wrap" => 0
+                    )
+                )
+            );
 
             # A list at the root
         } elsif ( ref $cursor eq 'ARRAY' ) {
             if (@$cursor) {
                 $self->pushline("---\n");
-                do_array( $self, $blockref, $cursor, $indent, $ctx, $yfm_keys, $yfm_skip_array );
+                do_array( $self, $is_yfm, $blockref, $cursor, $indent, $ctx, $yfm_keys, $yfm_skip_array, $yfm_paths );
             } else {
                 $self->pushline("---[]\n");
             }
@@ -1211,7 +1219,7 @@ sub handle_yaml {
         } elsif ( ref $cursor eq 'HASH' ) {
             if (%$cursor) {
                 $self->pushline("---\n");
-                do_hash( $self, $blockref, $cursor, $indent, $ctx, $yfm_keys, $yfm_skip_array );
+                do_hash( $self, $is_yfm, $blockref, $cursor, $indent, $ctx, $yfm_keys, $yfm_skip_array, $yfm_paths );
             } else {
                 $self->pushline("--- {}\n");
             }
@@ -1219,7 +1227,6 @@ sub handle_yaml {
         } else {
             die( "Cannot serialize " . ref($cursor) );
         }
-        $self->pushline("---\n");
     }
 
     # Escape the string to make it valid in YAML.
@@ -1253,7 +1260,7 @@ sub handle_yaml {
     }
 
     sub do_array {
-        my ( $self, $blockref, $array, $indent, $ctx, $yfm_keys, $yfm_skip_array ) = @_;
+        my ( $self, $is_yfm, $blockref, $array, $indent, $ctx, $yfm_keys, $yfm_skip_array, $yfm_paths ) = @_;
         foreach my $el (@$array) {
             my $header = ( '  ' x $indent ) . '- ';
             my $type   = ref $el;
@@ -1261,15 +1268,23 @@ sub handle_yaml {
                 if ($yfm_skip_array) {
                     $self->pushline( $header . YAML::Tiny::_dump_scalar( "dummy", $el, 0 ) . "\n" );
                 } else {
-                    $self->pushline( $header
-                          . format_scalar( $self->translate( $el, $blockref, "YAML Front Matter:$ctx", "wrap" => 0 ) )
-                          . "\n" );
+                    $self->pushline(
+                        $header
+                          . format_scalar(
+                            $self->translate(
+                                $el,                                                            $blockref,
+                                ( $is_yfm ? "Yaml Front Matter " : "" ) . "Array Element:$ctx", "wrap" => 0
+                            )
+                          )
+                          . "\n"
+                    );
                 }
 
             } elsif ( $type eq 'ARRAY' ) {
                 if (@$el) {
                     $self->pushline( $header . "\n" );
-                    do_array( $self, $blockref, $el, $indent + 1, $ctx, $yfm_keys, $yfm_skip_array );
+                    do_array( $self, $is_yfm, $blockref, $el, $indent + 1,
+                        $ctx, $yfm_keys, $yfm_skip_array, $yfm_paths );
                 } else {
                     $self->pushline( $header . " []\n" );
                 }
@@ -1277,7 +1292,8 @@ sub handle_yaml {
             } elsif ( $type eq 'HASH' ) {
                 if ( keys %$el ) {
                     $self->pushline( $header . "\n" );
-                    do_hash( $self, $blockref, $el, $indent + 1, $ctx, $yfm_keys, $yfm_skip_array );
+                    do_hash( $self, $is_yfm, $blockref, $el, $indent + 1, $ctx, $yfm_keys, $yfm_skip_array,
+                        $yfm_paths );
                 } else {
                     $self->pushline( $header . " {}\n" );
                 }
@@ -1289,17 +1305,31 @@ sub handle_yaml {
     }
 
     sub do_hash {
-        my ( $self, $blockref, $hash, $indent, $ctx, $yfm_keys, $yfm_skip_array ) = @_;
+        my ( $self, $is_yfm, $blockref, $hash, $indent, $ctx, $yfm_keys, $yfm_skip_array, $yfm_paths ) = @_;
 
         foreach my $name ( sort keys %$hash ) {
             my $el     = $hash->{$name};
             my $header = ( '  ' x $indent ) . YAML::Tiny::_dump_scalar( "dummy", $name, 1 ) . ":";
             my $type   = ref $el;
             if ( !$type ) {
-                my %keys = %{$yfm_keys};
-                if ( ( not %keys ) || $keys{$name} ) {  # either no key is provided, or the key we need is also provided
-                    my $translation = $self->translate( $el, $blockref, "YAML Front Matter:$ctx $name", "wrap" => 0 );
-                    if ( $el =~ /^\[.*\]$/ ) {          # Do not quote the lists
+                my %keys  = %{$yfm_keys};
+                my %paths = %{$yfm_paths};
+                my $path  = "$ctx $name" =~ s/^\s+|\s+$//gr;  # Need to trim the path, at least when there is no ctx yet
+
+                if ( ( $el eq 'false' ) or ( $el eq 'true' ) ) {    # Do not translate not quote booleans
+                    $self->pushline("$header $el\n");
+                } elsif (
+                    ( scalar %keys > 0  && exists $keys{$name} )  or    # the key we need is provided
+                    ( scalar %paths > 0 && exists $paths{$path} ) or    # that path is provided
+                    ( scalar %keys == 0 && scalar %paths == 0 )         # no key and no path provided
+                  )
+                {
+                    my $translation = $self->translate(
+                        $el, $blockref,
+                        ( $is_yfm ? "Yaml Front Matter " : "" ) . "Hash Value:$ctx $name",
+                        "wrap" => 0
+                    );
+                    if ( $el =~ /^\[.*\]$/ ) {                          # Do not quote the lists
                         $self->pushline( $header . " $translation\n" );
                     } else {
 
@@ -1322,7 +1352,10 @@ sub handle_yaml {
             } elsif ( $type eq 'ARRAY' ) {
                 if (@$el) {
                     $self->pushline( $header . "\n" );
-                    do_array( $self, $blockref, $el, $indent + 1, "$ctx $name", $yfm_keys, $yfm_skip_array );
+                    do_array(
+                        $self,     $is_yfm,         $blockref, $el, $indent + 1, "$ctx $name",
+                        $yfm_keys, $yfm_skip_array, $yfm_paths
+                    );
                 } else {
                     $self->pushline( $header . " []\n" );
                 }
@@ -1330,7 +1363,10 @@ sub handle_yaml {
             } elsif ( $type eq 'HASH' ) {
                 if ( keys %$el ) {
                     $self->pushline( $header . "\n" );
-                    do_hash( $self, $blockref, $el, $indent + 1, "$ctx $name", $yfm_keys, $yfm_skip_array );
+                    do_hash(
+                        $self,     $is_yfm,         $blockref, $el, $indent + 1, "$ctx $name",
+                        $yfm_keys, $yfm_skip_array, $yfm_paths
+                    );
                 } else {
                     $self->pushline( $header . " {}\n" );
                 }

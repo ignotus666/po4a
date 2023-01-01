@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: po4a\n"
 "Report-Msgid-Bugs-To: martin.quinson@debian.org\n"
-"POT-Creation-Date: 2022-08-23 12:32+0200\n"
-"PO-Revision-Date: 2022-08-25 07:20+0000\n"
+"POT-Creation-Date: 2022-12-27 17:27+0100\n"
+"PO-Revision-Date: 2022-12-28 17:50+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/po4a/po4a/uk/>"
 "\n"
@@ -16,39 +16,39 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.14-dev\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.15.1-dev\n"
 "X-Rosetta-Version: 0.1\n"
 
-#: ../../lib/Locale/Po4a/AsciiDoc.pm:211 ../../lib/Locale/Po4a/Man.pm:496
+#: ../../lib/Locale/Po4a/AsciiDoc.pm:226 ../../lib/Locale/Po4a/Man.pm:496
 #: ../../lib/Locale/Po4a/Po.pm:235 ../../lib/Locale/Po4a/RubyDoc.pm:74
 #: ../../lib/Locale/Po4a/Sgml.pm:258 ../../lib/Locale/Po4a/TeX.pm:1662
-#: ../../lib/Locale/Po4a/Text.pm:224 ../../lib/Locale/Po4a/Xml.pm:601
-#: ../../lib/Locale/Po4a/Yaml.pm:40
+#: ../../lib/Locale/Po4a/Text.pm:241 ../../lib/Locale/Po4a/Xml.pm:601
+#: ../../lib/Locale/Po4a/Yaml.pm:107
 #, perl-format
 msgid "Unknown option: %s"
 msgstr "Невідомий параметр: «%s»"
 
-#: ../../lib/Locale/Po4a/AsciiDoc.pm:218
+#: ../../lib/Locale/Po4a/AsciiDoc.pm:233
 #, perl-format
 msgid "Invalid compatibility setting: '%s'. It must be either '%s' or '%s'."
 msgstr ""
 "Некоректний параметр сумісності: «%s». Значенням параметра сумісності має "
 "бути «%s» або «%s»."
 
-#: ../../lib/Locale/Po4a/AsciiDoc.pm:283
+#: ../../lib/Locale/Po4a/AsciiDoc.pm:301
 #, perl-format
 msgid "Unable to parse macro definition: %s"
 msgstr "Не вдалося обробити визначення макроса: %s"
 
-#: ../../lib/Locale/Po4a/AsciiDoc.pm:330 ../../lib/Locale/Po4a/TeX.pm:1064
+#: ../../lib/Locale/Po4a/AsciiDoc.pm:348 ../../lib/Locale/Po4a/TeX.pm:1064
 #: ../../po4a:985 ../../po4a:1075 ../../po4a:1325 ../../po4a-translate:306
 #, perl-format
 msgid "Cannot open %s: %s"
 msgstr "Не вдалося відкрити %s: %s"
 
-#: ../../lib/Locale/Po4a/AsciiDoc.pm:367
+#: ../../lib/Locale/Po4a/AsciiDoc.pm:385
 #, perl-format
 msgid ""
 "Detection of two line titles failed at %s\n"
@@ -57,7 +57,7 @@ msgstr ""
 "Спроба виявлення дворядкових заголовків зазнала невдачі, %s\n"
 "Будь ласка, встановіть модуль Unicode::GCString (помилка: %s)."
 
-#: ../../lib/Locale/Po4a/AsciiDoc.pm:535
+#: ../../lib/Locale/Po4a/AsciiDoc.pm:554
 #, perl-format
 msgid ""
 "'%s' seems to be a two-lines title underlined with '%s', but the underlines "
@@ -68,7 +68,7 @@ msgstr ""
 "підкреслення є надто короткими або надто довгими щодо довжини заголовка. Вам "
 "варто виправити цю помилку у основному документі."
 
-#: ../../lib/Locale/Po4a/AsciiDoc.pm:724
+#: ../../lib/Locale/Po4a/AsciiDoc.pm:743
 msgid ""
 "Po4a's tablecells mode only supports PSV formatted tables with '|' "
 "separators. Disabling tablecells and falling back to block mode for this "
@@ -78,7 +78,7 @@ msgstr ""
 "відокремленням комірок символом «|». Вимикаємо режим комірок таблиці і "
 "повертаємося до блокового режиму для цієї таблиці."
 
-#: ../../lib/Locale/Po4a/AsciiDoc.pm:1028
+#: ../../lib/Locale/Po4a/AsciiDoc.pm:1047
 msgid ""
 "It seems that you are adding unindented content to an item. The standard "
 "allows this, but you may still want to change your document to use indented "
@@ -377,8 +377,8 @@ msgid ""
 "parameters.\n"
 msgstr ""
 "На цій сторінці визначено новий макрос «%s» за допомогою «%s» (вбудований "
-"коментар: %s), але не вказано очікувану поведінку po4a при використанні «%s»"
-". Якщо цей макрос використано на сторінці, ви отримаєте помилку.\n"
+"коментар: %s), але не вказано очікувану поведінку po4a при використанні "
+"«%s». Якщо цей макрос використано на сторінці, ви отримаєте помилку.\n"
 "Додайте ваш макрос до одного з параметрів, «%s», «%s», «%s», «%s», «%s» або "
 "%s», щоб уникнути проблем.\n"
 "Наприклад, передавання po4a «%s» призведе до того, що визначений макрос буде "
@@ -815,29 +815,29 @@ msgstr "register_generic_command: непідтримуваний формат: �
 msgid "The first argument of \\begin is mandatory."
 msgstr "Перший параметр \\begin є обов’язковим."
 
-#: ../../lib/Locale/Po4a/Text.pm:251
+#: ../../lib/Locale/Po4a/Text.pm:272
 #, perl-format
 msgid "Option %s is only valid when parsing markdown files."
 msgstr ""
 "Параметр %s можна використовувати лише при обробці файлів із розміткою."
 
-#: ../../lib/Locale/Po4a/Text.pm:413
+#: ../../lib/Locale/Po4a/Text.pm:434
 #, perl-format
 msgid "Unrecognized section: %s"
 msgstr "Невідомий розділ: %s"
 
-#: ../../lib/Locale/Po4a/Text.pm:618
+#: ../../lib/Locale/Po4a/Text.pm:639
 #, perl-format
 msgid ""
-"Processing even if the YAML Front Matter could not be parsed. Remove the "
+"Proceeding even if the YAML Front Matter could not be parsed. Remove the "
 "'yfm_lenient' option for a stricter behavior.\n"
 "Ignored error: %s"
 msgstr ""
-"Обробляємо, хоча не вдасться обробити вступну частину YAML. Вилучіть "
-"параметр «yfm_lenient» для строгішої поведінки.\n"
+"Продовжуємо обробку, хоча не вдасться обробити вступну частину YAML. "
+"Вилучіть параметр «yfm_lenient» для строгішої поведінки.\n"
 "Ігнорована помилка: %s"
 
-#: ../../lib/Locale/Po4a/Text.pm:635
+#: ../../lib/Locale/Po4a/Text.pm:656
 #, perl-format
 msgid ""
 "Could not get the YAML Front Matter from the file. If you did not intend to "
@@ -851,6 +851,15 @@ msgstr ""
 "будь ласка, скористайтеся «----» або передайте параметр «yfm_lenient».\n"
 "Помилка: %s\n"
 "Вміст YFM: %s"
+
+#: ../../lib/Locale/Po4a/Text.pm:792
+#, perl-format
+msgid ""
+"Malformed fenced div block: Block starting at %s not closed before the end "
+"of the file."
+msgstr ""
+"Помилкове форматування блоку div: блок, що починається у %s, не завершено до "
+"кінця файла."
 
 #: ../../lib/Locale/Po4a/TransTractor.pm:513
 #, perl-format
@@ -998,7 +1007,7 @@ msgstr ""
 "попередження можна використання параметра -o doctype або вимиканням "
 "перевірки за допомогою параметра -o doctype=\"\"."
 
-#: ../../lib/Locale/Po4a/Xml.pm:1047 ../../lib/Locale/Po4a/Xml.pm:1787
+#: ../../lib/Locale/Po4a/Xml.pm:1047 ../../lib/Locale/Po4a/Xml.pm:1902
 #, perl-format
 msgid ""
 "Unexpected closing tag </%s> found. The main document may be wrong.  "
@@ -1007,7 +1016,7 @@ msgstr ""
 "Виявлено неочікуваний завершальний теґ </%s>. Можливо, помилка у основному "
 "документі. Продовжуємо обробку…"
 
-#: ../../lib/Locale/Po4a/Xml.pm:1053 ../../lib/Locale/Po4a/Xml.pm:1796
+#: ../../lib/Locale/Po4a/Xml.pm:1053 ../../lib/Locale/Po4a/Xml.pm:1911
 #, perl-format
 msgid "Unexpected closing tag </%s> found. The main document may be wrong."
 msgstr ""
@@ -1051,7 +1060,7 @@ msgstr ""
 "%s: параметр foldattributes проігноновано, оскільки «%s» не є вбудованим "
 "теґом"
 
-#: ../../lib/Locale/Po4a/Xml.pm:2018
+#: ../../lib/Locale/Po4a/Xml.pm:2062
 #, perl-format
 msgid ""
 "Invalid placeholder in the translation (the 'type' and 'id' must be present, "
@@ -1066,7 +1075,7 @@ msgstr ""
 "\n"
 "Будь ласка, виправте переклад."
 
-#: ../../lib/Locale/Po4a/Xml.pm:2105 ../../lib/Locale/Po4a/Xml.pm:2120
+#: ../../lib/Locale/Po4a/Xml.pm:2149 ../../lib/Locale/Po4a/Xml.pm:2164
 #, perl-format
 msgid ""
 "The '%s' option is deprecated. Please use the translated/untranslated and/or "
@@ -1075,10 +1084,10 @@ msgstr ""
 "Параметр «%s» вважається застарілим. Будь ласка, скористайтеся категоріями "
 "translated/untranslated і/або break/inline/placeholder."
 
-#: ../../lib/Locale/Po4a/Xml.pm:2283 ../../lib/Locale/Po4a/Xml.pm:2290
-#: ../../lib/Locale/Po4a/Xml.pm:2293 ../../lib/Locale/Po4a/Xml.pm:2296
-#: ../../lib/Locale/Po4a/Xml.pm:2301 ../../lib/Locale/Po4a/Xml.pm:2304
-#: ../../lib/Locale/Po4a/Xml.pm:2309
+#: ../../lib/Locale/Po4a/Xml.pm:2327 ../../lib/Locale/Po4a/Xml.pm:2334
+#: ../../lib/Locale/Po4a/Xml.pm:2337 ../../lib/Locale/Po4a/Xml.pm:2340
+#: ../../lib/Locale/Po4a/Xml.pm:2345 ../../lib/Locale/Po4a/Xml.pm:2348
+#: ../../lib/Locale/Po4a/Xml.pm:2353
 #, perl-format
 msgid "Tag '%s' both in the %s and %s categories."
 msgstr "Теґ «%s» належить обом категоріям: %s і %s."
