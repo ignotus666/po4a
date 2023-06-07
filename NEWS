@@ -12,9 +12,29 @@ __   __/ _ \|___  / _ \
 Asciidoc:
  * Labels of cross-references were not translatable (GitHub's #400).
    Thanks Jean-Noël Avila for the pull request.
+ * Fix a bug in the handling of the 'id' attribute (GitHub's #411).
+   Thanks Jean-Noël Avila for the pull request.
+ * process multi-line attributes in legacy and asciidoctor mode
+   (GitHub's #414). Thanks Jean-Noël Avila for the pull request.
+
+Tex:
+ * Allow verbatim environment declaration without trailing space
+   (GitHub's #407). Thanks Mayeul Cantan for the report & the fix.
+
+Markdown:
+ * Treat link reference definitions as no-wrap (GitHub's #422) [gemmaro].
+
+General:
+ * Don't fail on empty po files, e.g. adoc files containing only
+   includes. Thanks Suddenfall for the report & fix (GitHub's #408).
+
+po4a main script (the deprecated po4a-* scripts are still buggy):
+ * Deal properly with CRLF files coming from windows (GitHub's #409).
+ * Allow to escape spaces in file names, or to quote them (GitHub's #412).
 
 Translations:
  * Updated: French, thanks Jérémie Tarot.
+ * Updated: German, thanks Helge Kreutzmann.
  * Updated: Japanese, thanks gemmaro.
  * Updated: Norwegian Bokmål, thanks Allan Nordhøy.
  * Updated: Portuguese, thanks Silvério Santos.

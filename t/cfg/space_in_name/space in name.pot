@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2020-04-27 23:05+0200\n"
+"POT-Creation-Date: 2005-04-24  2:54+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,33 +16,24 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. type: Title =
-#: BlockId.adoc:2
+#. type: TH
+#: t-05-config/test00_man.1:1
 #, no-wrap
-msgid "Test BlockId Element"
+msgid "test1"
 msgstr ""
 
-#. type: Plain text
-#: BlockId.adoc:7
-msgid ""
-"Some paragraph text. Some paragraph text. Some paragraph text.  Some "
-"paragraph text. Some paragraph text. Some paragraph text."
-msgstr ""
-
-#. type: Plain text
-#: BlockId.adoc:8
+#. type: SH
+#: t-05-config/test00_man.1:2
 #, no-wrap
-msgid "Second Paragraph"
+msgid "NAME"
 msgstr ""
 
 #. type: Plain text
-#: BlockId.adoc:10
-msgid "Reference to <<lorem-ipsum, Lorem Ipsum>>."
+#: t-05-config/test00_man.1:4
+msgid "test - just a test"
 msgstr ""
 
 #. type: Plain text
-#: BlockId.adoc:11
-msgid ""
-"[[ipsum]] Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean "
-"commodo ligula eget dolor: [[dolor]]"
+#: t-05-config/test00_man.1:5
+msgid "Hello"
 msgstr ""
