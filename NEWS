@@ -14,8 +14,12 @@ Asciidoc:
    Thanks Jean-Noël Avila for the pull request.
  * Fix a bug in the handling of the 'id' attribute (GitHub's #411).
    Thanks Jean-Noël Avila for the pull request.
- * process multi-line attributes in legacy and asciidoctor mode
+ * Process multi-line attributes in legacy and asciidoctor mode
    (GitHub's #414). Thanks Jean-Noël Avila for the pull request.
+ * Process transparent index entries in their own segments
+   (GitHub's #424). Thanks Jean-Noël Avila for the pull request.
+ * Keep original formatin (GitHub's #416). Thanks suddenfall for 
+   the feedback, and Jean-Noël Avila for the fixes.
 
 Tex:
  * Allow verbatim environment declaration without trailing space
@@ -23,10 +27,15 @@ Tex:
 
 Markdown:
  * Treat link reference definitions as no-wrap (GitHub's #422) [gemmaro].
+ * Don't emit a warning when provided an empty tag list in YFM
+   (GitHub's #426) [Martin].
 
 General:
  * Don't fail on empty po files, e.g. adoc files containing only
    includes. Thanks Suddenfall for the report & fix (GitHub's #408).
+ * Fix an encoding error in one file which resulted in build errors
+   with new gettext versions (GitHub's #428).
+   Thanks to Jan Palus for the issue report and the fix.
 
 po4a main script (the deprecated po4a-* scripts are still buggy):
  * Deal properly with CRLF files coming from windows (GitHub's #409).

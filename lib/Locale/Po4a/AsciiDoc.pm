@@ -262,6 +262,7 @@ sub initialize {
     $self->register_attributelist('[caption]');
     $self->register_attributelist('[-icons,caption]');
     $self->register_macro('image_[1,alt,title,link]') unless $self->{options}{'noimagetargets'};
+    $self->register_macro('indexterm[1,2,3]') unless $self->{options}{'noimagetargets'};
 
     if ( $self->{options}{'definitions'} ) {
         $self->parse_definition_file( $self->{options}{'definitions'} );
@@ -582,6 +583,8 @@ sub parse {
             do_paragraph( $self, $paragraph, $wrapped_mode );
             $wrapped_mode = 0;
             $paragraph    = "";
+	    $self->pushline( $titlelevel1 . $titlespaces);
+	    $title = $self->translate_indexterms($title);
             my $t = $self->translate(
                 $title,
                 $self->{ref},
@@ -589,7 +592,7 @@ sub parse {
                 "comment" => join( "\n", @comments ),
                 "wrap"    => 0
             );
-            $self->pushline( $titlelevel1 . $titlespaces . $t . $titlelevel2 . "\n" );
+            $self->pushline( $t . $titlelevel2 . "\n" );
             @comments     = ();
             $wrapped_mode = 1;
         } elsif ( ( $line =~ m/^(\/{4,}|\+{4,}|-{4,}|\.{4,}|\*{4,}|_{4,}|={4,}|~{4,})$/ )
@@ -758,7 +761,7 @@ sub parse {
             undef $self->{bullet};
             undef $self->{indent};
         } elsif ( not defined $self->{verbatim}
-            and ( $line =~ m/^(\s*)([-%~\$[*_+`'#<>[:alnum:]\\"(].*?)((?::::?|;;|\?\?|:-)(?: *\\)?)$/ ) )
+            and ( $line =~ m/^(\s*)([-%~\$[*_+`'#<>[:alnum:]\\"(|\{].*?)((?::::?|;;|\?\?|:-)(?: *\\)?)$/ ) )
         {
             my $indent   = $1;
             my $label    = $2;
@@ -896,7 +899,7 @@ sub parse {
             $self->pushline(".$t\n");
             @comments = ();
         } elsif ( not defined $self->{verbatim}
-            and ( $line =~ m/^(\s*)((?:[-*o+\.]+|(?:[0-9]+[.\)])|(?:[a-z][.\)])|\([0-9]+\))\s+)(.*)$/ ) )
+            and ( $line =~ m/^(\s*)((?:(?:[-*o+\.]+(?:\s+\[[ xX\*]\])?)|(?:[0-9]+[.\)])|(?:[a-z][.\)])|\([0-9]+\))\s+)(.*)$/ ) )
         {
             my $indent = $1 || "";
             my $bullet = $2;
@@ -1124,13 +1127,13 @@ sub do_paragraph {
         # - blah         o blah         + blah
         # 1. blah       1) blah       (1) blah
       TEST_BULLET:
-        if ( $paragraph =~ m/^(\s*)((?:[-*o+]|([0-9]+[.\)])|\([0-9]+\))\s+)([^\n]*\n)(.*)$/s ) {
+        if ( $paragraph =~ m/^(\s*)((?:(?:[-*o+](?:\s+\[[ Xx\*]\])?)|([0-9]+[.\)])|\([0-9]+\))\s+)([^\n]*\n)(.*)$/s ) {
             my $para    = $5;
             my $bullet  = $2;
             my $indent1 = $1;
             my $indent2 = "$1" . ( ' ' x length $bullet );
             my $text    = $4;
-            while ( $para !~ m/$indent2(?:[-*o+]|([0-9]+[.\)])|\([0-9]+\))\s+/
+            while ( $para !~ m/$indent2(?:(?:[-*o+](?:\\s+[[ Xx\*]\])?)|([0-9]+[.\)])|\([0-9]+\))\s+/
                 and $para =~ s/^$indent2(\S[^\n]*\n)//s )
             {
                 $text .= $1;
@@ -1169,6 +1172,12 @@ sub do_paragraph {
         $paragraph =~ s/^(.*?)(\n*)$/$1/s;
         $end = $2 || "";
     }
+    if ( defined $self->{bullet} ) {
+        my $bullet  = $self->{bullet};
+        my $indent1 = $self->{indent};
+	$self->pushline($indent1 . $bullet);
+    }
+    $paragraph = $self->translate_indexterms($paragraph);
 
     my $t = $self->translate(
         $paragraph,
@@ -1190,10 +1199,55 @@ sub do_paragraph {
         my $bullet  = $self->{bullet};
         my $indent1 = $self->{indent};
         my $indent2 = $indent1 . ( ' ' x length($bullet) );
-        $t =~ s/^/$indent1$bullet/s;
         $t =~ s/\n(.)/\n$indent2$1/sg;
     }
     $self->pushline( $t . $end );
+}
+
+sub translate_indexterms {
+    my ($self, $paragraph) = @_;
+    $paragraph = $self->translate_in_regex($paragraph, qr/\(\(\(([^\)]+)\)\)\)/);
+    return $self->translate_in_regex($paragraph, qr/indexterm:\[([^\]]+)\]/);
+}
+
+sub translate_in_regex {
+    # Detect index entries and translate them separately.
+    # They are moved in front of the paragraph, regardless of their original location,
+    #  but that's consistant with the specification.
+    my ($self, $paragraph, $pattern) = @_;
+    if ( my @indexes = ($paragraph =~ m/$pattern/g ) ) {
+	for my $index (@indexes) {
+	    my @terms = ();
+	    while (
+		$index =~ m/\G(
+       "(?:[^"\\])+"               # quoted term
+       |  (?:[^,\\])+                # unquoted term
+         )(,\s*+)?/gx
+      )
+	    {
+		my $term = $1;
+		if ( $term =~ /^"(.*)"$/ ) {
+		    push @terms, '"' . ($self->translate(
+				  $1,
+				  $self->{ref},
+				  "Index entry",
+				  "wrap" => 1,
+				  "wrapcol" => 0)) . '"';
+		} else {
+		    push @terms, $self->translate(
+				  $term,
+				  $self->{ref},
+				  "Index entry",
+				  "wrap" => 1,
+				  "wrapcol" => 0);
+		}
+	    }
+	    $self->pushline("(((" . join (",", @terms) . ")))");
+
+	}
+    }
+    $paragraph =~ s/$pattern\n?//g;
+    return $paragraph;
 }
 
 sub parse_style {
