@@ -10,6 +10,8 @@ __   __/ _ \|___  / _ \
 
 
 Asciidoc:
+ * Correctly handle lines that start with a dot in a paragraph.
+   Thanks Jean-Noël Avila for the pull request.
  * Labels of cross-references were not translatable (GitHub's #400).
    Thanks Jean-Noël Avila for the pull request.
  * Fix a bug in the handling of the 'id' attribute (GitHub's #411).
@@ -18,12 +20,15 @@ Asciidoc:
    (GitHub's #414). Thanks Jean-Noël Avila for the pull request.
  * Process transparent index entries in their own segments
    (GitHub's #424). Thanks Jean-Noël Avila for the pull request.
- * Keep original formatin (GitHub's #416). Thanks suddenfall for 
+ * Keep original formating (GitHub's #416). Thanks suddenfall for
    the feedback, and Jean-Noël Avila for the fixes.
 
 Tex:
  * Allow verbatim environment declaration without trailing space
    (GitHub's #407). Thanks Mayeul Cantan for the report & the fix.
+
+Texinfo:
+ * Translate partial menu node names (GitHub's #437) [Apteryks].
 
 Markdown:
  * Treat link reference definitions as no-wrap (GitHub's #422) [gemmaro].
@@ -41,14 +46,19 @@ po4a main script (the deprecated po4a-* scripts are still buggy):
  * Deal properly with CRLF files coming from windows (GitHub's #409).
  * Allow to escape spaces in file names, or to quote them (GitHub's #412).
 
+Build scripts:
+ * Use xmlcatalog(1) to find DocBook XSL file (GitHub's #431).
+
 Translations:
+ * Updated: Chinese (traditional), thanks Haowei Hsu.
  * Updated: French, thanks Jérémie Tarot.
  * Updated: German, thanks Helge Kreutzmann.
  * Updated: Japanese, thanks gemmaro.
- * Updated: Norwegian Bokmål, thanks Allan Nordhøy.
+ * Updated: Norwegian Bokmål, thanks Allan Nordhøy and Petter Reinholdtsen.
  * Updated: Portuguese, thanks Silvério Santos.
- * Updated: Russian, thanks vrbtm.
+ * Updated: Russian, thanks vrbtm and Виталий Наумов.
  * Updated: Serbian (cyrillic), thanks Ivan Pesic.
+ * Updated: Spanish, thanks Francisco Serrador and ignotus.
 
 =======================================================================
         ___   __   ___
