@@ -1,7 +1,7 @@
 # Locale::Po4a::Pod -- Convert POD data to PO file, for translation.
 #
 # This program is free software; you may redistribute it and/or modify it
-# under the terms of GPL (see COPYING file).
+# under the terms of GPL v2.0 or later (see COPYING file).
 #
 # This module converts POD to PO file, so that it becomes possible to
 # translate POD formatted documentation. See gettext documentation for
@@ -12,11 +12,11 @@
 ############################################################################
 
 use Pod::Parser;
-use Locale::Po4a::TransTractor qw(process new get_out_charset);
+use Locale::Po4a::TransTractor qw(process new get_in_charset get_out_charset);
 
 package Locale::Po4a::Pod;
 
-use 5.006;
+use 5.16.0;
 use strict;
 use warnings;
 
@@ -82,9 +82,20 @@ sub command {
     } elsif ( $command eq 'encoding' ) {
         my $charset = $paragraph;
         $charset =~ s/^\s*(.*?)\s*$/$1/s;
-        $self->detected_charset($charset)
 
-          # The =encoding line will be added by docheader
+        my $master_charset = $self->get_in_charset;
+        croak wrap_mod(
+            "po4a::pod",
+            dgettext(
+                "po4a",
+                "The file %s declares %s as encoding, but you provided %s as master charset. Please change either setting."
+            ),
+            $self->{DOCPOD}{refname},
+            $charset,
+            $master_charset,
+        ) if ( length( $master_charset // '' ) > 0 && uc($charset) ne uc($master_charset) );
+
+        # The =encoding line will be added by docheader
     } else {
         $paragraph = $self->translate( $paragraph, $self->{DOCPOD}{refname} . ":$line_num", "=$command", "wrap" => 1 );
         $self->pushline("=$command $paragraph\n\n");
@@ -135,10 +146,12 @@ sub textblock {
 sub end_pod { }
 
 sub read {
-    my ( $self, $filename, $refname ) = @_;
-
-    push @{ $self->{DOCPOD}{infile} }, ( $filename, $refname );
-    $self->Locale::Po4a::TransTractor::read( $filename, $refname );
+    my ( $self, $filename, $refname, $charset ) = @_;
+    $charset ||= "UTF-8";
+    my $fh;
+    open $fh, "<:encoding($charset)", $filename;
+    push @{ $self->{DOCPOD}{infile} }, ( $fh, $refname );
+    $self->Locale::Po4a::TransTractor::read( $filename, $refname, $charset );
 }
 
 sub parse {
@@ -146,9 +159,10 @@ sub parse {
 
     my @list = @{ $self->{DOCPOD}{infile} };
     while ( scalar @list ) {
-        my ( $filename, $refname ) = ( shift @list, shift @list );
+        my ( $fh, $refname ) = ( shift @list, shift @list );
         $self->{DOCPOD}{refname} = $refname;
-        $self->parse_from_file($filename);
+        $self->parse_from_filehandle($fh);
+        close $fh;
     }
 }
 
@@ -220,11 +234,11 @@ pages, see below) which contains:
   C<" #n">
 
 Lack of luck, in the po4a version, this was split on the space by the
-wrapping. As result, in the original version, the man page contains
+wrapping. As result, in the original version, the man page contains:
 
  " #n"
 
-and mine contains
+and mine contains:
 
  "" #n""
 
@@ -232,14 +246,15 @@ which is logic since CE<lt>foobarE<gt> is rewritten "foobar".
 
 Complete list of pages having this problem on my box (from 564 pages; note
 that it depends on the chosen wrapping column):
-/usr/lib/perl5/Tk/MainWindow.pod
-/usr/share/perl/5.8.0/overload.pod
-/usr/share/perl/5.8.0/pod/perlapi.pod
-/usr/share/perl/5.8.0/pod/perldelta.pod
-/usr/share/perl/5.8.0/pod/perlfaq5.pod
-/usr/share/perl/5.8.0/pod/perlpod.pod
-/usr/share/perl/5.8.0/pod/perlre.pod
-/usr/share/perl/5.8.0/pod/perlretut.pod
+
+ /usr/lib/perl5/Tk/MainWindow.pod
+ /usr/share/perl/5.8.0/overload.pod
+ /usr/share/perl/5.8.0/pod/perlapi.pod
+ /usr/share/perl/5.8.0/pod/perldelta.pod
+ /usr/share/perl/5.8.0/pod/perlfaq5.pod
+ /usr/share/perl/5.8.0/pod/perlpod.pod
+ /usr/share/perl/5.8.0/pod/perlre.pod
+ /usr/share/perl/5.8.0/pod/perlretut.pod
 
 
 
@@ -323,6 +338,6 @@ L<po4a(7)|po4a.7>
 Copyright © 2002 SPI, Inc.
 
 This program is free software; you may redistribute it and/or modify it
-under the terms of GPL (see the COPYING file).
+under the terms of GPL v2.0 or later (see the COPYING file).
 
 =cut

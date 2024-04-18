@@ -21,7 +21,7 @@ the AsciiDoc format.
 
 package Locale::Po4a::AsciiDoc;
 
-use 5.010;
+use 5.16.0;
 use strict;
 use warnings;
 
@@ -87,7 +87,7 @@ Note that not wrapping the files produced by po4a should not be a
 problem since those files are meant to be processed automatically.
 They should not be regarded as source files anyway.
 
-With this option, po4a will produce better-looking source files, that
+With this option, po4a will produce better-looking AsciiDoc files, but it
 may lead to possibly erroneous formatted outputs.
 
 =item B<noimagetargets>
@@ -919,6 +919,9 @@ sub parse {
             $paragraph      = $text . "\n";
             $self->{indent} = "";
             $self->{bullet} = $bullet;
+	} elsif ( not defined $self->{verbatim}
+		  and ( $line eq " +") ) {
+	    $paragraph .= $line . "\n";
         } elsif ( ( $line =~ /^\s*$/ ) and ( !defined( $self->{type} ) or ( $self->{type} ne "Table" ) ) ) {
 
             # When not in table, empty lines or lines containing only spaces do break paragraphs
@@ -1058,7 +1061,7 @@ sub parse {
 
             if (   ( $paragraph ne "" && $self->{bullet} && length( $self->{indent} || "" ) == 0 ) )
             {
-		if ( !$self->{options}{'nolinting'} ) {
+		if ( ( !$self->{options}{'nolinting'} ) && ($paragraph !~ m/ \+\n/ ) ) {
 		    # Second line of an item block is not indented. It is unindented
 		    # (and allowed) additional text or a new list item.
 		    warn wrap_mod(
@@ -1080,12 +1083,6 @@ sub parse {
             $paragraph .= $line . "\n";
         }
 
-        # paragraphs starting by a bullet, or numbered
-        # or paragraphs with a line containing many consecutive spaces
-        # (more than 3)
-        # are considered as verbatim paragraphs
-        $wrapped_mode = 0 if ( $paragraph =~ m/^(\*|[0-9]+[.)] )/s
-            or $paragraph =~ m/[ \t][ \t][ \t]/s );
         ( $line, $ref ) = $self->shiftline();
     }
     if ( length $paragraph ) {
@@ -1196,7 +1193,7 @@ sub do_paragraph {
     }
 
     @comments = ();
-    if ( defined $self->{bullet} ) {
+    if ( ( defined $self->{bullet} ) && !($t =~ /\+\n/ ) ) {
         my $bullet  = $self->{bullet};
         my $indent1 = $self->{indent};
         my $indent2 = $indent1 . ( ' ' x length($bullet) );
@@ -1412,8 +1409,6 @@ sub unquote_space {
     return $text;
 }
 
-1;
-
 =head1 STATUS OF THIS MODULE
 
 Tested successfully on simple AsciiDoc files.
@@ -1430,7 +1425,11 @@ Tested successfully on simple AsciiDoc files.
  Copyright © 2017 Martin Quinson <mquinson#debian.org>.
 
 This program is free software; you may redistribute it and/or modify it
-under the terms of GPL (see the COPYING file).
+under the terms of GPL v2.0 or later (see the COPYING file).
+
+=cut
+
+1;
 
 __END__
 

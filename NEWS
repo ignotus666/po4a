@@ -2,12 +2,93 @@ This file presents the major changes of each version, focusing on
 user-visible changes while the day to day changes are in the git logs.
 
 =======================================================================
+
+        ___  _____ ____
+__   __/ _ \|___  |___ \
+\ \ / / | | |  / /  __) |         (unamed)
+ \ V /| |_| | / /  / __/
+  \_/  \___(_)_/  |_____|         (unreleased)
+
+po4a main script:
+ * Fix the behavior of --translate-only (GitHub's #482) [Mt & Golubev Alexander].
+
+Documentation:
+ * Fix typos (GitHub's #478) [Marco Ciampa & Helge Kreutzmann]
+
+=======================================================================
+        ___  _____ _
+__   __/ _ \|___  / |
+\ \ / / | | |  / /| |             Happy leap day
+ \ V /| |_| | / / | |
+  \_/  \___(_)_/  |_|             (released on 2024/02/29)
+
+po4a main script:
+ * Fix the parsing of nested simple and double quotes mixed with escaped
+   spaces (GitHub's #475) [Mt].
+ * Properly parse config files iteratively redefining the same alias to 
+   enrich it (GitHub's #477) [Mt].
+ * Don't eat up quotes around parameters containing spaces, as they are needed
+   later on when passing parameters to msgmerge and friends (GitHub's #455)
+   [gemmaro].
+
+Gemtext:
+ * New module (GitHub's #466) [gemmaro].
+
+Documentation:
+ * Fix many typos introduced in previous release [Golubev Alexander
+   and Rafael Fontenelle].
+
+General:
+ * Better error messages on encoding errors. It remains fragile, but at least we 
+   try to display an error message (also GitHub's #477) [Mt].
+
+Translations:
+ * Updated: Chinese (simplified), thanks Wenbin Lv.
+ * Updated: Esperanto, thanks Marco Ciampa.
+ * Updated: French, thanks brandelune.
+ * Updated: German, thanks Helge Kreutzmann.
+ * Updated: Italian, thanks Marco Ciampa.
+ * Updated: Japanese, thanks gemmaro.
+ * Updated: Norwegian Bokmål, thanks Petter Reinholdtsen.
+ * Updated: Portuguese (Brazil), thanks Rafael Fontenelle.
+ * Updated: Russian, thanks Golubev Alexander.
+ * Updated: Spanish, thanks gallegonovato.
+ * Updated: Ukrainian, thanks Yuri Chornoivan (українська) and Сергій.
+
+Status of the binary translation:
+ * 4 languages at 100%: de, fr, ja, ru.
+ * 5 languages >= 95%: es (98%), it (98%), nb (98%), pt_BR (98%), uk (98%).
+ * 4 languages >= 90%: eo (91%), nl (93%), pt (93%), sr_Cyrl (93%).
+ * 4 languages >= 80%: hr (89%), hu (87%), zh_Hans (89%), zh_Hant (89%).
+ * 1 language  >= 70%: id (73%).
+ * 8 languages >= 50%: cs (55%), da (62%), et (65%), eu (54%), pl (59%), sl (53%), sv (68%), vi (64%).
+ * 1 language  >= 33%: ca (43%).
+ * 6 starting languages: ace (2%), af (7%), ar (13%), ka (16%), kn (7%), ko (18%).
+
+Status of the documentation translation:
+ * 3 languages at 100%: de, fr, it.
+ * 4 languages >= 95%: es (96%), ja (99%), pt_BR (99%), uk (99%).
+ * 2 languages >= 90%: nl (93%), sr_Cyrl (93%).
+ * 4 languages >= 80%: pt (89%), ru (84%), zh_Hans (88%), zh_Hant (88%).
+ * 1 language  >= 50%: pl (63%).
+ * 1 language  >= 33%: ca (42%).
+ * 4 starting languages: eo (3%), hr (0%), hu (0%), nb (4%).
+
+=======================================================================
         ___  _____ ___
 __   __/ _ \|___  / _ \
-\ \ / / | | |  / / | | |          unnamed
+\ \ / / | | |  / / | | |          The PerlIO cleanup release.
  \ V /| |_| | / /| |_| |
-  \_/  \___(_)_/  \___/           (not released yet)
+  \_/  \___(_)_/  \___/           (Released on 2024/01/29)
 
+Major cleanup: 
+ * Greatly simplify the code by using PerlIO instead of messing up 
+   with encodings manually.
+ * This is a very intrusive change, and even if all tests of our 
+   comprehensive suite pass, I still expect issues with this on some
+   corner cases, such as projects not using UTF-8 but a mixture of 
+   encodings. Please report any issue, and accept my apologies.
+ * This greatly simplifies the code, enabling future maintenance.
 
 Asciidoc:
  * Correctly handle lines that start with a dot in a paragraph.
@@ -22,10 +103,16 @@ Asciidoc:
    (GitHub's #424). Thanks Jean-Noël Avila for the pull request.
  * Keep original formating (GitHub's #416). Thanks suddenfall for
    the feedback, and Jean-Noël Avila for the fixes.
+ * Fix a bug in handling of bold text starting a list item
+   (GitHub's #447). Thanks Jean-Noël Avila for the pull request.
+ * Fix handling of linebreaks in lists (GitHub's #444). Thanks
+   Jean-Noël Avila for the pull request.
 
 Tex:
  * Allow verbatim environment declaration without trailing space
    (GitHub's #407). Thanks Mayeul Cantan for the report & the fix.
+ * Informative error message when file not found for \input, indicating
+   how to skip this include (GitHub's #421) [mquinson].
 
 Texinfo:
  * Translate partial menu node names (GitHub's #437) [Apteryks].
@@ -35,30 +122,77 @@ Markdown:
  * Don't emit a warning when provided an empty tag list in YFM
    (GitHub's #426) [Martin].
 
+YAML:
+ * Verbosely fail on inline lists and dictionaries, as YAML::Tiny does not
+   handle them as lists or dicts anyway. Do quote list-looking strings
+   (GitHub's #439) [Martin & gemmaro].
+
 General:
  * Don't fail on empty po files, e.g. adoc files containing only
    includes. Thanks Suddenfall for the report & fix (GitHub's #408).
  * Fix an encoding error in one file which resulted in build errors
    with new gettext versions (GitHub's #428).
    Thanks to Jan Palus for the issue report and the fix.
+ * Use the semantic of Perl v5.12 (released in 2012) instead of the previously
+   requested one (v5.6 release in 2000). This is to request the unicode_strings
+   feature, making the utf strings more predictable.
+ * Accept BOM markers at the beginning of files (GitHub's #443 and #333) [Mt]
+ * Specify in the README.md and in all source files that the license is GPL2+,
+   not GPL2-only (GitHub's #434) [Mt]
+
+Documentation:
+ * Improve the description of the internals, in the hope that potential
+   contributors will become proficient quickly and help us. [Mt]
+ * Revamp the po4a(7) document now that the po4a-* scripts are deprecated.
+   Explain why they are, and don't mention them in the described workflow.
+   (Debian's #1036824). [Mt]
 
 po4a main script (the deprecated po4a-* scripts are still buggy):
  * Deal properly with CRLF files coming from windows (GitHub's #409).
  * Allow to escape spaces in file names, or to quote them (GitHub's #412).
+ * Do not pass empty PO files to msgmerge, as it stumbles on such things when
+   the POT file has UTF chars in the msgids. (GitHub's #442) [Mt]
+
+po4a-translate:
+ * Remove the wrap-po option that was not used internally.
+
+po4a-updatepo:
+ * Do not pass empty PO files to msgmerge, as it stumbles on such things when
+   the POT file has UTF chars in the msgids. (Debian's #1022216) [Mt]
 
 Build scripts:
  * Use xmlcatalog(1) to find DocBook XSL file (GitHub's #431).
 
 Translations:
  * Updated: Chinese (traditional), thanks Haowei Hsu.
- * Updated: French, thanks Jérémie Tarot.
+ * Updated: French, thanks Jérémie Tarot, brandelune and Jean-Baptiste Holcroft.
+ * Updated: Georgian, thanks Temuri Doghonadze.
  * Updated: German, thanks Helge Kreutzmann.
+ * Updated: Italian, thanks Marco Ciampa.
  * Updated: Japanese, thanks gemmaro.
  * Updated: Norwegian Bokmål, thanks Allan Nordhøy and Petter Reinholdtsen.
  * Updated: Portuguese, thanks Silvério Santos.
- * Updated: Russian, thanks vrbtm and Виталий Наумов.
+ * Updated: Russian, thanks vrbtm, Виталий Наумов and Golubev Alexander.
  * Updated: Serbian (cyrillic), thanks Ivan Pesic.
- * Updated: Spanish, thanks Francisco Serrador and ignotus.
+ * Updated: Spanish, thanks Francisco Serrador, ignotus and gallegonovato.
+
+Status of the binary translation:
+ * 100%: de, es, fr, it, ja, ru.
+ * >90%: eo (92%), hr (90%), nb (93%), nl (94%), pt (94%), pt_BR (94%), sr_Cyrl (94%), uk (94%), zh_Hans (90%), zh_Hant (90%).
+ * >80%: hu (88%).
+ * >70%: id (74%).
+ * >50%: cs (56%), da (62%), et (65%), eu (54%), pl (60%), sl (54%), sv (69%), vi (65%).
+ * >33%: ca (43%).
+ * Starting: ace (2%), af (7%), ar (13%), ka (16%), kn (7%), ko (18%).
+
+Status of the documentation translation:
+ * 100%: de, fr, it.
+ * >95%: es (99%), ja (99%), nl (96%), sr_Cyrl (96%), uk (96%).
+ * >90%: pt (91%), pt_BR (91%), zh_Hans (90%), zh_Hant (90%).
+ * >80%: ru (84%).
+ * >50%: pl (65%).
+ * >33%: ca (42%).
+ * Starting: eo (2%), hr (0%), hu (0%), nb (4%).
 
 =======================================================================
         ___   __   ___

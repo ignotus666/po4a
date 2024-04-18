@@ -1,5 +1,4 @@
-# Provides a common test routine to avoid repeating the same
-# code over and over again.
+# Provides common test routines to avoid repeating the same code over and over again.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -68,6 +67,7 @@
 #            If the file does not exist, the normalization is expected to not output anything
 #   - error (optional boolean -- default: false): whether the normalization is expected to fail
 #            If so, the translation is not attempted (and the translation files don't have to exist)
+#   - trans (default: $basename.trans): expected translated document (translated with provided PO file)
 #   - trans_stderr (optional -- default: $basename.trans.stderr): expected output of the translation
 #            If the file does not exist, the normalization is expected to not output anything
 #   - options (optional): options to pass to the translation, updatepo and normalization
@@ -78,6 +78,7 @@
 
 package Testhelper;
 
+use 5.16.0;
 use strict;
 use warnings;
 use Test::More 'no_plan';
@@ -269,7 +270,7 @@ sub run_one_po4aconf {
     pass("Change directory back to $cwd");
 
     my $expected_outfile = $t->{'expected_outfile'} // "$path/_output";
-    unless ( $t->{'diff_outfile'} ) {
+    unless ( -e $expected_outfile ) {
         $expected_outfile = "$path/$expected_outfile"
           if ( not -e $expected_outfile ) && ( -e "$path/$expected_outfile" );
         unless ( -e $expected_outfile ) {
@@ -371,7 +372,7 @@ sub run_one_format {
     map { die "Invalid test " . $test->{'doc'} . ": invalid key '$_'\n" unless exists $valid_options{$_} }
       ( keys %{$test} );
 
-    die "Broken test: input file $input does not exist or not readable." unless -e $input && -r $input;
+    fail "Broken test: input file $input does not exist or not readable." unless -e $input && -r $input;
 
     my $format = $test->{'format'} // die "Broken test $input: no format provided\n";
 
@@ -428,6 +429,12 @@ sub run_one_format {
     } elsif ( $error != 0 && $exit_status != 0 ) {
         pass("Expected error detected in $doc");
         note("  Failing as expected: $cmd (retcode: $exit_status)");
+        note("Produced output:");
+        open FH, $real_stderr || die "Cannot open output file that I just created, I'm puzzled";
+        while (<FH>) {
+            note("  $_");
+        }
+        note("(end of command output)\n");
     } else {
         fail("Normalizing $doc: $exit_status");
         note("  FAIL: $cmd");
@@ -566,7 +573,6 @@ sub run_all_tests {
             $cmd =~ s/PATH/${execpath}/;
             my $exit_status = system($cmd);
             is( $exit_status, 0, "Executing " . $test->{'doc'} . " -- Command: $cmd" );
-            next TEST unless ( $exit_status == 0 );
 
             fail "Malformed test " . $test->{'doc'} . ": missing tests." unless scalar $test->{tests};
             for my $cmd ( @{ $test->{tests} } ) {

@@ -64,7 +64,7 @@ These are this module's particular options:
 
 package Locale::Po4a::TeX;
 
-use 5.006;
+use 5.16.0;
 use strict;
 use warnings;
 
@@ -86,7 +86,7 @@ use vars qw(@ISA @EXPORT);
 use Locale::Po4a::TransTractor;
 use Locale::Po4a::Common;
 use File::Basename qw(dirname);
-use Carp qw(croak);
+use Carp           qw(croak);
 
 use Encode;
 use Encode::Guess;
@@ -926,15 +926,16 @@ Overloads Transtractor's read().
 
 =cut
 
-sub read {
+sub read ($$$$) {
     my $self     = shift;
     my $filename = shift;
     my $refname  = shift;
+    my $charset  = shift;
 
     # keep the directory name of the main file.
     $my_dirname = dirname($filename);
 
-    push @{ $self->{TT}{doc_in} }, read_file( $self, $filename, $refname );
+    push @{ $self->{TT}{doc_in} }, read_file( $self, $filename, $refname, $charset );
 }
 
 =item B<read_file>
@@ -954,10 +955,11 @@ sub read_file {
     my $filename = shift
       or croak wrap_mod( "po4a::tex", dgettext( "po4a", "Cannot read from file without having a filename" ) );
     my $refname = shift // $filename;
+    my $charset = shift || 'UTF-8';
     my $linenum = 0;
     my @entries = ();
 
-    open( my $in, $filename )
+    open( my $in, "<:encoding($charset)", $filename )
       or croak wrap_mod( "po4a::tex", dgettext( "po4a", "Cannot read from %s: %s" ), $filename, $! );
     while ( defined( my $textline = <$in> ) ) {
         $linenum++;
@@ -995,11 +997,19 @@ sub read_file {
                 open( KPSEA, "kpsewhich " . $newfilename . " |" );
                 my $newfilepath = <KPSEA>;
 
-                if ( $newfilename ne "" and $newfilepath eq "" ) {
-                    die wrap_mod( "po4a::tex", dgettext( "po4a", "Cannot find %s with kpsewhich" ), $filename );
+                if ( $newfilename ne "" and ( $newfilepath // '' ) eq '' ) {
+                    die wrap_mod(
+                        "po4a::tex",
+                        dgettext(
+                            "po4a",
+                            "Cannot find '%s' with kpsewhich. To prevent this file to be included, add '-o exclude_include=%s' to the options, either on the command line or in your po4a.conf file."
+                        ),
+                        $newfilename,
+                        $newfilename
+                    );
                 }
 
-                push @entries, read_file( $self, $newfilepath, $newfilename );
+                push @entries, read_file( $self, $newfilepath, $newfilename, $charset );
                 if ( $tag eq "include" ) {
                     $textline = "\\clearpage" . $end;
                 } else {
@@ -1010,20 +1020,6 @@ sub read_file {
         if ( length($textline) ) {
             my @entry = ( $textline, $ref );
             push @entries, @entry;
-
-            # Detect if this file has non-ascii characters
-            if ( $self->{TT}{ascii_input} ) {
-
-                my $decoder = guess_encoding($textline);
-                if ( !ref($decoder) or $decoder !~ /Encode::XS=/ ) {
-
-                    # We have detected a non-ascii line
-                    $self->{TT}{ascii_input} = 0;
-
-                    # Save the reference for future error message
-                    $self->{TT}{non_ascii_ref} ||= $ref;
-                }
-            }
         }
     }
     close $in
@@ -1748,7 +1744,7 @@ L<po4a(7)|po4a.7>
 Copyright © 2004, 2005 Nicolas FRANÇOIS <nicolas.francois@centraliens.net>.
 
 This program is free software; you may redistribute it and/or modify it
-under the terms of GPL (see the COPYING file).
+under the terms of GPL v2.0 or later (see the COPYING file).
 
 =cut
 

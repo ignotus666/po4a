@@ -7,7 +7,7 @@ eval 'exec perl -S $0 ${1+"$@"}'
 # Copyright 2002-2023 by SPI, inc.
 #
 # This program is free software; you can redistribute it and/or modify it
-# under the terms of GPL (see COPYING).
+# under the terms of GPL v2.0 or later (see COPYING).
 
 =encoding UTF-8
 
@@ -108,7 +108,7 @@ file could be as simple as this:
 
  [type: man] man/foo.1 $lang:man/translated/foo.$lang.1
 
-It specifies that all PO files (containing the work of the translators) are the
+It specifies that all PO files (containing the work of the translators) are in the
 F<man/po4a/> directory, and that you have only one master file, F<man/foo.1>. If
 you had several master files, you would have several lines similar to the second
 one. Each such line also specify where to write the corresponding translation
@@ -124,12 +124,12 @@ expected content.
 Here is a recap of the files in this setup:
 
   ├── man/
-  │   ├── foo.1        <- The original man page, in English.
+  │   ├── foo.1        <- The original man page, in English
   │   ├── po4a/
-  │   │   ├── de.po    <- The German PO translation, from gettextization.
+  │   │   ├── de.po    <- The German PO translation, from gettextization
   │   │   └── foo.pot  <- The POT template of future translations (empty at first)
   │   └── translated/  <- Directory where the translations will be created
-  └── po4a.cfg         <- The configuration file.
+  └── po4a.cfg         <- The configuration file
 
 Once setup, executing B<po4a> will parse your documentation, update the POT
 template file, use it to update the PO translation files, and use them to update
@@ -137,15 +137,16 @@ the documentation translation files. All in one command:
 
         po4a --verbose po4a.cfg
 
-This it. B<po4a> is now fully configured. Once you've fixed your error in
+This is it. B<po4a> is now fully configured. Once you've fixed your error in
 F<man/foo.1>, the offending paragraph in the German translation will be replaced by
 the fixed text in English. Mixing languages is not optimal, but it's the only
 way to remove errors in translations that you don't even understand, and ensure
 that the content presented to the users is never misleading. Updating the German
 translation is also much easier in the corresponding PO file, so the language
-mix-up may not last long. Finally, when the Japanese translator gives you a
-S<jp.po> translated file, just drop it in F<man/po4a/po/>. A translated page
-will appear as F<man/translated/foo.jp.1> (provided that enough content is
+mix-up may not last long. Finally, when a Japanese translator wants to contribute a
+new translation, she should rename the S<foo.pot> into S<ja.po> and complete the
+translation. Once you have this file, just drop it in F<man/po4a/po/>. A translated 
+page will appear as F<man/translated/foo.ja.1> (provided that enough content is
 translated) when you run B<po4a> again.
 
 =head1 OPTIONS
@@ -687,11 +688,11 @@ L<po4a(7)>.
 Copyright 2002-2023 by SPI, inc.
 
 This program is free software; you may redistribute it and/or modify it
-under the terms of GPL (see the COPYING file).
+under the terms of GPL v2.0 or later (see the COPYING file).
 
 =cut
 
-use 5.006;
+use 5.16.0;
 use strict;
 use warnings;
 
@@ -855,102 +856,88 @@ sub get_options {
     return %opts;
 }
 
-# Split a line into an array of lines. There is a lame attempt to deal with quotes and escaped spaces.
-# Remaining issues:
-#   - Quotes cannot be mixed: >>"da 'd d'<< is invalid
-#   - Empty elements are ignored: >>\\ a<< results in "a" not " a"
-#   - Quotes and space escaping cannot be mixed: >>"a b"c\\ d<< is invalid
+# Split a line into an array of lines. This should correctly deal with quotes and escaped spaces.
+#   - Simple and double quotes can be mixed: {'"tutu truc" blah' "'blah tutu' truc"} => {"tutu truc" blah}{'blah tutu' truc}
+#   - Quotes can be in the middle of words: {h ij'k l'  m} => {h}{ijk l}{m}
+#   - Spaces can be escaped everywhere: {\ a b\ c d\   e} => { a}{b c}{d }{e}
+#   - Quotes and space escaping can be mixed: {'a b'c\ d} => {a bc d}
 #
-# See also https://stackoverflow.com/questions/29041011/perl-split-string-that-has-double-quotes-and-space/76404839#76404839
+# Submitted as https://stackoverflow.com/questions/29041011/perl-split-string-that-has-double-quotes-and-space/76404839#76404839
 sub split_line {
-    my $string = shift;
-    my $orig_line = $string;
+    my ($string) = @_;
 
-    my $accumulated = '';
     my @result      = ();
-    my $in_str      = 0;
-    my $sep_char    = '';
-    for my $tok ( split /\s/, $string ) {
+    my @quote       = ();    # stack of quotes we've seen so far, to handle nested single and double quotes
+    my $accumulated = "";    # the token we are building
+    my $seen_quotes = 0
+      ; # Whether we've seen at least a quote or whether we should pass a chunk of only spaces (to pass separating spaces)
 
-        # Found a string boundary in this token
-        if ( $tok =~ /'|"/ ) {
-	        my $orig_sep_char = $sep_char;
+    # eat the string piece by piece, separating a quote, some spaces, or a chunk w/o quotes and spaces.
+    while ( $string =~ s/('|"|\s+|[^"'\s]+)(.*)$/$2/ ) {
+        my $token = $1;
 
-            # Check that we are not mismatching simple and double quote
-            if ( $tok =~ /'/ ) {
-                die "Simple quote (') matched with double quote (\") in $orig_line" if ( $sep_char eq '"' );
-                $sep_char = "'";
-            }
-            if ( $tok =~ /"/ ) {
-                die "Double quote (\") matched with simple quote (') in $orig_line" if ( $sep_char eq "'" );
-                $sep_char = '"';
-            }
-
-            die "Please don't mix quotes and escaped spaces"                          if ( $tok =~ /\\$/ );
-
-            # Cleanup the sep char and check that we are done
-            $tok =~ s/"|'//;
-
-            if ( $tok =~ s/('|")// ) { # Two quotes in the same chunk. Deal with it if it's eg: >>"something"<<
-                die "Mismatch between simple quote (') and double quote (\") in $orig_line" if ($sep_char ne $1);
-                die "Please don't use more than two quote signs per elements, that's too hard to parse." if ( $tok =~ /'|"/ );
-
-                $sep_char = $orig_sep_char; # Revert the fact that we are entering a quote
-
-                # Deal with that chunk as if it were not quoted
-                if ($in_str) {
-                    $accumulated .= " $tok";
-                } elsif ( length $accumulated ) {
-                    push @result, "$accumulated $tok";
-                    $accumulated = "";
+        #        print "Seen $token (last quote: ".(scalar @quote>0?$quote[-1]:"none")."; accumulated:$accumulated) -- ";
+        if ( $token eq "'" || $token eq '"' ) {
+            $seen_quotes = 1;
+            if ( scalar @quote > 0 ) {
+                if ( $quote[-1] eq $token ) {
+                    pop @quote;
                 } else {
-                    push @result, $tok;
+                    $accumulated .= $token;
                 }
-                next;
-	        }
-
-            # Accumulate the string if entering the string (in_str = false before that chunk),
-            # or push the previously accumulated things if existing the string (in_str = true previously).
-            if ($in_str) {
-                push @result, "$accumulated $tok";
-                $accumulated = "";
-                $sep_char    = '';
             } else {
-                $accumulated = $tok;
+                push @quote, $token;
             }
-            $in_str = not $in_str;
-            next;
-        }
+        } elsif ( $token =~ /\\$/ ) {
+            if ( defined( my $next_char = substr( $string, 0, 1 ) ) ) {
 
-        # This token is ended with an escaped space
-        if ( $tok =~ /\\$/ ) {
-            chop $tok;
-            $accumulated = ( length $accumulated ? "$accumulated " : '' ) . $tok;
-            next;
-        }
-
-        # Currently within a string, no boundary in sight
-        if ($in_str) {
-            $accumulated .= " $tok";
-            next;
-        }
-
-        # Nothing specific about this item
-        if ( length $accumulated ) {
-            push @result, "$accumulated $tok";
-            $accumulated = "";
+                #                print " steal '$next_char' ";
+                $token =~ s/.$/$next_char/;
+                $string = substr( $string, 1 );
+            } else {
+                die "Error: backslash escape at end of string\n";
+            }
+            $accumulated .= $token;
+        } elsif ( $token =~ /^\s*$/ ) {
+            if ( scalar @quote > 0 ) {
+                $accumulated .= $token;
+            }
         } else {
-            push @result, $tok;
+            $accumulated .= $token;
+        }
+
+        #        print " (last quote: ".(scalar @quote>0?$quote[-1]:"none")."; accumulated:$accumulated)";
+
+        # Push the string if we're out of quotes, and if the coming chunk is a separating space
+        if ( scalar @quote == 0 && ( $string eq '' || substr( $string, 0, 1 ) eq ' ' ) ) {
+
+            #            print " Push\n";
+            # Pass the separating quotes, that are space only and never contained any quote
+            if ( $accumulated ne '' && $seen_quotes || $accumulated =~ /\S/ ) {
+                push @result, $accumulated;
+            }
+            $accumulated = '';
+            $seen_quotes = 0;
+
+            #        } else {
+            #            print " Pass\n";
         }
     }
-    die "Expecting end of quote" if $in_str;
+
+    if ( scalar @quote > 0 ) {
+        die "Error: unclosed quote at end of string\n";
+    }
+
     return @result;
 }
 
 # Test the split_line function
-# print join "#", split_line("a  'b c   c d  ' 'titi' \"toto\" e\\ f  g\\  h ij'k l'  m\"n \" 'l '");
-# print "#\n";
-# __END__
+#my $testline = "a  'b c   c d  ' 'titi' \"toto\" ' ' \" \" '\"' \"'\" '\"tutu truc\" blah' \"'blah tutu' truc\" e\\ f  g\\   h ij'k l'  m\"n \" 'l ' "
+#                ."\\\" \\' '\\'' \"'\\''\" BHA\\RO \\ n \"o p\"q\\ r";
+#print "$testline\n";
+#print join "#", split_line($testline);
+#print "#\n";
+#__END__
 
 # Parse a config line and extract the parameters that correspond to options.
 # These options are appended to the options provided in argument (as a
@@ -961,9 +948,18 @@ sub parse_config_options {
     my $line    = shift;    # the line to parse
     my $options = shift;    # reference to an hash of options
 
-    if ( $line =~ m/^(?:opt(?:_(.+?))?:)?(.*)/ ) {
-        my $lang = $1 // 'global';
-        my $opt  = $2;
+    if ( $line =~ m/^(opt(?:_(.+?))?:)?(.*)/ ) {
+        my $prefixed = $1;
+        my $lang     = $2 // 'global';
+        my $opt      = $3;
+
+        if ( !$prefixed and $opt =~ m/ / ) {
+            if ( $opt =~ m/'/ ) {
+                $opt = qq{"$opt"};
+            } else {
+                $opt = qq{'$opt'};
+            }
+        }
 
         if ( !defined $options->{$lang} ) {
             $options->{$lang} = $opt;
@@ -978,14 +974,12 @@ sub parse_config_options {
 
 my %po4a_opts = get_options(@ARGV);
 
-our ( $destdir, $srcdir, $calldir ) = ( $po4a_opts{'destdir'}, $po4a_opts{'srcdir'}, $po4a_opts{'calldir'} );
-
 sub find_input_file {
     my $filename = $_[0];
     my $debug    = $_[1];
     print STDERR "Search for input file $filename\n" if $debug;
     return $filename                                 if ( File::Spec->file_name_is_absolute($filename) );
-    foreach ( ( $destdir, $calldir, $srcdir ) ) {
+    foreach ( ( $po4a_opts{'destdir'}, $po4a_opts{'calldir'}, $po4a_opts{'srcdir'} ) ) {
         next unless defined $_;
         my $p = File::Spec->catfile( $_, $filename );
         print STDERR "Test $p: " . ( -e $p ? "OK" : "nope" ) . "\n"
@@ -998,7 +992,7 @@ sub find_input_file {
 sub find_output_file {
     my $filename = $_[0];
     return $filename if ( File::Spec->file_name_is_absolute($filename) );
-    foreach ( ( $destdir, $calldir ) ) {
+    foreach ( ( $po4a_opts{'destdir'}, $po4a_opts{'calldir'} ) ) {
         next unless defined $_;
         return File::Spec->catfile( $_, $filename ) if -d $_ and -w $_;
     }
@@ -1195,6 +1189,7 @@ while (<CONFIG>) {
         # Step 1. collect the files in every candidate po_directory we find.
         my $po_directory = $main;
         my @po_files;
+        my ( $destdir, $srcdir, $calldir ) = ( $po4a_opts{'destdir'}, $po4a_opts{'srcdir'}, $po4a_opts{'calldir'} );
         print STDERR "Searching for po_directory '$po_directory'."
           if $po4a_opts{"debug"};
         if ( File::Spec->file_name_is_absolute($po_directory) ) {
@@ -1324,11 +1319,12 @@ while (<CONFIG>) {
         }
         if ( scalar @{ $po4a_opts{"partial"} } ) {
             foreach my $file ( @{ $po4a_opts{"partial"} } ) {
-                if ( grep ( m/(\S+):\Q$file\E\b/, @split_args ) ) {
-                    $partial{'lang'}{$1}      = 1;
-                    $partial{'master'}{$main} = 1;
-                    $partial{'files'}{$file}  = 1;
-                    last;
+                foreach my $arg (@split_args) {
+                    if ( $arg =~ m/(\S+):\Q$file\E\b/ ) {
+                        $partial{'lang'}{$1}      = 1;
+                        $partial{'master'}{$main} = 1;
+                        $partial{'files'}{$file}  = 1;
+                    }
                 }
             }
         }
@@ -1349,7 +1345,7 @@ while (<CONFIG>) {
             $document{$main}{'format'} = $aliases{$1}{"module"};
             if ( defined $aliases{$1}{"options"} ) {
 
-                #                print STDERR "Override the global options with the alias ones\n";
+                # print STDERR "Override the global options with the alias ones\n";
                 %options = %{ $aliases{$1}{"options"} };    # XXX not a merge, but overwrite
             }
         }
@@ -1445,15 +1441,26 @@ while (<CONFIG>) {
             }
         }
     } elsif ( $cmd =~ m/po4a_alias: *(.*)/ ) {
-        my $name  = $1;
-        my %alias = ();
-        $alias{"module"} = $main;
+        my $name = $1;
         shift @split_args;
-        my %options;
-        @split_args = map { parse_config_options( "$config_file:$nb", $_, \%options ); } @split_args;
 
-        %{ $alias{"options"} } = %options;
-        %{ $aliases{$name} } = %alias;
+        if ( defined $aliases{$name} ) {    # If that alias was previously defined
+            die "Alias $name redefined from " . $aliases{$name}{"module"} . " to $main\n"
+              if ( $aliases{$name}{"module"} ne $main );
+
+            # Concat the new content to the existing alias after a sanity check
+            @split_args =
+              map { parse_config_options( "$config_file:$nb", $_, \%{ $aliases{$name}{"options"} } ); } @split_args;
+
+        } else {                            # Otherwise, define a new option set accordingly
+            my %alias = ();
+            $alias{"module"} = $main;
+
+            my %options;
+            @split_args = map { parse_config_options( "$config_file:$nb", $_, \%options ); } @split_args;
+            %{ $alias{"options"} } = %options;
+            %{ $aliases{$name} } = %alias;
+        }
     } elsif ( $cmd eq "options" ) {
         my %options;
         %options = %{ $document{''}{"options"} } if ( defined $document{''}{"options"} );  # Add to the existing options
@@ -1526,13 +1533,33 @@ if ( $pot_filename =~ m/\$master/ ) {
 
         # Skip documents not specified, strings are read directly from POT file
         foreach my $master ( keys %document ) {
-            next                      unless length $master;
-            delete $document{$master} unless exists $partial{'master'}{$master};
+            next unless length $master;
+            if ( exists $partial{'master'}{$master} ) {
+                print wrap_msg( gettext("Document %s kept for update (--translate-only)."), $master )
+                  if ( $po4a_opts{"verbose"} );
+            } else {
+                print wrap_msg( gettext("Skip the update of %s as requested (--translate-only)."), $master )
+                  if ( $po4a_opts{"verbose"} );
+                delete $document{$master};
+            }
         }
 
         # Do not read PO files if no file is processed for this language
-        foreach my $lang ( keys %po_filename ) {
-            delete $po_filename{$lang} unless exists $partial{'lang'}{$lang};
+        my $skipped_langs = "";
+        my $kept_langs    = "";
+        foreach my $lang ( sort keys %po_filename ) {
+            if ( exists $partial{'lang'}{$lang} ) {
+                $kept_langs .= " $lang";
+            } else {
+                $skipped_langs .= " $lang";
+                delete $po_filename{$lang};
+            }
+        }
+        if ( $po4a_opts{"verbose"} ) {
+            $skipped_langs =~ s/^ //;
+            $kept_langs    =~ s/^ //;
+            print wrap_msg( gettext("Languages skipped because of --translate-only: %s; kept languages: %s."),
+                $skipped_langs, $kept_langs );
         }
     }
 
@@ -1594,7 +1621,6 @@ if ($update_pot_file) {
         }
     }
     $pot_options{'pot-language'} = $po4a_opts{"mastlang"};
-    $pot_options{'pot-charset'}  = $po4a_opts{"mastchar"};
     my $potfile = Locale::Po4a::Po->new( \%pot_options );
     foreach my $master (
         sort {
@@ -1616,19 +1642,6 @@ if ($update_pot_file) {
         %file_opts = get_options( split_opts($options), @ORIGINAL_ARGV )    if ( length $options );
 
         my $doc = Locale::Po4a::Chooser::new( $document{$master}{'format'}, %{ $file_opts{"options"} } );
-
-        # If we know that the input isn't UTF-8, say so to the TransTractor
-        if (   length $po4a_opts{"mastchar"}
-            && ( not $po4a_opts{"mastchar"} =~ /UTF-8/i )
-            && $po4a_opts{"mastchar"} ne "CHARSET" )
-        {
-            print STDERR "mastchar: " . $po4a_opts{"mastchar"} . "\n";
-            $doc->{TT}{ascii_input} =
-              0;    # this actually mean "don't mess up with the encoding", not litteraly that it's in ascii
-        }
-
-        # We ensure that the generated po will be in utf-8 if the input document isn't entirely in ascii
-        $doc->{TT}{utf_mode} = 1;
 
         $doc->setpoout($potfile);
         my @file_in_name;
@@ -1664,8 +1677,16 @@ if ($update_pot_file) {
     print wrap_msg( gettext(" (%d entries)"), $potfile->count_entries() )
       unless ( $po4a_opts{"quiet"} );
 } else {
-    print wrap_msg( gettext("POT file %s already up to date."), $pot_filename )
-      if ( $po4a_opts{"verbose"} and not $po4a_opts{"no-update"} );
+    if ( $po4a_opts{"no-update"} ) {
+        print wrap_msg( gettext("NOT updating the POT file %s as requested (--no-update)."), $pot_filename )
+          if ( $po4a_opts{"verbose"} );
+    } elsif ( scalar @{ $po4a_opts{"partial"} } ) {
+        print wrap_msg( gettext("NOT updating the POT file %s because of --translate-only."), $pot_filename )
+          if ( $po4a_opts{"verbose"} );
+    } else {
+        print wrap_msg( gettext("POT file %s already up to date."), $pot_filename )
+          if ( $po4a_opts{"verbose"} and not $po4a_opts{"no-update"} );
+    }
 }
 
 my %split_po;           # po_files: '$lang','$master' => '$path'
@@ -1769,16 +1790,25 @@ if ( not $po4a_opts{"no-update"} ) {
               ( find_input_file( $po_filename{$lang} ), find_output_file( $po_filename{$lang} ) );
             my $updated_potfile = find_input_file($pot_filename);
 
-            if ( -e $infile ) {
-                my $dir = dirname($outfile);
-                if ( not -d $dir ) {
-                    mkdir $dir or die wrap_msg( gettext("Cannot create directory '%s': %s"), $dir, $! );
-                }
+            my $dir = dirname($outfile);
+            if ( not -d $dir ) {
+                mkdir $dir or die wrap_msg( gettext("Cannot create directory '%s': %s"), $dir, $! );
+            }
 
+            my $usable_pofile = 0;
+            if ( -e $infile ) {
+
+                # Check that the po file is not empty, as msgmerge has issues in this case (see Debian's #1022216 and GitHub's #442)
+
+                my $pofile = Locale::Po4a::Po->new();
+                $pofile->read( $infile, undef, 0 );    # Guess the charset ; Don't fail if msgfmt spits an error
+                $usable_pofile = 1 if ( $pofile->count_entries() > 0 );
+            }
+            if ($usable_pofile) {
                 my $msgmerge_opt = $po4a_opts{"msgmerge-opt"};
                 $msgmerge_opt =~ s/\$lang\b/$lang/g if scalar @langs;
                 my $cmd = "msgmerge" . $Config{_exe} . " \"$infile\" \"$updated_potfile\" " . $msgmerge_opt;
-                if ( $infile eq $outfile ) {    # in place
+                if ( $infile eq $outfile ) {           # in place
                     $cmd .= " --backup=none --update";
                 } else {
                     $cmd .= " --output \"$outfile\"";
@@ -1798,6 +1828,14 @@ if ( not $po4a_opts{"no-update"} ) {
                 }
 
             } else {
+                if ( $po4a_opts{"verbose"} ) {
+                    if ( $po4a_opts{'split'} ) {
+                        printf( gettext("Creating an empty PO file for the language %s.\n"), $lang );
+                    } else {
+                        printf( gettext("Creating an empty PO file in %s.\n"), $outfile );
+                    }
+                }
+
                 my $read_pot_filename = find_input_file($pot_filename);
                 my $cmd =
                   "msginit$Config{_exe} -i \"$read_pot_filename\" --locale $lang -o \"$outfile\" --no-translator >$devnull";
@@ -1923,7 +1961,12 @@ if ( not $po4a_opts{"no-translations"} ) {
             next if ( $master eq '' );
             next unless defined $document{$master}{$lang};
             if ( scalar @{ $po4a_opts{"partial"} } ) {
-                next unless defined $partial{'files'}{ $document{$master}{$lang} };
+                unless ( defined $partial{'files'}{ $document{$master}{$lang} } ) {
+                    print wrap_msg( gettext("Skip master file %s in language %s because of --translate-only."),
+                        $master, $lang )
+                      if ( $po4a_opts{"verbose"} );
+                    next;
+                }
             }
 
             unless ( $po4a_opts{"force"} ) {
@@ -2046,7 +2089,7 @@ if ( not $po4a_opts{"no-translations"} ) {
                 }
             }
 
-            $doc->write( find_output_file( $document{$master}{$lang} ) );
+            $doc->write( find_output_file( $document{$master}{$lang} ), $file_opts{"locchar"} // '' );
         }
     }
 }

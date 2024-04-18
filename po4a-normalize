@@ -7,7 +7,7 @@ eval 'exec perl -S $0 ${1+"$@"}'
 # Copyright 2002-2023 by SPI, inc.
 #
 # This program is free software; you can redistribute it and/or modify it
-# under the terms of GPL (see COPYING).
+# under the terms of GPL v2.0 or later (see COPYING).
 
 =encoding UTF-8
 
@@ -101,11 +101,11 @@ L<po4a(7)>
 Copyright 2002-2023 by SPI, inc.
 
 This program is free software; you may redistribute it and/or modify it
-under the terms of GPL (see the COPYING file).
+under the terms of GPL v2.0 or later (see the COPYING file).
 
 =cut
 
-use 5.006;
+use 5.16.0;
 use strict;
 use warnings;
 
@@ -177,18 +177,12 @@ unless ($no_deprecation) {
 }
 
 my $parser = Locale::Po4a::Chooser::new( $type, %options );
-if ( length $mastchar && $mastchar !~ /ascii/i && $mastchar ne "CHARSET" ) {
-    $parser->{TT}{ascii_input} = 0;
-    $parser->detected_charset($mastchar);
-}
-$parser->{TT}{utf_mode}        = 1;
-$parser->{TT}{file_in_charset} = $mastchar;
 
 my $filename = shift || pod2usage(1);
 $filename eq '-' || -e $filename || die wrap_msg( gettext("File %s does not exist."), $filename );
 die wrap_msg( gettext("Options %s and %s cannot be provided together"), "quiet", "verbose" ) if $verbose && $quiet;
 
-$parser->read( $filename, $filename );
+$parser->read( $filename, $filename, $mastchar // '' );
 my %pot_options = ( 'wrap-po' => $wrappo );
 $parser->setpoout( Locale::Po4a::Po->new( \%pot_options ) );
 $parser->parse();
@@ -204,13 +198,12 @@ if ($blank) {
     $parser = Locale::Po4a::Chooser::new( $type, %options );
     $parser->{TT}{po_in} = $empty_po;
     $parser->read($filename);
-    $parser->{TT}{utf_mode}        = 1;
     $parser->{TT}{file_in_charset} = $mastchar;
     $parser->parse();
 }
 print wrap_msg( dgettext( "po4a", "Write the normalized document to %s." ), $localized )
   unless $quiet;
-$parser->write($localized);
+$parser->write( $localized, '' );
 print wrap_msg( dgettext( "po4a", "Write the normalized PO file to %s." ), $potfile )
   unless $quiet;
 $parser->writepo($potfile);
