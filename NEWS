@@ -9,11 +9,26 @@ __   __/ _ \|___  |___ \
  \ V /| |_| | / /  / __/
   \_/  \___(_)_/  |_____|         (unreleased)
 
-po4a main script:
+TransTractor:
+ * Remove one source of supirious error reports when writing files (GitHub's #494) [Mt].
+
+Markdown:
+ * Treat tables as verbatim paragraphs (GitHub's #496) [Mt].
+
+Asciidoc:
+ * Support a cleanspaces option to remove extra spaces in wrapped lines
+   (GitHub's #464). Thanks Jean-Noël Avila for the pull request.
+
+All scripts:
+ * Add an option -w/--width to rewrap text on an arbitrary column (GitHub's #474)
+   [Golubev Alexander].
+
+po4a main script only:
  * Fix the behavior of --translate-only (GitHub's #482) [Mt & Golubev Alexander].
 
 Documentation:
  * Fix typos (GitHub's #478) [Marco Ciampa & Helge Kreutzmann]
+ * Kill outdated documentation on Pod parameters (GitHub's #462) [Golubev Alexander].
 
 =======================================================================
         ___  _____ _
