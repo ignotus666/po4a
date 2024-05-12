@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: po4a 0.20\n"
 "Report-Msgid-Bugs-To: devel@lists.po4a.org\n"
-"POT-Creation-Date: 2024-05-09 23:23+0200\n"
+"POT-Creation-Date: 2024-05-12 17:23+0200\n"
 "PO-Revision-Date: 2024-04-19 13:11+0200\n"
 "Last-Translator: Marco Ciampa <ciampix@posteo.net>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/po4a/po4a-doc/it/"
@@ -196,7 +196,7 @@ msgstr ""
 #: lib/Locale/Po4a/Ini.pm:8 lib/Locale/Po4a/KernelHelp.pm:7
 #: lib/Locale/Po4a/LaTeX.pm:8 lib/Locale/Po4a/Man.pm:107
 #: lib/Locale/Po4a/Pod.pm:21 lib/Locale/Po4a/RubyDoc.pm:14
-#: lib/Locale/Po4a/TeX.pm:118 lib/Locale/Po4a/Texinfo.pm:10
+#: lib/Locale/Po4a/TeX.pm:116 lib/Locale/Po4a/Texinfo.pm:14
 #: lib/Locale/Po4a/Xhtml.pm:15 lib/Locale/Po4a/Xml.pm:187
 #: lib/Locale/Po4a/Yaml.pm:15
 msgid "SEE ALSO"
@@ -2122,7 +2122,7 @@ msgstr "L<po4a-gettextize(1)>, L<po4a(7)>."
 #. type: =head1
 #: po4a:191 po4a-gettextize:78 po4a-normalize:38 po4a-translate:52
 #: po4a-updatepo:55 msguntypot:32 doc/po4a.7.pod:196
-#: lib/Locale/Po4a/AsciiDoc.pm:54 lib/Locale/Po4a/BibTeX.pm:11
+#: lib/Locale/Po4a/AsciiDoc.pm:56 lib/Locale/Po4a/BibTeX.pm:11
 #: lib/Locale/Po4a/Chooser.pm:12 lib/Locale/Po4a/Common.pm:28
 #: lib/Locale/Po4a/Dia.pm:14 lib/Locale/Po4a/Docbook.pm:17
 #: lib/Locale/Po4a/Guide.pm:12 lib/Locale/Po4a/Halibut.pm:16
@@ -2130,7 +2130,7 @@ msgstr "L<po4a-gettextize(1)>, L<po4a(7)>."
 #: lib/Locale/Po4a/LaTeX.pm:10 lib/Locale/Po4a/Man.pm:109
 #: lib/Locale/Po4a/Po.pm:93 lib/Locale/Po4a/Pod.pm:23
 #: lib/Locale/Po4a/RubyDoc.pm:16 lib/Locale/Po4a/Sgml.pm:53
-#: lib/Locale/Po4a/TeX.pm:120 lib/Locale/Po4a/Texinfo.pm:12
+#: lib/Locale/Po4a/TeX.pm:118 lib/Locale/Po4a/Texinfo.pm:16
 #: lib/Locale/Po4a/Text.pm:45 lib/Locale/Po4a/TransTractor.pm:157
 #: lib/Locale/Po4a/Wml.pm:11 lib/Locale/Po4a/Xhtml.pm:17
 #: lib/Locale/Po4a/Xml.pm:189 lib/Locale/Po4a/Yaml.pm:17
@@ -2154,7 +2154,7 @@ msgstr ""
 
 #. type: =head1
 #: po4a:193 po4a-gettextize:80 po4a-normalize:40 po4a-translate:54
-#: po4a-updatepo:57 msguntypot:34 lib/Locale/Po4a/AsciiDoc.pm:56
+#: po4a-updatepo:57 msguntypot:34 lib/Locale/Po4a/AsciiDoc.pm:58
 #: lib/Locale/Po4a/BibTeX.pm:13 lib/Locale/Po4a/Chooser.pm:14
 #: lib/Locale/Po4a/Common.pm:30 lib/Locale/Po4a/Dia.pm:16
 #: lib/Locale/Po4a/Docbook.pm:19 lib/Locale/Po4a/Guide.pm:14
@@ -2162,7 +2162,7 @@ msgstr ""
 #: lib/Locale/Po4a/KernelHelp.pm:11 lib/Locale/Po4a/LaTeX.pm:12
 #: lib/Locale/Po4a/Man.pm:111 lib/Locale/Po4a/Pod.pm:25
 #: lib/Locale/Po4a/RubyDoc.pm:18 lib/Locale/Po4a/Sgml.pm:58
-#: lib/Locale/Po4a/TeX.pm:122 lib/Locale/Po4a/Texinfo.pm:14
+#: lib/Locale/Po4a/TeX.pm:120 lib/Locale/Po4a/Texinfo.pm:18
 #: lib/Locale/Po4a/Text.pm:47 lib/Locale/Po4a/Wml.pm:13
 #: lib/Locale/Po4a/Xhtml.pm:19 lib/Locale/Po4a/Xml.pm:191
 #: lib/Locale/Po4a/Yaml.pm:19
@@ -2177,15 +2177,15 @@ msgstr "Copyright 2002-2023 by SPI, inc."
 
 #. type: textblock
 #: po4a:195 po4a-gettextize:82 po4a-normalize:42 po4a-translate:56
-#: po4a-updatepo:59 msguntypot:36 lib/Locale/Po4a/AsciiDoc.pm:58
+#: po4a-updatepo:59 msguntypot:36 lib/Locale/Po4a/AsciiDoc.pm:60
 #: lib/Locale/Po4a/BibTeX.pm:15 lib/Locale/Po4a/Chooser.pm:16
 #: lib/Locale/Po4a/Common.pm:32 lib/Locale/Po4a/Dia.pm:18
 #: lib/Locale/Po4a/Docbook.pm:21 lib/Locale/Po4a/Guide.pm:16
 #: lib/Locale/Po4a/Halibut.pm:20 lib/Locale/Po4a/Ini.pm:14
 #: lib/Locale/Po4a/KernelHelp.pm:13 lib/Locale/Po4a/LaTeX.pm:14
 #: lib/Locale/Po4a/Man.pm:113 lib/Locale/Po4a/Pod.pm:27
-#: lib/Locale/Po4a/Sgml.pm:60 lib/Locale/Po4a/TeX.pm:124
-#: lib/Locale/Po4a/Texinfo.pm:16 lib/Locale/Po4a/Text.pm:50
+#: lib/Locale/Po4a/Sgml.pm:60 lib/Locale/Po4a/TeX.pm:122
+#: lib/Locale/Po4a/Texinfo.pm:20 lib/Locale/Po4a/Text.pm:50
 #: lib/Locale/Po4a/Wml.pm:15 lib/Locale/Po4a/Xhtml.pm:21
 #: lib/Locale/Po4a/Xml.pm:193 lib/Locale/Po4a/Yaml.pm:21
 msgid ""
@@ -5616,27 +5616,27 @@ msgstr ""
 #: lib/Locale/Po4a/AsciiDoc.pm:6 lib/Locale/Po4a/BibTeX.pm:7
 #: lib/Locale/Po4a/Man.pm:34 lib/Locale/Po4a/Po.pm:13
 #: lib/Locale/Po4a/RubyDoc.pm:9 lib/Locale/Po4a/Sgml.pm:7
-#: lib/Locale/Po4a/TeX.pm:11 lib/Locale/Po4a/Text.pm:8 lib/Locale/Po4a/Wml.pm:7
-#: lib/Locale/Po4a/Xhtml.pm:6 lib/Locale/Po4a/Xml.pm:9
+#: lib/Locale/Po4a/Texinfo.pm:10 lib/Locale/Po4a/Text.pm:8
+#: lib/Locale/Po4a/Wml.pm:7 lib/Locale/Po4a/Xhtml.pm:6 lib/Locale/Po4a/Xml.pm:9
 #: lib/Locale/Po4a/Yaml.pm:7
 msgid "OPTIONS ACCEPTED BY THIS MODULE"
 msgstr "OPZIONI ACCETTATE DA QUESTO MODULO"
 
 #. type: textblock
 #: lib/Locale/Po4a/AsciiDoc.pm:7 lib/Locale/Po4a/Man.pm:35
-#: lib/Locale/Po4a/TeX.pm:12 lib/Locale/Po4a/Text.pm:9
+#: lib/Locale/Po4a/Texinfo.pm:11 lib/Locale/Po4a/Text.pm:9
 #: lib/Locale/Po4a/Xhtml.pm:7 lib/Locale/Po4a/Xml.pm:11
 #: lib/Locale/Po4a/Yaml.pm:8
 msgid "These are this module's particular options:"
 msgstr "Queste sono le opzioni speciali per questo modulo:"
 
 #. type: =item
-#: lib/Locale/Po4a/AsciiDoc.pm:8 lib/Locale/Po4a/TeX.pm:21
+#: lib/Locale/Po4a/AsciiDoc.pm:8 lib/Locale/Po4a/TeX.pm:19
 msgid "B<definitions>"
 msgstr "B<definitions>"
 
 #. type: textblock
-#: lib/Locale/Po4a/AsciiDoc.pm:9 lib/Locale/Po4a/TeX.pm:22
+#: lib/Locale/Po4a/AsciiDoc.pm:9 lib/Locale/Po4a/TeX.pm:20
 msgid ""
 "The name of a file containing definitions for po4a, as defined in the "
 "B<INLINE CUSTOMIZATION> section.  You can use this option if it is not "
@@ -5836,11 +5836,23 @@ msgstr ""
 
 #. type: =item
 #: lib/Locale/Po4a/AsciiDoc.pm:33
+msgid "B<cleanspaces>"
+msgstr ""
+
+#. type: textblock
+#: lib/Locale/Po4a/AsciiDoc.pm:34
+msgid ""
+"Remove extra spaces from the source segments in no-wrap mode. This is useful "
+"when the translation tools are sensitive to the number of spaces."
+msgstr ""
+
+#. type: =item
+#: lib/Locale/Po4a/AsciiDoc.pm:35
 msgid "B<yfm_keys>"
 msgstr "B<yfm_keys>"
 
 #. type: textblock
-#: lib/Locale/Po4a/AsciiDoc.pm:34 lib/Locale/Po4a/Text.pm:31
+#: lib/Locale/Po4a/AsciiDoc.pm:36 lib/Locale/Po4a/Text.pm:31
 msgid ""
 "Comma-separated list of keys to process for translation in the YAML Front "
 "Matter section. All other keys are skipped. Keys are matched with a case-"
@@ -5857,23 +5869,23 @@ msgstr ""
 "sempre tradotti, a meno che non venga fornita l'opzione B<yfm_skip_array>."
 
 #. type: =item
-#: lib/Locale/Po4a/AsciiDoc.pm:35
+#: lib/Locale/Po4a/AsciiDoc.pm:37
 msgid "B<yfm_skip_array>"
 msgstr "B<yfm_skip_array>"
 
 #. type: textblock
-#: lib/Locale/Po4a/AsciiDoc.pm:36 lib/Locale/Po4a/Text.pm:38
+#: lib/Locale/Po4a/AsciiDoc.pm:38 lib/Locale/Po4a/Text.pm:38
 msgid "Do not translate array values in the YAML Front Matter section."
 msgstr ""
 "Indica di non tradurre il valori array nella sezione Front Matter di YAML."
 
 #. type: =item
-#: lib/Locale/Po4a/AsciiDoc.pm:37 lib/Locale/Po4a/Text.pm:35
+#: lib/Locale/Po4a/AsciiDoc.pm:39 lib/Locale/Po4a/Text.pm:35
 msgid "B<yfm_paths>"
 msgstr "B<yfm_paths>"
 
 #. type: textblock
-#: lib/Locale/Po4a/AsciiDoc.pm:38 lib/Locale/Po4a/Text.pm:36
+#: lib/Locale/Po4a/AsciiDoc.pm:40 lib/Locale/Po4a/Text.pm:36
 msgid ""
 "Comma-separated list of hash paths to process for extraction in the YAML "
 "Front Matter section, all other paths are skipped. Paths are matched with a "
@@ -5891,12 +5903,12 @@ msgstr ""
 "B<yfm_skip_array>."
 
 #. type: =head1
-#: lib/Locale/Po4a/AsciiDoc.pm:39 lib/Locale/Po4a/TeX.pm:27
+#: lib/Locale/Po4a/AsciiDoc.pm:41 lib/Locale/Po4a/TeX.pm:25
 msgid "INLINE CUSTOMIZATION"
 msgstr "PERSONALIZZAZIONE INLINE"
 
 #. type: textblock
-#: lib/Locale/Po4a/AsciiDoc.pm:40
+#: lib/Locale/Po4a/AsciiDoc.pm:42
 msgid ""
 "The AsciiDoc module can be customized with lines starting by B<//po4a:>.  "
 "These lines are interpreted as commands to the parser.  The following "
@@ -5907,12 +5919,12 @@ msgstr ""
 "Sono riconosciuti i seguenti comandi:"
 
 #. type: =item
-#: lib/Locale/Po4a/AsciiDoc.pm:41
+#: lib/Locale/Po4a/AsciiDoc.pm:43
 msgid "B<//po4a: macro >I<name>B<[>I<attribute list>B<]>"
 msgstr "B<//po4a: macro >I<nome>B<[>I<elenco attributi>B<]>"
 
 #. type: textblock
-#: lib/Locale/Po4a/AsciiDoc.pm:42
+#: lib/Locale/Po4a/AsciiDoc.pm:44
 msgid ""
 "This describes in detail the parameters of a B<macro>; I<name> must be a "
 "valid macro name, and it ends with an underscore if the target must be "
@@ -5923,7 +5935,7 @@ msgstr ""
 "(underscore) se l'obiettivo va tradotto."
 
 #. type: textblock
-#: lib/Locale/Po4a/AsciiDoc.pm:43
+#: lib/Locale/Po4a/AsciiDoc.pm:45
 msgid ""
 "The I<attribute list> argument is a comma separated list which contains "
 "information about translatable arguments.  This list contains either "
@@ -5934,7 +5946,7 @@ msgstr ""
 "per definire parametri posizionali, o attributi con nome."
 
 #. type: textblock
-#: lib/Locale/Po4a/AsciiDoc.pm:44
+#: lib/Locale/Po4a/AsciiDoc.pm:46
 msgid ""
 "If a plus sign (B<+>) is prepended to I<name>, then the macro and its "
 "arguments are translated as a whole.  There is no need to define attribute "
@@ -5946,12 +5958,12 @@ msgstr ""
 "devono essere presenti."
 
 #. type: =item
-#: lib/Locale/Po4a/AsciiDoc.pm:45
+#: lib/Locale/Po4a/AsciiDoc.pm:47
 msgid "B<//po4a: style >B<[>I<attribute list>B<]>"
 msgstr "B<//po4a: stile >B<[>I<elenco attributi>B<]>"
 
 #. type: textblock
-#: lib/Locale/Po4a/AsciiDoc.pm:46
+#: lib/Locale/Po4a/AsciiDoc.pm:48
 msgid ""
 "This describes in detail which attributes of a style must be translated."
 msgstr ""
@@ -5959,7 +5971,7 @@ msgstr ""
 "tradotti."
 
 #. type: textblock
-#: lib/Locale/Po4a/AsciiDoc.pm:47
+#: lib/Locale/Po4a/AsciiDoc.pm:49
 msgid ""
 "The I<attribute list> argument is a comma separated list which contains "
 "information about translatable arguments.  This list contains either "
@@ -5972,7 +5984,7 @@ msgstr ""
 "attributo, il nome dello stile, non verrà tradotto."
 
 #. type: textblock
-#: lib/Locale/Po4a/AsciiDoc.pm:48
+#: lib/Locale/Po4a/AsciiDoc.pm:50
 msgid ""
 "If a plus sign (B<+>) is prepended to the style name, then the attribute "
 "list is translated as a whole.  There is no need to define translatable "
@@ -5983,7 +5995,7 @@ msgstr ""
 "attributi traducibili."
 
 #. type: textblock
-#: lib/Locale/Po4a/AsciiDoc.pm:49
+#: lib/Locale/Po4a/AsciiDoc.pm:51
 msgid ""
 "If a minus sign (B<->) is prepended to the style name, then this attribute "
 "is not translated."
@@ -5992,12 +6004,12 @@ msgstr ""
 "attributo non viene tradotto."
 
 #. type: =item
-#: lib/Locale/Po4a/AsciiDoc.pm:50
+#: lib/Locale/Po4a/AsciiDoc.pm:52
 msgid "B<//po4a: entry >I<name>"
 msgstr "B<//po4a: voce >I<nome>"
 
 #. type: textblock
-#: lib/Locale/Po4a/AsciiDoc.pm:51
+#: lib/Locale/Po4a/AsciiDoc.pm:53
 msgid ""
 "This declares an attribute entry as being translatable.  By default, they "
 "are not translated."
@@ -6006,12 +6018,12 @@ msgstr ""
 "predefinita, non vengono tradotte."
 
 #. type: =head1
-#: lib/Locale/Po4a/AsciiDoc.pm:52 lib/Locale/Po4a/BibTeX.pm:9
+#: lib/Locale/Po4a/AsciiDoc.pm:54 lib/Locale/Po4a/BibTeX.pm:9
 #: lib/Locale/Po4a/Dia.pm:10 lib/Locale/Po4a/Docbook.pm:6
 #: lib/Locale/Po4a/Guide.pm:7 lib/Locale/Po4a/Halibut.pm:7
 #: lib/Locale/Po4a/KernelHelp.pm:5 lib/Locale/Po4a/Man.pm:96
 #: lib/Locale/Po4a/Pod.pm:9 lib/Locale/Po4a/RubyDoc.pm:6
-#: lib/Locale/Po4a/Sgml.pm:34 lib/Locale/Po4a/TeX.pm:104
+#: lib/Locale/Po4a/Sgml.pm:34 lib/Locale/Po4a/TeX.pm:102
 #: lib/Locale/Po4a/Texinfo.pm:8 lib/Locale/Po4a/Text.pm:43
 #: lib/Locale/Po4a/Wml.pm:9 lib/Locale/Po4a/Xhtml.pm:12
 #: lib/Locale/Po4a/Xml.pm:181
@@ -6019,12 +6031,12 @@ msgid "STATUS OF THIS MODULE"
 msgstr "STATO DI QUESTO MODULO"
 
 #. type: textblock
-#: lib/Locale/Po4a/AsciiDoc.pm:53
+#: lib/Locale/Po4a/AsciiDoc.pm:55
 msgid "Tested successfully on simple AsciiDoc files."
 msgstr "Testato con successo su semplici file AsciiDoc."
 
 #. type: verbatim
-#: lib/Locale/Po4a/AsciiDoc.pm:55
+#: lib/Locale/Po4a/AsciiDoc.pm:57
 #, no-wrap
 msgid ""
 " Nicolas François <nicolas.francois@centraliens.net>\n"
@@ -6036,7 +6048,7 @@ msgstr ""
 "\n"
 
 #. type: verbatim
-#: lib/Locale/Po4a/AsciiDoc.pm:57
+#: lib/Locale/Po4a/AsciiDoc.pm:59
 #, no-wrap
 msgid ""
 " Copyright © 2005-2008 Nicolas FRANÇOIS <nicolas.francois@centraliens.net>.\n"
@@ -6080,8 +6092,8 @@ msgstr "È un modulo molto semplice e ancora giovane."
 
 #. type: verbatim
 #: lib/Locale/Po4a/BibTeX.pm:12 lib/Locale/Po4a/Halibut.pm:17
-#: lib/Locale/Po4a/LaTeX.pm:11 lib/Locale/Po4a/TeX.pm:121
-#: lib/Locale/Po4a/Texinfo.pm:13 lib/Locale/Po4a/Text.pm:46
+#: lib/Locale/Po4a/LaTeX.pm:11 lib/Locale/Po4a/TeX.pm:119
+#: lib/Locale/Po4a/Texinfo.pm:17 lib/Locale/Po4a/Text.pm:46
 #, no-wrap
 msgid ""
 " Nicolas François <nicolas.francois@centraliens.net>\n"
@@ -6659,7 +6671,7 @@ msgstr ""
 "Questo modulo contiene le definizioni di comuni comandi ed ambienti Halibut."
 
 #. type: textblock
-#: lib/Locale/Po4a/Halibut.pm:8 lib/Locale/Po4a/Texinfo.pm:9
+#: lib/Locale/Po4a/Halibut.pm:8
 msgid "This module is still beta.  Please send feedback and feature requests."
 msgstr ""
 "Questo modulo è ancora in fase beta. Si prega di fare rapporto sul "
@@ -6706,7 +6718,7 @@ msgstr ""
 
 #. type: textblock
 #: lib/Locale/Po4a/Halibut.pm:15 lib/Locale/Po4a/LaTeX.pm:9
-#: lib/Locale/Po4a/Texinfo.pm:11
+#: lib/Locale/Po4a/Texinfo.pm:15
 msgid ""
 "L<Locale::Po4a::TeX(3pm)|Locale::Po4a::TeX>, L<Locale::Po4a::"
 "TransTractor(3pm)|Locale::Po4a::TransTractor>, L<po4a(7)|po4a.7>"
@@ -6856,7 +6868,7 @@ msgstr ""
 "ottenere l'elenco delle opzioni riconosciute."
 
 #. type: textblock
-#: lib/Locale/Po4a/LaTeX.pm:13 lib/Locale/Po4a/TeX.pm:123
+#: lib/Locale/Po4a/LaTeX.pm:13 lib/Locale/Po4a/TeX.pm:121
 msgid ""
 "Copyright © 2004, 2005 Nicolas FRANÇOIS <nicolas.francois@centraliens.net>."
 msgstr ""
@@ -7086,12 +7098,12 @@ msgstr ""
 
 #. type: =item
 #: lib/Locale/Po4a/Man.pm:36 lib/Locale/Po4a/Sgml.pm:8
-#: lib/Locale/Po4a/TeX.pm:13
+#: lib/Locale/Po4a/TeX.pm:11
 msgid "B<debug>"
 msgstr "B<debug>"
 
 #. type: textblock
-#: lib/Locale/Po4a/Man.pm:37 lib/Locale/Po4a/TeX.pm:14
+#: lib/Locale/Po4a/Man.pm:37 lib/Locale/Po4a/TeX.pm:12
 msgid ""
 "Activate debugging for some internal mechanisms of this module.  Use the "
 "source to see which parts can be debugged."
@@ -7332,7 +7344,7 @@ msgstr ""
 "traduzione, ma ognuno verrà tradotto separatamente."
 
 #. type: =item
-#: lib/Locale/Po4a/Man.pm:66 lib/Locale/Po4a/TeX.pm:15
+#: lib/Locale/Po4a/Man.pm:66 lib/Locale/Po4a/TeX.pm:13
 msgid "B<no_wrap>"
 msgstr "B<no_wrap>"
 
@@ -8700,7 +8712,7 @@ msgid "Give more information about what's going on."
 msgstr "Mostra più informazioni su quello che sta accadendo."
 
 #. type: =item
-#: lib/Locale/Po4a/Sgml.pm:12 lib/Locale/Po4a/TeX.pm:60
+#: lib/Locale/Po4a/Sgml.pm:12 lib/Locale/Po4a/TeX.pm:58
 msgid "B<translate>"
 msgstr "B<translate>"
 
@@ -8743,7 +8755,7 @@ msgstr ""
 "Ciò influenzerà l'indentazione nel documento risultante."
 
 #. type: =item
-#: lib/Locale/Po4a/Sgml.pm:18 lib/Locale/Po4a/TeX.pm:23
+#: lib/Locale/Po4a/Sgml.pm:18 lib/Locale/Po4a/TeX.pm:21
 #: lib/Locale/Po4a/Text.pm:19
 msgid "B<verbatim>"
 msgstr "B<verbatim>"
@@ -9153,14 +9165,14 @@ msgstr ""
 "B<PERSONALIZZAZIONE INLINE>."
 
 #. type: textblock
-#: lib/Locale/Po4a/TeX.pm:16
+#: lib/Locale/Po4a/TeX.pm:14
 msgid "Comma-separated list of environments which should not be re-wrapped."
 msgstr ""
 "Elenco separato da virgole di ambienti che non dovrebbero essere mandati a "
 "capo."
 
 #. type: textblock
-#: lib/Locale/Po4a/TeX.pm:17
+#: lib/Locale/Po4a/TeX.pm:15
 msgid ""
 "Note that there is a difference between verbatim and no_wrap environments.  "
 "There is no command and comments analysis in verbatim blocks."
@@ -9169,8 +9181,8 @@ msgstr ""
 "analisi comandi e commenti nei blocchi verbatim."
 
 #. type: textblock
-#: lib/Locale/Po4a/TeX.pm:18 lib/Locale/Po4a/TeX.pm:25
-#: lib/Locale/Po4a/TeX.pm:54
+#: lib/Locale/Po4a/TeX.pm:16 lib/Locale/Po4a/TeX.pm:23
+#: lib/Locale/Po4a/TeX.pm:52
 msgid ""
 "If this environment was not already registered, po4a will consider that this "
 "environment does not take any parameters."
@@ -9179,12 +9191,12 @@ msgstr ""
 "ambiente non usi nessun parametro."
 
 #. type: =item
-#: lib/Locale/Po4a/TeX.pm:19
+#: lib/Locale/Po4a/TeX.pm:17
 msgid "B<exclude_include>"
 msgstr "B<exclude_include>"
 
 #. type: textblock
-#: lib/Locale/Po4a/TeX.pm:20
+#: lib/Locale/Po4a/TeX.pm:18
 msgid ""
 "Colon-separated list of files that should not be included by \\input and "
 "\\include."
@@ -9193,13 +9205,13 @@ msgstr ""
 "inclusi da \\input e \\include."
 
 #. type: textblock
-#: lib/Locale/Po4a/TeX.pm:24
+#: lib/Locale/Po4a/TeX.pm:22
 msgid "Comma-separated list of environments which should be taken as verbatim."
 msgstr ""
 "Elenco separato da virgole di ambienti che devono essere lasciati inalterati."
 
 #. type: textblock
-#: lib/Locale/Po4a/TeX.pm:26
+#: lib/Locale/Po4a/TeX.pm:24
 msgid ""
 "Use these options to override the default behavior of the defined commands."
 msgstr ""
@@ -9207,7 +9219,7 @@ msgstr ""
 "dei comandi definiti."
 
 #. type: textblock
-#: lib/Locale/Po4a/TeX.pm:28
+#: lib/Locale/Po4a/TeX.pm:26
 msgid ""
 "The TeX module can be customized with lines starting by B<% po4a:>.  These "
 "lines are interpreted as commands to the parser.  The following commands are "
@@ -9218,12 +9230,12 @@ msgstr ""
 "comandi seguenti sono riconosciuti:"
 
 #. type: =item
-#: lib/Locale/Po4a/TeX.pm:29
+#: lib/Locale/Po4a/TeX.pm:27
 msgid "B<% po4a: command> I<command1> B<alias> I<command2>"
 msgstr "B<% po4a: command> I<comando1> B<alias> I<comando2>"
 
 #. type: textblock
-#: lib/Locale/Po4a/TeX.pm:30
+#: lib/Locale/Po4a/TeX.pm:28
 msgid ""
 "Indicates that the arguments of the I<command1> command should be treated as "
 "the arguments of the I<command2> command."
@@ -9232,12 +9244,12 @@ msgstr ""
 "argomenti del comando I<comando2>."
 
 #. type: =item
-#: lib/Locale/Po4a/TeX.pm:31
+#: lib/Locale/Po4a/TeX.pm:29
 msgid "B<% po4a: command> I<command1> I<parameters>"
 msgstr "B<% po4a: command> I<comando1> I<parametri>"
 
 #. type: textblock
-#: lib/Locale/Po4a/TeX.pm:32
+#: lib/Locale/Po4a/TeX.pm:30
 msgid ""
 "This describes in detail the parameters of the I<command1> command.  This "
 "information will be used to check the number of arguments and their types."
@@ -9247,17 +9259,17 @@ msgstr ""
 "tipi."
 
 #. type: textblock
-#: lib/Locale/Po4a/TeX.pm:33
+#: lib/Locale/Po4a/TeX.pm:31
 msgid "You can precede the I<command1> command by"
 msgstr "Si può precedere il comando I<comando1> da"
 
 #. type: =item
-#: lib/Locale/Po4a/TeX.pm:34
+#: lib/Locale/Po4a/TeX.pm:32
 msgid "an asterisk (B<*>)"
 msgstr "un asterisco (B<*>)"
 
 #. type: textblock
-#: lib/Locale/Po4a/TeX.pm:35
+#: lib/Locale/Po4a/TeX.pm:33
 msgid ""
 "po4a will extract this command from paragraphs (if it is located at the "
 "beginning or the end of a paragraph).  The translators will then have to "
@@ -9268,12 +9280,12 @@ msgstr ""
 "marcati come traducibili."
 
 #. type: =item
-#: lib/Locale/Po4a/TeX.pm:36
+#: lib/Locale/Po4a/TeX.pm:34
 msgid "a plus (B<+>)"
 msgstr "un segno più (B<+>)"
 
 #. type: textblock
-#: lib/Locale/Po4a/TeX.pm:37
+#: lib/Locale/Po4a/TeX.pm:35
 msgid ""
 "As for an asterisk, the command will be extracted if it appear at an "
 "extremity of a block, but the parameters won't be translated separately.  "
@@ -9288,7 +9300,7 @@ msgstr ""
 "parametri, che possono avere significati (e traduzioni) multipli."
 
 #. type: textblock
-#: lib/Locale/Po4a/TeX.pm:38
+#: lib/Locale/Po4a/TeX.pm:36
 msgid ""
 "Note: In this case you don't have to specify which parameters are "
 "translatable, but po4a must know the type and number of parameters."
@@ -9297,12 +9309,12 @@ msgstr ""
 "traducibili, ma po4a deve sapere il tipo e numero di parametri."
 
 #. type: =item
-#: lib/Locale/Po4a/TeX.pm:39
+#: lib/Locale/Po4a/TeX.pm:37
 msgid "a minus (B<->)"
 msgstr "un segno meno (B<->)"
 
 #. type: textblock
-#: lib/Locale/Po4a/TeX.pm:40
+#: lib/Locale/Po4a/TeX.pm:38
 msgid ""
 "In this case, the command won't be extracted from any block.  But if it "
 "appears alone on a block, then only the parameters marked as translatable "
@@ -9319,7 +9331,7 @@ msgstr ""
 "traduttore con essi se un'intera stringa è racchiusa in un tale comando."
 
 #. type: verbatim
-#: lib/Locale/Po4a/TeX.pm:41
+#: lib/Locale/Po4a/TeX.pm:39
 #, no-wrap
 msgid ""
 "The I<parameters> argument is a set of [] (to indicate an optional\n"
@@ -9337,7 +9349,7 @@ msgstr ""
 "\n"
 
 #. type: verbatim
-#: lib/Locale/Po4a/TeX.pm:42
+#: lib/Locale/Po4a/TeX.pm:40
 #, no-wrap
 msgid ""
 "This indicates that the chapter command has two parameters: an optional\n"
@@ -9359,7 +9371,7 @@ msgstr ""
 "\n"
 
 #. type: textblock
-#: lib/Locale/Po4a/TeX.pm:43
+#: lib/Locale/Po4a/TeX.pm:41
 msgid ""
 "In this case, the information indicating which arguments must be translated "
 "is only used if a paragraph is only composed of this href command."
@@ -9369,12 +9381,12 @@ msgstr ""
 "href."
 
 #. type: =item
-#: lib/Locale/Po4a/TeX.pm:44
+#: lib/Locale/Po4a/TeX.pm:42
 msgid "B<% po4a: environment> I<env> I<parameters>"
 msgstr "B<% po4a: environment> I<env> I<parametri>"
 
 #. type: verbatim
-#: lib/Locale/Po4a/TeX.pm:45
+#: lib/Locale/Po4a/TeX.pm:43
 #, no-wrap
 msgid ""
 "This defines the parameters accepted by the I<env> environment and specifies the ones to be translated.\n"
@@ -9401,7 +9413,7 @@ msgstr ""
 "\n"
 
 #. type: textblock
-#: lib/Locale/Po4a/TeX.pm:46
+#: lib/Locale/Po4a/TeX.pm:44
 msgid ""
 "As for the commands, I<env> can be preceded by a plus (+) to indicate that "
 "the \\begin command must be translated with all its arguments."
@@ -9410,12 +9422,12 @@ msgstr ""
 "che il comando \\begin deve essere tradotto con tutti i suoi argomenti."
 
 #. type: =item
-#: lib/Locale/Po4a/TeX.pm:47
+#: lib/Locale/Po4a/TeX.pm:45
 msgid "B<% po4a: separator> I<env> B<\">I<regex>B<\">"
 msgstr "B<% po4a: separator> I<env> B<\">I<regex>B<\">"
 
 #. type: textblock
-#: lib/Locale/Po4a/TeX.pm:48
+#: lib/Locale/Po4a/TeX.pm:46
 msgid ""
 "Indicates that an environment should be split according to the given regular "
 "expression."
@@ -9424,7 +9436,7 @@ msgstr ""
 "regolare."
 
 #. type: textblock
-#: lib/Locale/Po4a/TeX.pm:49
+#: lib/Locale/Po4a/TeX.pm:47
 msgid ""
 "The regular expression is delimited by quotes.  It should not create any "
 "back-reference.  You should use (?:) if you need a group.  It may also need "
@@ -9435,7 +9447,7 @@ msgstr ""
 "Potrebbero servire anche qualche carattere di escape."
 
 #. type: textblock
-#: lib/Locale/Po4a/TeX.pm:50
+#: lib/Locale/Po4a/TeX.pm:48
 msgid ""
 "For example, the LaTeX module uses the \"(?:&|\\\\\\\\)\" regular expression "
 "to translate separately each cell of a table (lines are separated by '\\\\' "
@@ -9446,7 +9458,7 @@ msgstr ""
 "separate da '\\\\' e le celle da '&')."
 
 #. type: textblock
-#: lib/Locale/Po4a/TeX.pm:51
+#: lib/Locale/Po4a/TeX.pm:49
 msgid ""
 "The notion of environment is expanded to the type displayed in the PO file.  "
 "This can be used to split on \"\\\\\\\\\" in the first mandatory argument of "
@@ -9457,12 +9469,12 @@ msgstr ""
 "obbligatorio del comando title. In questo caso, l'ambiente è title{#1}."
 
 #. type: =item
-#: lib/Locale/Po4a/TeX.pm:52
+#: lib/Locale/Po4a/TeX.pm:50
 msgid "B<% po4a: verbatim environment> I<env>"
 msgstr "B<% po4a: verbatim environment> I<env>"
 
 #. type: textblock
-#: lib/Locale/Po4a/TeX.pm:53
+#: lib/Locale/Po4a/TeX.pm:51
 msgid ""
 "Indicate that I<env> is a verbatim environment.  Comments and commands will "
 "be ignored in this environment."
@@ -9471,29 +9483,29 @@ msgstr ""
 "ignorati in questo ambiente."
 
 #. type: =head1
-#: lib/Locale/Po4a/TeX.pm:55
+#: lib/Locale/Po4a/TeX.pm:53
 msgid "WRITING DERIVATE MODULES"
 msgstr "SCRIVERE MODULI DERIVATI"
 
 # NdT: FIXME
 #. type: =item
-#: lib/Locale/Po4a/TeX.pm:56
+#: lib/Locale/Po4a/TeX.pm:54
 msgid "B<pre_trans>"
 msgstr "B<pre_trans>"
 
 # NdT: FIXME
 #. type: =item
-#: lib/Locale/Po4a/TeX.pm:57
+#: lib/Locale/Po4a/TeX.pm:55
 msgid "B<post_trans>"
 msgstr "B<post_trans>"
 
 #. type: =item
-#: lib/Locale/Po4a/TeX.pm:58
+#: lib/Locale/Po4a/TeX.pm:56
 msgid "B<add_comment>"
 msgstr "B<add_comment>"
 
 #. type: textblock
-#: lib/Locale/Po4a/TeX.pm:59
+#: lib/Locale/Po4a/TeX.pm:57
 msgid ""
 "Add a string as a comment to be added around the next translated element.  "
 "This is mostly useful to the texinfo module, as comments are automatically "
@@ -9504,7 +9516,7 @@ msgstr ""
 "questo modo i commenti possono essere gestiti automaticamente in TeX."
 
 #. type: textblock
-#: lib/Locale/Po4a/TeX.pm:61
+#: lib/Locale/Po4a/TeX.pm:59
 msgid ""
 "Wrapper around Transtractor's translate, with pre- and post-processing "
 "filters."
@@ -9513,7 +9525,7 @@ msgstr ""
 "elaborazione."
 
 #. type: textblock
-#: lib/Locale/Po4a/TeX.pm:62
+#: lib/Locale/Po4a/TeX.pm:60
 msgid ""
 "Comments of a paragraph are inserted as a PO comment for the first "
 "translated string of this paragraph."
@@ -9522,22 +9534,22 @@ msgstr ""
 "stringa tradotta di questo paragrafo."
 
 #. type: =item
-#: lib/Locale/Po4a/TeX.pm:63
+#: lib/Locale/Po4a/TeX.pm:61
 msgid "B<get_leading_command>($buffer)"
 msgstr "B<get_leading_command>($buffer)"
 
 #. type: textblock
-#: lib/Locale/Po4a/TeX.pm:64
+#: lib/Locale/Po4a/TeX.pm:62
 msgid "This function returns:"
 msgstr "Questa funzione restituisce:"
 
 #. type: =item
-#: lib/Locale/Po4a/TeX.pm:65 lib/Locale/Po4a/TeX.pm:93
+#: lib/Locale/Po4a/TeX.pm:63 lib/Locale/Po4a/TeX.pm:91
 msgid "A command name"
 msgstr "Un nome comando"
 
 #. type: textblock
-#: lib/Locale/Po4a/TeX.pm:66
+#: lib/Locale/Po4a/TeX.pm:64
 msgid ""
 "If no command is found at the beginning of the given buffer, this string "
 "will be empty.  Only commands that can be separated are considered.  The "
@@ -9548,12 +9560,12 @@ msgstr ""
 "separati.  L'hash %separated_command contiene l'elenco di questi comandi."
 
 #. type: =item
-#: lib/Locale/Po4a/TeX.pm:67 lib/Locale/Po4a/TeX.pm:94
+#: lib/Locale/Po4a/TeX.pm:65 lib/Locale/Po4a/TeX.pm:92
 msgid "A variant"
 msgstr "Una variante"
 
 #. type: textblock
-#: lib/Locale/Po4a/TeX.pm:68
+#: lib/Locale/Po4a/TeX.pm:66
 msgid ""
 "This indicates if a variant is used.  For example, an asterisk (*) can be "
 "added at the end of sections command to specify that they should not be "
@@ -9566,12 +9578,12 @@ msgstr ""
 "ci sono varianti, il campo è una stringa vuota."
 
 #. type: =item
-#: lib/Locale/Po4a/TeX.pm:69
+#: lib/Locale/Po4a/TeX.pm:67
 msgid "An array of tuples (type of argument, argument)"
 msgstr "Un'array di tuple (tipo di argomento, argomento)"
 
 #. type: textblock
-#: lib/Locale/Po4a/TeX.pm:70
+#: lib/Locale/Po4a/TeX.pm:68
 msgid ""
 "The type of argument can be either '{' (for mandatory arguments) or '[' (for "
 "optional arguments)."
@@ -9580,12 +9592,12 @@ msgstr ""
 "argomenti facoltativi)."
 
 #. type: =item
-#: lib/Locale/Po4a/TeX.pm:71
+#: lib/Locale/Po4a/TeX.pm:69
 msgid "The remaining buffer"
 msgstr "Il buffer rimanente"
 
 #. type: textblock
-#: lib/Locale/Po4a/TeX.pm:72
+#: lib/Locale/Po4a/TeX.pm:70
 msgid ""
 "The rest of the buffer after the removal of this leading command and its "
 "arguments.  If no command is found, the original buffer is not touched and "
@@ -9596,23 +9608,23 @@ msgstr ""
 "viene toccato e restituito in questo campo."
 
 #. type: =item
-#: lib/Locale/Po4a/TeX.pm:73
+#: lib/Locale/Po4a/TeX.pm:71
 msgid "B<get_trailing_command>($buffer)"
 msgstr "B<get_trailing_command>($buffer)"
 
 #. type: textblock
-#: lib/Locale/Po4a/TeX.pm:74
+#: lib/Locale/Po4a/TeX.pm:72
 msgid ""
 "The same as B<get_leading_command>, but for commands at the end of a buffer."
 msgstr "Come B<get_leading_command>, ma per comandi alla fine di un buffer."
 
 #. type: =item
-#: lib/Locale/Po4a/TeX.pm:75
+#: lib/Locale/Po4a/TeX.pm:73
 msgid "B<translate_buffer>"
 msgstr "B<translate_buffer>"
 
 #. type: textblock
-#: lib/Locale/Po4a/TeX.pm:76
+#: lib/Locale/Po4a/TeX.pm:74
 msgid ""
 "Recursively translate a buffer by separating leading and trailing commands "
 "(those which should be translated separately) from the buffer."
@@ -9621,7 +9633,7 @@ msgstr ""
 "(quelli che dovrebbero essere tradotti separatamente) dal buffer."
 
 #. type: textblock
-#: lib/Locale/Po4a/TeX.pm:77
+#: lib/Locale/Po4a/TeX.pm:75
 msgid ""
 "If a function is defined in %translate_buffer_env for the current "
 "environment, this function will be used to translate the buffer instead of "
@@ -9632,22 +9644,22 @@ msgstr ""
 "translate_buffer()."
 
 #. type: =item
-#: lib/Locale/Po4a/TeX.pm:78
+#: lib/Locale/Po4a/TeX.pm:76
 msgid "B<read>"
 msgstr "B<read>"
 
 #. type: textblock
-#: lib/Locale/Po4a/TeX.pm:79
+#: lib/Locale/Po4a/TeX.pm:77
 msgid "Overloads Transtractor's read()."
 msgstr "Fa l'overload della funzione read() di Transtractor."
 
 #. type: =item
-#: lib/Locale/Po4a/TeX.pm:80
+#: lib/Locale/Po4a/TeX.pm:78
 msgid "B<read_file>"
 msgstr "B<read_file>"
 
 #. type: textblock
-#: lib/Locale/Po4a/TeX.pm:81
+#: lib/Locale/Po4a/TeX.pm:79
 msgid ""
 "Recursively read a file, appending included files which are not listed in "
 "the @exclude_include array.  Included files are searched using the "
@@ -9658,7 +9670,7 @@ msgstr ""
 "il comando B<kpsewhich> dalla libreria Kpathsea."
 
 #. type: textblock
-#: lib/Locale/Po4a/TeX.pm:82
+#: lib/Locale/Po4a/TeX.pm:80
 msgid ""
 "Except from the file inclusion part, it is a cut and paste from "
 "Transtractor's read."
@@ -9667,12 +9679,12 @@ msgstr ""
 "della funzione read di Transtractor."
 
 #. type: =item
-#: lib/Locale/Po4a/TeX.pm:83
+#: lib/Locale/Po4a/TeX.pm:81
 msgid "B<parse_definition_file>"
 msgstr "B<parse_definition_file>"
 
 #. type: textblock
-#: lib/Locale/Po4a/TeX.pm:84
+#: lib/Locale/Po4a/TeX.pm:82
 msgid ""
 "Subroutine for parsing a file with po4a directives (definitions for new "
 "commands)."
@@ -9681,44 +9693,44 @@ msgstr ""
 "nuovi comandi)."
 
 #. type: =item
-#: lib/Locale/Po4a/TeX.pm:85
+#: lib/Locale/Po4a/TeX.pm:83
 msgid "B<parse_definition_line>"
 msgstr "B<parse_definition_line>"
 
 #. type: textblock
-#: lib/Locale/Po4a/TeX.pm:86
+#: lib/Locale/Po4a/TeX.pm:84
 msgid "Parse a definition line of the form \"% po4a: \"."
 msgstr "Elabora una riga di definizione nella forma \"% po4a: \"."
 
 #. type: textblock
-#: lib/Locale/Po4a/TeX.pm:87
+#: lib/Locale/Po4a/TeX.pm:85
 msgid "See the B<INLINE CUSTOMIZATION> section for more details."
 msgstr ""
 "Consultare la sezione B<PERSONALIZZAZIONE INLINE> per ulteriori dettagli."
 
 #. type: =item
-#: lib/Locale/Po4a/TeX.pm:88
+#: lib/Locale/Po4a/TeX.pm:86
 msgid "B<is_closed>"
 msgstr "B<is_closed>"
 
 #. type: =item
-#: lib/Locale/Po4a/TeX.pm:89
+#: lib/Locale/Po4a/TeX.pm:87
 msgid "B<parse>"
 msgstr "B<parse>"
 
 #. type: =item
-#: lib/Locale/Po4a/TeX.pm:90
+#: lib/Locale/Po4a/TeX.pm:88
 msgid "B<docheader>"
 msgstr "B<docheader>"
 
 #. type: =head1
-#: lib/Locale/Po4a/TeX.pm:91 lib/Locale/Po4a/TransTractor.pm:97
+#: lib/Locale/Po4a/TeX.pm:89 lib/Locale/Po4a/TransTractor.pm:97
 #: lib/Locale/Po4a/Xml.pm:134
 msgid "INTERNAL FUNCTIONS used to write derivative parsers"
 msgstr "FUNZIONI INTERNE usate per scrivere parser derivati"
 
 #. type: textblock
-#: lib/Locale/Po4a/TeX.pm:92
+#: lib/Locale/Po4a/TeX.pm:90
 msgid ""
 "Command and environment functions take the following arguments (in addition "
 "to the $self object):"
@@ -9727,17 +9739,17 @@ msgstr ""
 "$self):"
 
 #. type: =item
-#: lib/Locale/Po4a/TeX.pm:95
+#: lib/Locale/Po4a/TeX.pm:93
 msgid "An array of (type, argument) tuples"
 msgstr "Un array di tuple (tipo, argomento)"
 
 #. type: =item
-#: lib/Locale/Po4a/TeX.pm:96
+#: lib/Locale/Po4a/TeX.pm:94
 msgid "The current environment"
 msgstr "L'ambiente corrente"
 
 #. type: textblock
-#: lib/Locale/Po4a/TeX.pm:97
+#: lib/Locale/Po4a/TeX.pm:95
 msgid ""
 "The first 3 arguments are extracted by get_leading_command or "
 "get_trailing_command."
@@ -9746,7 +9758,7 @@ msgstr ""
 "get_trailing_command."
 
 #. type: textblock
-#: lib/Locale/Po4a/TeX.pm:98
+#: lib/Locale/Po4a/TeX.pm:96
 msgid ""
 "Command and environment functions return the translation of the command with "
 "its arguments and a new environment."
@@ -9755,7 +9767,7 @@ msgstr ""
 "suoi argomenti e un nuovo ambiente."
 
 #. type: textblock
-#: lib/Locale/Po4a/TeX.pm:99
+#: lib/Locale/Po4a/TeX.pm:97
 msgid ""
 "Environment functions are called when a \\begin command is found. They are "
 "called with the \\begin command and its arguments."
@@ -9764,7 +9776,7 @@ msgstr ""
 "\\begin . Vengono chiamate con il comando \\begin ed i suoi argomenti."
 
 #. type: textblock
-#: lib/Locale/Po4a/TeX.pm:100
+#: lib/Locale/Po4a/TeX.pm:98
 msgid ""
 "The TeX module only proposes one command function and one environment "
 "function: generic_command and generic_environment."
@@ -9773,7 +9785,7 @@ msgstr ""
 "generic_command e generic_environment."
 
 #. type: verbatim
-#: lib/Locale/Po4a/TeX.pm:101
+#: lib/Locale/Po4a/TeX.pm:99
 #, no-wrap
 msgid ""
 "generic_command uses the information specified by\n"
@@ -9787,7 +9799,7 @@ msgstr ""
 "\n"
 
 #. type: verbatim
-#: lib/Locale/Po4a/TeX.pm:102
+#: lib/Locale/Po4a/TeX.pm:100
 #, no-wrap
 msgid ""
 "generic_environment uses the information specified by\n"
@@ -9801,7 +9813,7 @@ msgstr ""
 "\n"
 
 #. type: textblock
-#: lib/Locale/Po4a/TeX.pm:103
+#: lib/Locale/Po4a/TeX.pm:101
 msgid ""
 "Both functions will only translate the parameters that were specified as "
 "translatable (with a '_').  generic_environment will append the name of the "
@@ -9815,27 +9827,27 @@ msgstr ""
 "del comando seguito da un identificatore del parametro (come {#7} o [#2])."
 
 #. type: textblock
-#: lib/Locale/Po4a/TeX.pm:105
+#: lib/Locale/Po4a/TeX.pm:103
 msgid "This module needs more tests."
 msgstr "Questo modulo necessita di più controlli."
 
 #. type: textblock
-#: lib/Locale/Po4a/TeX.pm:106
+#: lib/Locale/Po4a/TeX.pm:104
 msgid "It was tested on a book and with the Python documentation."
 msgstr "È stato testato su un libro e con la documentazione Python."
 
 #. type: =head1
-#: lib/Locale/Po4a/TeX.pm:107 lib/Locale/Po4a/Xml.pm:183
+#: lib/Locale/Po4a/TeX.pm:105 lib/Locale/Po4a/Xml.pm:183
 msgid "TODO LIST"
 msgstr "ELENCO DEI DAFARE"
 
 #. type: =item
-#: lib/Locale/Po4a/TeX.pm:108
+#: lib/Locale/Po4a/TeX.pm:106
 msgid "Automatic detection of new commands"
 msgstr "Rilevamento automatico di nuovi comandi"
 
 #. type: textblock
-#: lib/Locale/Po4a/TeX.pm:109
+#: lib/Locale/Po4a/TeX.pm:107
 msgid ""
 "The TeX module could parse the newcommand arguments and try to guess the "
 "number of arguments, their type and whether or not they should be translated."
@@ -9845,12 +9857,12 @@ msgstr ""
 "tradotti o meno."
 
 #. type: =item
-#: lib/Locale/Po4a/TeX.pm:110
+#: lib/Locale/Po4a/TeX.pm:108
 msgid "Translation of the environment separator"
 msgstr "Traduzione del separatore d'ambiente"
 
 #. type: textblock
-#: lib/Locale/Po4a/TeX.pm:111
+#: lib/Locale/Po4a/TeX.pm:109
 msgid ""
 "When \\item is used as an environment separator, the item argument is "
 "attached to the following string."
@@ -9859,12 +9871,12 @@ msgstr ""
 "allegato alla stringa seguente."
 
 #. type: =item
-#: lib/Locale/Po4a/TeX.pm:112
+#: lib/Locale/Po4a/TeX.pm:110
 msgid "Some commands should be added to the environment stack"
 msgstr "Alcuni comandi dovrebbero essere aggiunti alla pila dell'ambiente"
 
 #. type: textblock
-#: lib/Locale/Po4a/TeX.pm:113
+#: lib/Locale/Po4a/TeX.pm:111
 msgid ""
 "These commands should be specified by couples.  This can be used to specify "
 "commands beginning or ending a verbatim environment."
@@ -9874,27 +9886,27 @@ msgstr ""
 "letterale."
 
 #. type: =item
-#: lib/Locale/Po4a/TeX.pm:114
+#: lib/Locale/Po4a/TeX.pm:112
 msgid "Others"
 msgstr "Altri"
 
 #. type: textblock
-#: lib/Locale/Po4a/TeX.pm:115
+#: lib/Locale/Po4a/TeX.pm:113
 msgid "Various other points are tagged TODO in the source."
 msgstr "Vari altri punti sono marcato come TODO (DAFARE) nel sorgente."
 
 #. type: =head1
-#: lib/Locale/Po4a/TeX.pm:116
+#: lib/Locale/Po4a/TeX.pm:114
 msgid "KNOWN BUGS"
 msgstr "BUG CONOSCIUTI"
 
 #. type: textblock
-#: lib/Locale/Po4a/TeX.pm:117
+#: lib/Locale/Po4a/TeX.pm:115
 msgid "Various points are tagged FIXME in the source."
 msgstr "Vari punti sono marcati come FIXME (AGGIUSTAMI) nel sorgente."
 
 #. type: textblock
-#: lib/Locale/Po4a/TeX.pm:119
+#: lib/Locale/Po4a/TeX.pm:117
 msgid ""
 "L<Locale::Po4a::LaTeX(3pm)|Locale::Po4a::LaTeX>, L<Locale::Po4a::"
 "TransTractor(3pm)|Locale::Po4a::TransTractor>, L<po4a(7)|po4a.7>"
@@ -9938,7 +9950,25 @@ msgstr ""
 "per guidare i traduttori."
 
 #. type: textblock
-#: lib/Locale/Po4a/Texinfo.pm:15
+#: lib/Locale/Po4a/Texinfo.pm:9
+msgid ""
+"This module is still beta and not ready for production use.  Please send "
+"patches to contribute, not bug reports as we don't know how to deal with "
+"them."
+msgstr ""
+
+#. type: =item
+#: lib/Locale/Po4a/Texinfo.pm:12
+msgid "no-warn"
+msgstr ""
+
+#. type: textblock
+#: lib/Locale/Po4a/Texinfo.pm:13
+msgid "Do not warn about the current state of this module."
+msgstr ""
+
+#. type: textblock
+#: lib/Locale/Po4a/Texinfo.pm:19
 msgid ""
 "Copyright © 2004-2007 Nicolas FRANÇOIS <nicolas.francois@centraliens.net>."
 msgstr ""
