@@ -10,7 +10,7 @@ Homepage: <https://github.com/mquinson/po4a>
 
 Package: po4a
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, libsyntax-keyword-try-perl
+Depends: ${shlibs:Depends}, ${misc:Depends}, gettext, libsgmls-perl, libyaml-tiny-perl, opensp, libsyntax-keyword-try-perl, libxs-parse-keyword-perl
 Description: Tools to ease the translation of documentation
  po4a eases the translation of documentation and other textual document.
  Even more interestingly, it makes it easy to maintain these
