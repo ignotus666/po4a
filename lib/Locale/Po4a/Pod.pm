@@ -27,6 +27,8 @@ use vars qw(@ISA);
 
 use Carp qw(croak confess);
 
+use Locale::Po4a::Common;
+
 sub initialize { }
 
 sub translate {
@@ -84,16 +86,24 @@ sub command {
         $charset =~ s/^\s*(.*?)\s*$/$1/s;
 
         my $master_charset = $self->get_in_charset;
-        croak wrap_mod(
-            "po4a::pod",
-            dgettext(
-                "po4a",
-                "The file %s declares %s as encoding, but you provided %s as master charset. Please change either setting."
-            ),
-            $self->{DOCPOD}{refname},
-            $charset,
-            $master_charset,
-        ) if ( length( $master_charset // '' ) > 0 && uc($charset) ne uc($master_charset) );
+
+        # in POD at least, there is no difference between utf8 and UTF-8. The major POD parsers handle "both encodings" in the exact same way.
+        # Despite https://perldoc.perl.org/Encode#UTF-8-vs.-utf8-vs.-UTF8
+        $master_charset = 'UTF-8' if $master_charset // '' =~ /utf-?8/i;
+        $charset        = 'UTF-8' if $charset              =~ /utf-?8/i;
+
+        if ( length( $master_charset // '' ) > 0 && uc($charset) ne uc($master_charset) ) {
+            croak wrap_mod(
+                "po4a::pod",
+                dgettext(
+                    "po4a",
+                    "The file %s declares %s as encoding, but you provided %s as master charset. Please change either setting."
+                ),
+                $self->{DOCPOD}{refname},
+                $charset,
+                $master_charset,
+            );
+        }
 
         # The =encoding line will be added by docheader
     } else {
