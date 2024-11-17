@@ -8,24 +8,19 @@
 # Modules and declarations
 ############################################################################
 
-use Locale::Po4a::TransTractor qw(process new);
-use Locale::Po4a::Common;
-
 package Locale::Po4a::Ini;
 
 use 5.16.0;
 use strict;
 use warnings;
 
-require Exporter;
+use parent qw(Locale::Po4a::TransTractor);
 
-use vars qw(@ISA @EXPORT $AUTOLOAD);
-@ISA    = qw(Locale::Po4a::TransTractor);
-@EXPORT = qw();
+use Locale::Po4a::Common;
+
+use vars qw($AUTOLOAD);
 
 my $debug = 0;
-
-sub initialize { }
 
 sub parse {
     my $self = shift;

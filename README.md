@@ -13,6 +13,7 @@ module for the following formats:
   - asciidoc: AsciiDoc format.
   - dia: uncompressed Dia diagrams.
   - docbook: DocBook XML.
+  - gemtext: Gemini's native plain text format.
   - guide: Gentoo Linux's XML documentation format.
   - halibut: Simon Tatham's documentation production system.
   - ini: INI format.
@@ -20,6 +21,7 @@ module for the following formats:
   - latex: LaTeX format.
   - bibtex: bibtex format.
   - man: Good old manual page format (either roff or mdoc).
+  - org: document format for the Org mode.
   - markdown: MD documents (using the txt module).
   - pod: Perl Online Documentation format.
   - rubydoc: RubyDoc (RD) documents.
@@ -27,6 +29,7 @@ module for the following formats:
   - texinfo: The info page format (experimental).
   - tex: generic TeX documents (see also latex).
   - text: simple text document.
+  - vimhelp: Vim help documents.
   - wml: WML documents.
   - xhtml: XHTML documents.
   - xml: generic XML documents (see also docbook).

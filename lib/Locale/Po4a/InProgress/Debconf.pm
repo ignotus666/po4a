@@ -63,15 +63,9 @@ use 5.16.0;
 use strict;
 use warnings;
 
-require Exporter;
-use vars qw(@ISA @EXPORT);
-@ISA    = qw(Locale::Po4a::TransTractor);
-@EXPORT = qw();
+use parent qw(Locale::Po4a::TransTractor);
 
-use Locale::Po4a::TransTractor;
-use Locale::Po4a::Common;
-
-sub initialize { }
+use Locale::Po4a::Common qw(wrap_mod dgettext);
 
 sub parse {
     my $self = shift;

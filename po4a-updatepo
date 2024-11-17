@@ -133,6 +133,12 @@ The wrapping of the reference comments is controlled by the B<--porefs> option.
 Note that this option has no impact on how the msgid and msgstr are wrapped, i.e.
 on how newlines are added to the content of these strings.
 
+=item B<-w>, B<--width>
+
+Column at which we should wrap the resulting file if the format supports it (default: 76).
+If the provided value is 0 or negative, then the resulting file will not be wraped at all.
+This is useful with some formats that could break when rewraped.
+
 =item B<--msgid-bugs-address> I<email@address>
 
 Set the report address for msgid bugs. By default, the created POT files
@@ -185,7 +191,7 @@ use Locale::Po4a::Po;
 
 use Locale::Po4a::Chooser;
 use Locale::Po4a::TransTractor;
-use Locale::Po4a::Common;
+use Locale::Po4a::Common qw(wrap_msg gettext);
 
 use Pod::Usage qw(pod2usage);
 
@@ -212,6 +218,7 @@ my $previous;
 my $noprevious;
 my $msgmerge_opt = "";
 my $porefs       = "full";
+my $width        = 76;
 my $wrappo;
 GetOptions(
     'help|h'      => \$help,
@@ -230,6 +237,7 @@ GetOptions(
 
     'no-previous'          => \$noprevious,
     'wrap-po=s'            => \$wrappo,
+    'width=s'              => \$width,
     'previous'             => \$previous,
     'msgmerge-opt=s'       => \$msgmerge_opt,
     'copyright-holder=s'   => \$copyright_holder,
@@ -259,7 +267,8 @@ my %options = (
     "package-name"       => $package_name,
     "package-version"    => $package_version,
     "porefs"             => $porefs,
-    "wrap-po"            => $wrappo
+    "wrap-po"            => $wrappo,
+    "wrapcol"            => $width,
 );
 
 foreach (@options) {

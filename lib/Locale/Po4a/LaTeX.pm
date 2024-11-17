@@ -68,13 +68,10 @@ use 5.16.0;
 use strict;
 use warnings;
 
-require Exporter;
-use vars qw($VERSION @ISA @EXPORT);
+use parent qw(Locale::Po4a::TeX);
+use vars qw($VERSION);
 $VERSION = $Locale::Po4a::TeX::VERSION;
-@ISA     = qw(Locale::Po4a::TeX);
-@EXPORT  = qw();
 
-use Locale::Po4a::TeX;
 use subs qw(&generic_command
   &parse_definition_file
   &register_generic_command

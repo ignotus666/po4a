@@ -9,6 +9,45 @@ __   __/ _ \|___  | || |
   \_/  \___(_)_/     |_|          (unreleased)
 
 
+General:
+ * Fix a failure with Perl 5.40.
+ * Add --target-lang option to po4a [jnavila]
+
+TeX:
+ * Fix read error of input/include files in TeX files (thanks Alex Karabanov)
+ * latex: Fix a failure when \input is surrounded with {curly braces}.
+   Thanks to Mayeul Cantan for the report and fix, and to Alex Karabanov
+   for the test case.
+
+Texinfo:
+ * Allow spaces before line-breaking commands and fix some warnings
+   (GitHub's #497) [Alexander Golubev].
+
+Org:
+ * New module (GitHub's #485) [gemmaro].
+
+VimHelp:
+ * New module (GitHub's #525) [gemmaro].
+
+Internal refactorings:
+ * Remove DynaLoader (GitHub's #532) [gemmaro].
+ * Improve the code when reading a non-UTF po file (GitHub's #538)
+   [Golubev Alexander].
+
+Translations:
+ * New translation: Romanian, thanks to Remus-Gabriel Chelu.
+ * Updated: Chinese (Traditional), thanks Ricky From Hong Kong.
+ * Updated: Dutch, thanks Frans Spiesschaert and Henk De Groot.
+ * Updated: Georgian, thanks Temuri Doghonadze.
+ * Updated: German, thanks Helge Kreutzmann.
+ * Updated: Italian, thanks Marco Ciampa.
+ * Updated: Japanese, thanks gemmaro.
+ * Updated: Russian, thanks Alex Karabanov.
+ * Updated: Serbian, thanks Ivan Pesic.
+ * Updated: Spanish, thanks gallegonovato and Francisco Serrador.
+ * Updated: Portuguese (Brazil), thanks Rafael Fontenelle.
+ * Updated: Portuguese, thanks ssantos.
+
 =======================================================================
         ___  _____ _____
 __   __/ _ \|___  |___ /

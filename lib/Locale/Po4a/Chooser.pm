@@ -16,7 +16,7 @@ package Locale::Po4a::Chooser;
 use 5.16.0;
 use strict;
 use warnings;
-use Locale::Po4a::Common;
+use Locale::Po4a::Common qw(wrap_msg wrap_mod gettext);
 
 sub new {
     my ($module)  = shift;
@@ -40,6 +40,8 @@ sub new {
         $modname = 'AsciiDoc';
     } elsif ( $module eq 'Rd' || $module eq 'rubydoc' ) {
         $modname = 'RubyDoc';
+    } elsif ( $module eq 'vimhelp' ) {
+        $modname = 'VimHelp';
     } else {
         $modname = ucfirst($module);
     }
@@ -68,6 +70,8 @@ sub list {
           . "\n  - "
           . gettext("docbook: DocBook XML.")
           . "\n  - "
+          . gettext("gemtext: Gemini's native plain text format.")
+          . "\n  - "
           . gettext("guide: Gentoo Linux's XML documentation format.")
           . "\n  - "
           . gettext("ini: INI format.")
@@ -77,6 +81,8 @@ sub list {
           . gettext("latex: LaTeX format.")
           . "\n  - "
           . gettext("man: Good old manual page format.")
+          . "\n  - "
+          . gettext("org: document format for Org mode.")
           . "\n  - "
           . gettext("pod: Perl Online Documentation format.")
           . "\n  - "
@@ -89,6 +95,8 @@ sub list {
           . gettext("tex: generic TeX documents (see also latex).")
           . "\n  - "
           . gettext("text: simple text document.")
+          . "\n  - "
+          . gettext("vimhelp: Vim help documents.")
           . "\n  - "
           . gettext("wml: WML documents.")
           . "\n  - "
@@ -143,22 +151,24 @@ L<po4a(7)|po4a.7>
 
 L<Locale::Po4a::Dia(3pm)>,
 L<Locale::Po4a::Docbook(3pm)>,
+L<Locale::Po4a::Gemtext(3pm)>,
 L<Locale::Po4a::Guide(3pm)>,
 L<Locale::Po4a::Halibut(3pm)>,
 L<Locale::Po4a::Ini(3pm)>,
 L<Locale::Po4a::KernelHelp(3pm)>,
 L<Locale::Po4a::LaTeX(3pm)>,
 L<Locale::Po4a::Man(3pm)>,
+L<Locale::Po4a::Org(3pm)>,
 L<Locale::Po4a::Pod(3pm)>,
 L<Locale::Po4a::RubyDoc(3pm)>,
 L<Locale::Po4a::Sgml(3pm)>,
 L<Locale::Po4a::TeX(3pm)>,
 L<Locale::Po4a::Texinfo(3pm)>,
 L<Locale::Po4a::Text(3pm)>,
-L<Locale::Po4a::Wml(3pm)>.
+L<Locale::Po4a::VimHelp(3pm)>,
+L<Locale::Po4a::Wml(3pm)>,
 L<Locale::Po4a::Xhtml(3pm)>,
 L<Locale::Po4a::Xml(3pm)>,
-L<Locale::Po4a::Wml(3pm)>,
 L<Locale::Po4a::Yaml(3pm)>.
 
 =back

@@ -21,26 +21,23 @@
 #
 ########################################################################
 
-require Exporter;
-
 package Locale::Po4a::Gemtext;
 
 use 5.006;
 use strict;
 use warnings;
 
-use vars qw(@ISA @EXPORT @AUTOLOAD);
-@ISA    = qw(Locale::Po4a::TransTractor);
-@EXPORT = qw();
+use parent qw(Locale::Po4a::TransTractor);
 
-use Locale::Po4a::TransTractor qw(process new);
+use vars qw(@AUTOLOAD);
+
 use Locale::Po4a::Common;
 
 =encoding UTF-8
 
 =head1 NAME
 
-Locale::Po4a::Gemtext - convert Gettext documents from/to PO files.
+Locale::Po4a::Gemtext - convert Gemtext documents from/to PO files.
 
 =head1 DESCRIPTION
 
@@ -52,8 +49,6 @@ Locale::Po4a::Gemtext is a module to help the translation of Gemtext documents i
 other [human] languages.
 
 =cut
-
-sub initialize { }
 
 sub parse {
     my $self = shift;

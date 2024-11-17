@@ -75,7 +75,7 @@ containing other tags, some of them being of category B<translate>.
 =item B<indent>
 
 Space-separated list of tags which increase the indentation level. This will
-affect the identation in the resulting document.
+affect the indentation in the resulting document.
 
 =item B<verbatim>
 
@@ -92,7 +92,7 @@ Tags not needing to be closed.
 Tags ignored and considered as plain char data by po4a. That is to say that
 they can be part of an msgid. For example, E<lt>bE<gt> is a good candidate
 for this category since putting it in the B<translate> section would create a
-msgids with only its content, (and it's ususally not a whole sentence), which
+msgids with only its content, (and it's usually not a whole sentence), which
 is bad.
 
 =item B<attributes>
@@ -110,7 +110,7 @@ an C<< <aaa> >> or a C<< <bbb> >> tag.
 =item B<qualify>
 
 A space-separated list of attributes for which the translation must be
-qualified by the attribute name, i.e. the text extracted for the transalation
+qualified by the attribute name, i.e. the text extracted for the translation
 will include both the attributes name and it's value. e.g. for a tag like
 C<< <aaa lang_en="foo"> >> translators will be presented with the string
 C<lang_en="foo">. Note that this also automatically adds the given attribute
@@ -211,13 +211,9 @@ use 5.16.0;
 use strict;
 use warnings;
 
-require Exporter;
-use vars qw(@ISA @EXPORT);
-@ISA    = qw(Locale::Po4a::TransTractor);
-@EXPORT = qw();
+use parent qw(Locale::Po4a::TransTractor);
 
-use Locale::Po4a::TransTractor;
-use Locale::Po4a::Common;
+use Locale::Po4a::Common qw(wrap_mod wrap_ref_mod dgettext);
 
 eval qq{use SGMLS};
 if ($@) {
@@ -483,7 +479,7 @@ sub parse_file {
     }
 
     # Add the definition of new tags that will be used for the
-    # conditionnal inclusions
+    # conditional inclusions
     if ( $origfile =~ /^.*<!DOCTYPE[^[>]*\[/is ) {
         $origfile =~
           s/^(.*<!DOCTYPE[^[>]*\[)/$1 <!ELEMENT PO4ABEG - o empty> <!ATTLIST PO4ABEG name CDATA #REQUIRED> <!ELEMENT PO4AEND - o empty>/is;
@@ -1089,7 +1085,7 @@ sub parse_file {
             if ( $verbatim{ $event->data->name() } ) {
                 $verb++;
 
-                # Keep a reference to the line that openned the verbatim
+                # Keep a reference to the line that opened the verbatim
                 # section. This is needed to check if its data starts on
                 # the same line.
                 $verb_last_ref = $ref;

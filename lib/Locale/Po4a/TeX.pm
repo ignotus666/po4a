@@ -62,23 +62,9 @@ use 5.16.0;
 use strict;
 use warnings;
 
-require Exporter;
-use vars qw(@ISA @EXPORT);
-@ISA    = qw(Locale::Po4a::TransTractor);
-@EXPORT = qw(%commands %environments
-  $RE_ESCAPE $ESCAPE $RE_VERBATIM
-  $no_wrap_environments
-  $verbatim_environments
-  %separated_command
-  %separated_environment
-  %translate_buffer_env
-  &add_comment
-  &generic_command
-  &register_generic_command
-  &register_generic_environment);
+use parent qw(Locale::Po4a::TransTractor);
 
-use Locale::Po4a::TransTractor;
-use Locale::Po4a::Common;
+use Locale::Po4a::Common qw(wrap_mod wrap_ref_mod dgettext);
 use File::Basename qw(dirname);
 use Carp           qw(croak);
 
@@ -971,7 +957,7 @@ sub read_file {
         while (
             $textline =~ /^((?:[^%]|(?<!\\)(?:\\\\)*\\%)*)
                               \\(include|input)
-                              \{([^\{]*)\}(.*)$/x
+                              \{([^\{\}]*)\}(.*)$/x
           )
         {
             my ( $begin, $newfilename, $end ) = ( $1, $3, $4 );
@@ -995,7 +981,8 @@ sub read_file {
 
                 # search the file
                 open( KPSEA, "kpsewhich " . $newfilename . " |" );
-                my $newfilepath = <KPSEA>;
+                my $newfilepath = <KPSEA> // '';
+                chomp($newfilepath);
 
                 if ( $newfilename ne "" and ( $newfilepath // '' ) eq '' ) {
                     die wrap_mod(
