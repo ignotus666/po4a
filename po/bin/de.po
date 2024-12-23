@@ -7,10 +7,10 @@
 # Helge Kreutzmann <debian@helgefjell.de>, 2012, 2017-2020, 2022-2024.
 msgid ""
 msgstr ""
-"Project-Id-Version: po4a 0.71\n"
+"Project-Id-Version: po4a 0.74\n"
 "Report-Msgid-Bugs-To: po4a@packages.debian.org\n"
-"POT-Creation-Date: 2024-11-12 16:04+0100\n"
-"PO-Revision-Date: 2024-09-13 19:15+0200\n"
+"POT-Creation-Date: 2024-11-21 16:17+0100\n"
+"PO-Revision-Date: 2024-11-21 20:26+0100\n"
 "Last-Translator: Helge Kreutzmann <debian@helgefjell.de>\n"
 "Language-Team: German <debian-l10n-german@lists.debian.org>\n"
 "Language: de\n"
@@ -41,7 +41,7 @@ msgid "Unable to parse macro definition: %s"
 msgstr "Makrodefinition kann nicht interpretiert werden: %s"
 
 #: ../../lib/Locale/Po4a/AsciiDoc.pm:351 ../../lib/Locale/Po4a/TeX.pm:1047
-#: ../../po4a:1086 ../../po4a:1179 ../../po4a:1448 ../../po4a-translate:298
+#: ../../po4a:1086 ../../po4a:1179 ../../po4a:1448 ../../po4a-translate:284
 #, perl-format
 msgid "Cannot open %s: %s"
 msgstr "%s kann nicht geöffnet werden: %s"
@@ -170,10 +170,8 @@ msgid "text: simple text document."
 msgstr "text: Einfaches Textdokument."
 
 #: ../../lib/Locale/Po4a/Chooser.pm:99
-#, fuzzy
-#| msgid "wml: WML documents."
 msgid "vimhelp: Vim help documents."
-msgstr "wml: WML-Dokumente."
+msgstr "vimhelp: VIM-Hilfe-Dokumente."
 
 #: ../../lib/Locale/Po4a/Chooser.pm:101
 msgid "wml: WML documents."
@@ -527,28 +525,22 @@ msgid "Cannot read from %s: %s"
 msgstr "%s kann nicht gelesen werden: %s"
 
 #: ../../lib/Locale/Po4a/Po.pm:379
-#, fuzzy, perl-format
-#| msgid ""
-#| "The file %s starts with a BOM char indicating that its encoding is UTF-8, "
-#| "but you specified %s instead."
+#, perl-format
 msgid ""
 "The file %s starts with a BOM char indicating that its encoding is UTF-8, "
 "but '%s' was detected."
 msgstr ""
 "Die Datei %s beginnt mit einem BOM-Zeichen, das anzeigt, dass die Datei "
-"UTF-8 ist, aber Sie haben stattdessen %s angegeben."
+"UTF-8 ist, aber %s wurde erkannt."
 
 #: ../../lib/Locale/Po4a/Po.pm:381
-#, fuzzy, perl-format
-#| msgid ""
-#| "The file %s starts with a BOM char indicating that its encoding is UTF-8, "
-#| "but you specified %s instead."
+#, perl-format
 msgid ""
 "The file %s starts with a BOM char indicating that its encoding is UTF-8, "
 "but you specified '%s' instead."
 msgstr ""
 "Die Datei %s beginnt mit einem BOM-Zeichen, das anzeigt, dass die Datei "
-"UTF-8 ist, aber Sie haben stattdessen %s angegeben."
+"UTF-8 ist, aber Sie haben stattdessen »%s« angegeben."
 
 #: ../../lib/Locale/Po4a/Po.pm:404 ../../lib/Locale/Po4a/TeX.pm:1013
 #: ../../lib/Locale/Po4a/TransTractor.pm:495 ../../lib/Locale/Po4a/Xhtml.pm:144
@@ -959,7 +951,7 @@ msgstr ""
 msgid ""
 "Malformed encoding while reading from file %s with charset %s: %s\n"
 "If %s is not the expected charset, you need to configure the right one with "
-"with --master-charset or other similar flags."
+"--master-charset or other similar flags."
 msgstr ""
 "Fehlerhafter Kodierungsblock beim Lesen von Datei %s mit Zeichensatz %s: %s\n"
 "Falls %s nicht der erwartete Zeichensatz ist, müssen Sie den richtigen "
@@ -979,7 +971,7 @@ msgstr ""
 msgid ""
 "Malformed encoding while writing char '%s' to file %s with charset %s: %s\n"
 "If %s is not the expected charset, you need to configure the right one with "
-"with --localized-charset or other similar flags."
+"--localized-charset or other similar flags."
 msgstr ""
 "Fehlerhafter Kodierungsblock beim Schreiben von Zeichen »%s« in Datei %s mit "
 "Zeichensatz %s: %s\n"
@@ -991,7 +983,7 @@ msgstr ""
 msgid ""
 "Malformed encoding while writing to file %s with charset %s: %s\n"
 "If %s is not the expected charset, you need to configure the right one with "
-"with --localized-charset or other similar flags."
+"--localized-charset or other similar flags."
 msgstr ""
 "Fehlerhafter Kodierungsblock beim Schreiben in Datei %s mit Zeichensatz %s: "
 "%s\n"
@@ -1093,7 +1085,7 @@ msgstr "Addendum »%s« wurde am Ende der Datei angefügt."
 #: ../../lib/Locale/Po4a/VimHelp.pm:347
 #, perl-format
 msgid "line#%s has columns %s (> %s)"
-msgstr ""
+msgstr "Zeile#%s hat Spalten %s (> %s)"
 
 #: ../../lib/Locale/Po4a/Wml.pm:89
 #, perl-format
@@ -1250,8 +1242,8 @@ msgstr "Pflichtargument »%s« fehlt."
 
 #. Check file existence
 #: ../../msguntypot:164 ../../msguntypot:166 ../../po4a:1048
-#: ../../po4a-gettextize:565 ../../po4a-normalize:206 ../../po4a-translate:230
-#: ../../po4a-translate:231 ../../po4a-updatepo:294
+#: ../../po4a-gettextize:565 ../../po4a-normalize:206 ../../po4a-translate:216
+#: ../../po4a-translate:217 ../../po4a-updatepo:294
 #, perl-format
 msgid "File %s does not exist."
 msgstr "Datei %s existiert nicht."
@@ -1335,6 +1327,7 @@ msgstr "Fehler: %s"
 #, perl-format
 msgid "Specified destination language '%s' not found in the list of languages."
 msgstr ""
+"Angegebene Zielsprache »%s« wurde nicht in der Liste der Sprachen gefunden."
 
 #: ../../po4a:1100 ../../po4a:1188 ../../po4a:1458
 #, perl-format
@@ -1698,7 +1691,7 @@ msgstr "Addendum %s gilt NICHT für %s (Übersetzung wird verworfen)."
 msgid "%s is 100%% translated (%s strings)."
 msgstr "%s ist zu 100%% übersetzt (%s Zeichenketten)."
 
-#: ../../po4a:2122 ../../po4a-translate:275
+#: ../../po4a:2122 ../../po4a-translate:261
 #, perl-format
 msgid "%s is %s%% translated (%s of %s strings)."
 msgstr "%s ist zu %s%% übersetzt (%s von %s Zeichenketten)."
@@ -1839,7 +1832,7 @@ msgid "Write the normalized PO file to %s."
 msgstr "Normierte PO-Datei wird nach %s geschrieben."
 
 # FIXME po4a(1) → po4a
-#: ../../po4a-translate:254
+#: ../../po4a-translate:240
 msgid ""
 "po4a-translate is deprecated. The unified po4a(1) program is more convenient "
 "and less error prone. Once configured, `po4a --no-update` can be used as a "
@@ -1849,13 +1842,13 @@ msgstr ""
 "weniger fehleranfällig. Sobald konfiguriert kann »po4a --no-update« als "
 "direkter Ersatz für »po4a-translate« verwendet werden."
 
-#: ../../po4a-translate:280
+#: ../../po4a-translate:266
 #, perl-format
 msgid "Discard the translation of %s (only %s%% translated; need %s%%)."
 msgstr ""
 "Die Übersetzung von %s wird verworfen (nur %s%% übersetzt; brauche %s%%)."
 
-#: ../../po4a-translate:318
+#: ../../po4a-translate:304
 #, perl-format
 msgid "Discard the translation of %s (addendum %s does not apply)."
 msgstr "Die Übersetzung von %s wird verworfen (Addendum %s nicht zutreffend)."
