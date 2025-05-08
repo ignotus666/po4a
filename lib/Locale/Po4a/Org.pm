@@ -83,7 +83,7 @@ sub parse {
         ( $line, $ref ) = $self->shiftline();
     }
 
-    $self->handle_paragraph_if_any($ref);
+    $self->handle_paragraph_if_any();
 
     return;
 }
@@ -188,6 +188,8 @@ sub parse_heading {
     my $content = $3;
     my $tags    = $4;
 
+    $self->handle_paragraph_if_any();
+
     if ( $self->{options}{skip_heading} ) {
         $self->pushline("$line\n");
     } else {
@@ -219,7 +221,7 @@ sub parse_block_end {
 
     $line =~ m{ \A [ ]* [#] [+] end_(?:[[:lower:]]+) \Z }ixsm or return;
 
-    $self->handle_paragraph_if_any($ref);
+    $self->handle_paragraph_if_any();
     pop @{ $self->{blocks} };
     $self->pushline("$line\n");
 
@@ -304,7 +306,7 @@ sub parse_blank_line {
     my ( $self, $line, $ref ) = @_;
 
     $line =~ / \A \s* \Z /xsm or return;
-    $self->handle_paragraph_if_any($ref);
+    $self->handle_paragraph_if_any();
     $self->pushline("\n");
 
     return 1;
@@ -345,13 +347,14 @@ sub parse_paragraph {
         $line =~ m{ \A ([ ]*) (.+) }xsm or return;
         $self->{paragraph_margin} = $1;
         $self->{paragraph}        = $2;
+        $self->{paragraph_ref}    = $ref;
     }
 
     return 1;
 }
 
 sub handle_paragraph_if_any {
-    my ( $self, $ref ) = @_;
+    my ( $self ) = @_;
 
     $self->{paragraph} or return;
     my $type = 'paragraph';
@@ -369,7 +372,9 @@ sub handle_paragraph_if_any {
         }
     }
 
-    my $content = $self->translate( $self->{paragraph}, $ref, $type, wrap => $wrap );
+    my $content = $self->translate( $self->{paragraph},
+                                    $self->{paragraph_ref},
+                                    $type, wrap => $wrap );
     $content =~ s/ ^ /$self->{paragraph_margin}/mgxs;
     $self->pushline("$content\n");
 

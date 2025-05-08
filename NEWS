@@ -17,9 +17,15 @@ Scripts:
  * po4a-updatepo: remove --width as no localized file will ever be
    generated (GitHub's #549) [Mt].
 
+Asciidoc:
+ * Manage custom verbatim styles (Github's #548) [Jean-Noël Avila]
+
 Markdown:
  * Avoid searching for bullets in code blocks (GitHub's #550)
    [Alexander Golubev].
+ * Ensure the parser avoids infinite loops, even when a document ends with an
+   incorrect number of backticks, leaving a code block incomplete (GitHub's
+   #558 and #560) [reported by Jibec, and fixed by gemmaro].
 
 Org:
  * New module (GitHub's #485) [gemmaro].
@@ -36,6 +42,8 @@ Texinfo:
 
 VimHelp:
  * New module (GitHub's #525) [gemmaro].
+ * Allow for an optional Vim language specification in code blocks
+   (GitHub's #552) [Gemmaro].
 
 Internal refactorings:
  * Remove DynaLoader (GitHub's #532) [gemmaro].
@@ -44,7 +52,9 @@ Internal refactorings:
 
 Translations:
  * New translation: Romanian, thanks to Remus-Gabriel Chelu.
+ * New translation: Tamil, thanks தமிழ்நேரம்.
  * Updated: Chinese (Traditional), thanks Ricky From Hong Kong.
+ * Updated: Croatian, thanks Milo Ivir.
  * Updated: Dutch, thanks Frans Spiesschaert and Henk De Groot.
  * Updated: Georgian, thanks Temuri Doghonadze.
  * Updated: German, thanks Helge Kreutzmann.

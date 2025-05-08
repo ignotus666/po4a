@@ -1,13 +1,13 @@
 # Copyright (C) 2004-2012 Software in the Public Interest
 # KURASAWA Nozomu <nabetaro@debian.or.jp>, 2010.
 # Takuma Yamada <tyamada@takumayamada.com>, 2016.
-# gemmaro <gemmaro.dev@gmail.com>, 2022, 2023, 2024.
+# gemmaro <gemmaro.dev@gmail.com>, 2022, 2023, 2024, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: po4a\n"
 "Report-Msgid-Bugs-To: devel@lists.po4a.org\n"
-"POT-Creation-Date: 2024-11-12 16:02+0100\n"
-"PO-Revision-Date: 2024-11-18 14:00+0000\n"
+"POT-Creation-Date: 2025-03-07 18:40+0100\n"
+"PO-Revision-Date: 2025-04-20 14:13+0000\n"
 "Last-Translator: gemmaro <gemmaro.dev@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/po4a/po4a-doc/"
 "ja/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.9-dev\n"
+"X-Generator: Weblate 5.11.1-dev\n"
 
 # TRANSLATORS: put here the language code of your language
 #. type: Attribute 'xml:lang' of: <refentry>
@@ -179,7 +179,7 @@ msgstr ""
 
 #. type: =head1
 #: share/doc/po4a-display-man.xml:21 share/doc/po4a-display-pod.xml:20 po4a:191
-#: po4a-gettextize:76 po4a-normalize:36 po4a-translate:50 po4a-updatepo:55
+#: po4a-gettextize:76 po4a-normalize:36 po4a-translate:47 po4a-updatepo:53
 #: msguntypot:29 doc/po4a.7.pod:194 lib/Locale/Po4a/Chooser.pm:7
 #: lib/Locale/Po4a/Dia.pm:12 lib/Locale/Po4a/Docbook.pm:15
 #: lib/Locale/Po4a/Gemtext.pm:8 lib/Locale/Po4a/Guide.pm:10
@@ -675,12 +675,12 @@ msgstr ""
 "保存されていなければなりません。"
 
 #. type: =item
-#: po4a:31 po4a-normalize:12 po4a-translate:30 po4a-updatepo:45
+#: po4a:31 po4a-normalize:12 po4a-translate:30
 msgid "B<-w>, B<--width>"
 msgstr "B<-w>, B<--width>"
 
 #. type: textblock
-#: po4a:32 po4a-normalize:13 po4a-translate:31 po4a-updatepo:46
+#: po4a:32 po4a-normalize:13 po4a-translate:31
 msgid ""
 "Column at which we should wrap the resulting file if the format supports it "
 "(default: 76).  If the provided value is 0 or negative, then the resulting "
@@ -1076,7 +1076,7 @@ msgid "B<--porefs> I<type>"
 msgstr "B<--porefs> I<type>"
 
 #. type: textblock
-#: po4a:87 po4a-translate:43 po4a-updatepo:39 lib/Locale/Po4a/Po.pm:15
+#: po4a:87 po4a-updatepo:39 lib/Locale/Po4a/Po.pm:15
 msgid ""
 "Specify the reference format. Argument I<type> can be one of B<never> to not "
 "produce any reference, B<file> to only specify the file without the line "
@@ -1147,12 +1147,12 @@ msgstr ""
 "必要があることに注意してください。"
 
 #. type: =item
-#: po4a:94 po4a-gettextize:38 po4a-updatepo:47 lib/Locale/Po4a/Po.pm:20
+#: po4a:94 po4a-gettextize:38 po4a-updatepo:45 lib/Locale/Po4a/Po.pm:20
 msgid "B<--msgid-bugs-address> I<email@address>"
 msgstr "B<--msgid-bugs-address> I<Eメール@アドレス>"
 
 #. type: textblock
-#: po4a:95 po4a-gettextize:39 po4a-updatepo:48 lib/Locale/Po4a/Po.pm:21
+#: po4a:95 po4a-gettextize:39 po4a-updatepo:46 lib/Locale/Po4a/Po.pm:21
 msgid ""
 "Set the report address for msgid bugs. By default, the created POT files "
 "have no Report-Msgid-Bugs-To fields."
@@ -1161,12 +1161,12 @@ msgstr ""
 "POT ファイルに Report-Msgid-Bugs-To フィールドはありません。"
 
 #. type: =item
-#: po4a:96 po4a-gettextize:40 po4a-updatepo:49 lib/Locale/Po4a/Po.pm:22
+#: po4a:96 po4a-gettextize:40 po4a-updatepo:47 lib/Locale/Po4a/Po.pm:22
 msgid "B<--copyright-holder> I<string>"
 msgstr "B<--copyright-holder> I<文字列>"
 
 #. type: textblock
-#: po4a:97 po4a-gettextize:41 po4a-updatepo:50 lib/Locale/Po4a/Po.pm:23
+#: po4a:97 po4a-gettextize:41 po4a-updatepo:48 lib/Locale/Po4a/Po.pm:23
 msgid ""
 "Set the copyright holder in the POT header. The default value is \"Free "
 "Software Foundation, Inc.\""
@@ -1175,23 +1175,23 @@ msgstr ""
 "Software Foundation, Inc.\" です。"
 
 #. type: =item
-#: po4a:98 po4a-gettextize:42 po4a-updatepo:51 lib/Locale/Po4a/Po.pm:24
+#: po4a:98 po4a-gettextize:42 po4a-updatepo:49 lib/Locale/Po4a/Po.pm:24
 msgid "B<--package-name> I<string>"
 msgstr "B<--package-name> I<string>"
 
 #. type: textblock
-#: po4a:99 po4a-gettextize:43 po4a-updatepo:52 lib/Locale/Po4a/Po.pm:25
+#: po4a:99 po4a-gettextize:43 po4a-updatepo:50 lib/Locale/Po4a/Po.pm:25
 msgid "Set the package name for the POT header. The default is \"PACKAGE\"."
 msgstr ""
 "POT ヘッダのパッケージ名をセットします。デフォルト値は \"PACKAGE\" です。"
 
 #. type: =item
-#: po4a:100 po4a-gettextize:44 po4a-updatepo:53 lib/Locale/Po4a/Po.pm:26
+#: po4a:100 po4a-gettextize:44 po4a-updatepo:51 lib/Locale/Po4a/Po.pm:26
 msgid "B<--package-version> I<string>"
 msgstr "B<--package-version> I<string>"
 
 #. type: textblock
-#: po4a:101 po4a-gettextize:45 po4a-updatepo:54 lib/Locale/Po4a/Po.pm:27
+#: po4a:101 po4a-gettextize:45 po4a-updatepo:52 lib/Locale/Po4a/Po.pm:27
 msgid "Set the package version for the POT header. The default is \"VERSION\"."
 msgstr ""
 "POT ヘッダのパッケージバージョンをセットします。デフォルト値は \"VERSION\" で"
@@ -2062,9 +2062,9 @@ msgid "L<po4a-gettextize(1)>, L<po4a(7)>."
 msgstr "L<po4a-gettextize(1)>、L<po4a(7)>。"
 
 #. type: =head1
-#: po4a:193 po4a-gettextize:78 po4a-normalize:38 po4a-translate:52
-#: po4a-updatepo:57 msguntypot:32 doc/po4a.7.pod:200
-#: lib/Locale/Po4a/AsciiDoc.pm:56 lib/Locale/Po4a/BibTeX.pm:11
+#: po4a:193 po4a-gettextize:78 po4a-normalize:38 po4a-translate:49
+#: po4a-updatepo:55 msguntypot:32 doc/po4a.7.pod:200
+#: lib/Locale/Po4a/AsciiDoc.pm:57 lib/Locale/Po4a/BibTeX.pm:11
 #: lib/Locale/Po4a/Chooser.pm:12 lib/Locale/Po4a/Common.pm:28
 #: lib/Locale/Po4a/Dia.pm:14 lib/Locale/Po4a/Docbook.pm:17
 #: lib/Locale/Po4a/Gemtext.pm:10 lib/Locale/Po4a/Guide.pm:12
@@ -2082,8 +2082,8 @@ msgid "AUTHORS"
 msgstr "著者"
 
 #. type: verbatim
-#: po4a:194 po4a-gettextize:79 po4a-normalize:39 po4a-translate:53
-#: po4a-updatepo:58 lib/Locale/Po4a/Man.pm:110
+#: po4a:194 po4a-gettextize:79 po4a-normalize:39 po4a-translate:50
+#: po4a-updatepo:56 lib/Locale/Po4a/Man.pm:110
 #, no-wrap
 msgid ""
 " Denis Barbier <barbier@linuxfr.org>\n"
@@ -2097,8 +2097,8 @@ msgstr ""
 "\n"
 
 #. type: =head1
-#: po4a:195 po4a-gettextize:80 po4a-normalize:40 po4a-translate:54
-#: po4a-updatepo:59 msguntypot:34 lib/Locale/Po4a/AsciiDoc.pm:58
+#: po4a:195 po4a-gettextize:80 po4a-normalize:40 po4a-translate:51
+#: po4a-updatepo:57 msguntypot:34 lib/Locale/Po4a/AsciiDoc.pm:59
 #: lib/Locale/Po4a/BibTeX.pm:13 lib/Locale/Po4a/Chooser.pm:14
 #: lib/Locale/Po4a/Common.pm:30 lib/Locale/Po4a/Dia.pm:16
 #: lib/Locale/Po4a/Docbook.pm:19 lib/Locale/Po4a/Gemtext.pm:12
@@ -2115,14 +2115,14 @@ msgid "COPYRIGHT AND LICENSE"
 msgstr "著作権とライセンス"
 
 #. type: textblock
-#: po4a:196 po4a-gettextize:81 po4a-normalize:41 po4a-translate:55
-#: po4a-updatepo:60
+#: po4a:196 po4a-gettextize:81 po4a-normalize:41 po4a-translate:52
+#: po4a-updatepo:58
 msgid "Copyright 2002-2023 by SPI, inc."
 msgstr "Copyright 2002-2023 by SPI, inc."
 
 #. type: textblock
-#: po4a:197 po4a-gettextize:82 po4a-normalize:42 po4a-translate:56
-#: po4a-updatepo:61 msguntypot:36 lib/Locale/Po4a/AsciiDoc.pm:60
+#: po4a:197 po4a-gettextize:82 po4a-normalize:42 po4a-translate:53
+#: po4a-updatepo:59 msguntypot:36 lib/Locale/Po4a/AsciiDoc.pm:61
 #: lib/Locale/Po4a/BibTeX.pm:15 lib/Locale/Po4a/Chooser.pm:16
 #: lib/Locale/Po4a/Common.pm:32 lib/Locale/Po4a/Dia.pm:18
 #: lib/Locale/Po4a/Docbook.pm:21 lib/Locale/Po4a/Gemtext.pm:14
@@ -2916,35 +2916,13 @@ msgstr ""
 "言い換えると、既定値では書き出されるために少なくとも 80% は翻訳されていなけれ"
 "ばならないということです。"
 
-#. type: =item
-#: po4a-translate:42 po4a-updatepo:38
-msgid "B<--porefs> I<type>[,B<wrap>|B<nowrap>]"
-msgstr "B<--porefs> I<種別>[,B<wrap>|B<nowrap>]"
-
-#. type: textblock
-#: po4a-translate:44 po4a-updatepo:40
-msgid ""
-"Argument can be followed by a comma and either B<wrap> or B<nowrap> "
-"keyword.  References are written by default on a single line.  The B<wrap> "
-"option wraps references on several lines, to mimic B<gettext> tools "
-"(B<xgettext> and B<msgmerge>).  This option will become the default in a "
-"future release, because it is more sensible.  The B<nowrap> option is "
-"available so that users who want to keep the old behavior can do so."
-msgstr ""
-"引数にはコンマを続けた後に B<wrap> または B<nowrap> キーワードのどちらかを付"
-"けられます。デフォルトでは、リファレンスは 1 行で書き出されます。B<wrap> オプ"
-"ションは、B<gettext> ツール (B<xgettext> や B<msgmerge>) のようにリファレンス"
-"を複数行に折り返します。こちらのオプションの方がより気が利いているため、将来"
-"のリリースでデフォルトとなります。元の挙動のままにしておきたいユーザは、"
-"B<nowrap> オプションを使用できます。"
-
 #. type: =head1
-#: po4a-translate:45
+#: po4a-translate:42
 msgid "Adding content (beside translations) to generated files"
 msgstr "生成されたファイルへの (翻訳以外の) 内容の追加"
 
 #. type: textblock
-#: po4a-translate:46
+#: po4a-translate:43
 msgid ""
 "To add some extra content to the generated document beside what you "
 "translated (like the name of the translator, or an \"About this "
@@ -2954,7 +2932,7 @@ msgstr ""
 "するには、B<--addendum> オプションを使用してください。"
 
 #. type: textblock
-#: po4a-translate:47
+#: po4a-translate:44
 msgid ""
 "The first line of the addendum must be a header indicating where to put it "
 "in the document (it can be before or after a given part of the document).  "
@@ -2966,7 +2944,7 @@ msgstr ""
 "りの部分は、さらに処理することなく、結果のファイルにそのまま追加されます。"
 
 #. type: textblock
-#: po4a-translate:48
+#: po4a-translate:45
 msgid ""
 "Note that if po4a-translate fails to add one of the given files, it discards "
 "the whole translation (because the missing file could be the one indicating "
@@ -2978,7 +2956,7 @@ msgstr ""
 "ず、翻訳のバグ報告をしたいユーザの妨げになるからです)。"
 
 #. type: textblock
-#: po4a-translate:49
+#: po4a-translate:46
 msgid ""
 "The header has a pretty rigid syntax. For more information on how to use "
 "this feature and how it works, please refer to the L<po4a(7)> man page."
@@ -2987,7 +2965,7 @@ msgstr ""
 "L<po4a(7)> man ページを参照してください。"
 
 #. type: textblock
-#: po4a-translate:51
+#: po4a-translate:48
 msgid ""
 "L<po4a-gettextize(1)>, L<po4a-normalize(1)>, L<po4a-updatepo(1)>, L<po4a(7)>"
 msgstr ""
@@ -3075,6 +3053,28 @@ msgstr ""
 "す。これにより古いバージョンの B<gettext> （バージョン0.16より前）をサポート"
 "しやすくなります。"
 
+#. type: =item
+#: po4a-updatepo:38
+msgid "B<--porefs> I<type>[,B<wrap>|B<nowrap>]"
+msgstr "B<--porefs> I<種別>[,B<wrap>|B<nowrap>]"
+
+#. type: textblock
+#: po4a-updatepo:40
+msgid ""
+"Argument can be followed by a comma and either B<wrap> or B<nowrap> "
+"keyword.  References are written by default on a single line.  The B<wrap> "
+"option wraps references on several lines, to mimic B<gettext> tools "
+"(B<xgettext> and B<msgmerge>).  This option will become the default in a "
+"future release, because it is more sensible.  The B<nowrap> option is "
+"available so that users who want to keep the old behavior can do so."
+msgstr ""
+"引数にはコンマを続けた後に B<wrap> または B<nowrap> キーワードのどちらかを付"
+"けられます。デフォルトでは、リファレンスは 1 行で書き出されます。B<wrap> オプ"
+"ションは、B<gettext> ツール (B<xgettext> や B<msgmerge>) のようにリファレンス"
+"を複数行に折り返します。こちらのオプションの方がより気が利いているため、将来"
+"のリリースでデフォルトとなります。元の挙動のままにしておきたいユーザは、"
+"B<nowrap> オプションを使用できます。"
+
 #. type: textblock
 #: po4a-updatepo:43
 msgid ""
@@ -3094,7 +3094,7 @@ msgstr ""
 "照コメントの折り返しは、B<--porefs>オプションで制御されます。"
 
 #. type: textblock
-#: po4a-updatepo:56
+#: po4a-updatepo:54
 msgid ""
 "L<po4a-gettextize(1)>, L<po4a-normalize(1)>, L<po4a-translate(1)>, L<po4a(7)>"
 msgstr ""
@@ -5373,18 +5373,25 @@ msgid ""
 "Po4a::Xml(3pm)>."
 msgstr ""
 "それぞれのフォーマットの構文解析器は次の通り。詳しくはそれぞれの解析器で受け"
-"付けるオプションを見てください： L<Locale::Po4a::AsciiDoc(3pm)> "
-"L<Locale::Po4a::Dia(3pm)>, L<Locale::Po4a::Gemtext(3pm)>, "
-"L<Locale::Po4a::Guide(3pm)>, L<Locale::Po4a::Ini(3pm)>, "
-"L<Locale::Po4a::KernelHelp(3pm)>, L<Locale::Po4a::Man(3pm)>, "
-"L<Locale::Po4a::RubyDoc(3pm)>, L<Locale::Po4a::Texinfo(3pm)>, "
-"L<Locale::Po4a::Text(3pm)>, L<Locale::Po4a::Xhtml(3pm)>, "
-"L<Locale::Po4a::Yaml(3pm)>, L<Locale::Po4a::BibTeX(3pm)>, "
-"L<Locale::Po4a::Docbook(3pm)>, L<Locale::Po4a::Halibut(3pm)>, "
-"L<Locale::Po4a::LaTeX(3pm)>, L<Locale::Po4a::Org(3pm)>, "
-"L<Locale::Po4a::Pod(3pm)>, L<Locale::Po4a::Sgml(3pm)>, "
-"L<Locale::Po4a::TeX(3pm)>, L<Locale::Po4a::VimHelp>, L<Locale::Po4a::Wml(3pm)"
-">, L<Locale::Po4a::Xml(3pm)>."
+"付けるオプションを見てください： L<Locale::Po4a::AsciiDoc(3pm)> L<Locale::"
+"Po4a::Dia(3pm)>, L<Locale::Po4a::Gemtext(3pm)>, L<Locale::Po4a::Guide(3pm)>, "
+"L<Locale::Po4a::Ini(3pm)>, L<Locale::Po4a::KernelHelp(3pm)>, L<Locale::Po4a::"
+"Man(3pm)>, L<Locale::Po4a::RubyDoc(3pm)>, L<Locale::Po4a::Texinfo(3pm)>, "
+"L<Locale::Po4a::Text(3pm)>, L<Locale::Po4a::Xhtml(3pm)>, L<Locale::Po4a::"
+"Yaml(3pm)>, L<Locale::Po4a::BibTeX(3pm)>, L<Locale::Po4a::Docbook(3pm)>, "
+"L<Locale::Po4a::Halibut(3pm)>, L<Locale::Po4a::LaTeX(3pm)>, L<Locale::Po4a::"
+"Org(3pm)>, L<Locale::Po4a::Pod(3pm)>, L<Locale::Po4a::Sgml(3pm)>, L<Locale::"
+"Po4a::TeX(3pm)>, L<Locale::Po4a::VimHelp>, L<Locale::Po4a::Wml(3pm)>, "
+"L<Locale::Po4a::Xml(3pm)>.付けるオプションを見てください： L<Locale::Po4a::"
+"AsciiDoc(3pm)> L<Locale::Po4a::Dia(3pm)>, L<Locale::Po4a::Gemtext(3pm)>, "
+"L<Locale::Po4a::Guide(3pm)>, L<Locale::Po4a::Ini(3pm)>, L<Locale::Po4a::"
+"KernelHelp(3pm)>, L<Locale::Po4a::Man(3pm)>, L<Locale::Po4a::RubyDoc(3pm)>, "
+"L<Locale::Po4a::Texinfo(3pm)>, L<Locale::Po4a::Text(3pm)>, L<Locale::Po4a::"
+"Xhtml(3pm)>, L<Locale::Po4a::Yaml(3pm)>, L<Locale::Po4a::BibTeX(3pm)>, "
+"L<Locale::Po4a::Docbook(3pm)>, L<Locale::Po4a::Halibut(3pm)>, L<Locale::"
+"Po4a::LaTeX(3pm)>, L<Locale::Po4a::Org(3pm)>, L<Locale::Po4a::Pod(3pm)>, "
+"L<Locale::Po4a::Sgml(3pm)>, L<Locale::Po4a::TeX(3pm)>, L<Locale::Po4a::"
+"VimHelp>, L<Locale::Po4a::Wml(3pm)>, L<Locale::Po4a::Xml(3pm)>."
 
 #. type: textblock
 #: doc/po4a.7.pod:199
@@ -5802,20 +5809,33 @@ msgstr ""
 "スタイル名の前にマイナス記号 (B<->) をつけると、この属性は翻訳対象外になりま"
 "す。"
 
-#. type: =item
+#. type: textblock
 #: lib/Locale/Po4a/AsciiDoc.pm:52
+msgid ""
+"If a percent signe (B<%>) is appended to the style name, then the style is "
+"processed as verbatim. The lines in paragraph or block of such style are "
+"preserved in the po files and the corresponding entries are marked as no-"
+"wrap."
+msgstr ""
+"パーセント記号 (B<%>) "
+"がスタイル名にあるときは、スタイルはそのまま処理されます。そうしたスタイルの"
+"段落やブロックの行はpoファイルで保持され、対応する項目にはno-"
+"wrapの印が付きます。"
+
+#. type: =item
+#: lib/Locale/Po4a/AsciiDoc.pm:53
 msgid "B<//po4a: entry >I<name>"
 msgstr "B<//po4a: entry >I<name>"
 
 #. type: textblock
-#: lib/Locale/Po4a/AsciiDoc.pm:53
+#: lib/Locale/Po4a/AsciiDoc.pm:54
 msgid ""
 "This declares an attribute entry as being translatable.  By default, they "
 "are not translated."
 msgstr "翻訳する属性エントリを定義します。デフォルトでは翻訳しません。"
 
 #. type: =head1
-#: lib/Locale/Po4a/AsciiDoc.pm:54 lib/Locale/Po4a/BibTeX.pm:9
+#: lib/Locale/Po4a/AsciiDoc.pm:55 lib/Locale/Po4a/BibTeX.pm:9
 #: lib/Locale/Po4a/Dia.pm:10 lib/Locale/Po4a/Docbook.pm:6
 #: lib/Locale/Po4a/Gemtext.pm:6 lib/Locale/Po4a/Guide.pm:7
 #: lib/Locale/Po4a/Halibut.pm:7 lib/Locale/Po4a/KernelHelp.pm:5
@@ -5829,12 +5849,12 @@ msgid "STATUS OF THIS MODULE"
 msgstr "このモジュールの状態"
 
 #. type: textblock
-#: lib/Locale/Po4a/AsciiDoc.pm:55
+#: lib/Locale/Po4a/AsciiDoc.pm:56
 msgid "Tested successfully on simple AsciiDoc files."
 msgstr "シンプルな AsciiDoc ファイルでのテストが成功しています。"
 
 #. type: verbatim
-#: lib/Locale/Po4a/AsciiDoc.pm:57
+#: lib/Locale/Po4a/AsciiDoc.pm:58
 #, no-wrap
 msgid ""
 " Nicolas François <nicolas.francois@centraliens.net>\n"
@@ -5846,7 +5866,7 @@ msgstr ""
 "\n"
 
 #. type: verbatim
-#: lib/Locale/Po4a/AsciiDoc.pm:59
+#: lib/Locale/Po4a/AsciiDoc.pm:60
 #, no-wrap
 msgid ""
 " Copyright © 2005-2008 Nicolas FRANÇOIS <nicolas.francois@centraliens.net>.\n"
@@ -7572,30 +7592,30 @@ msgstr "Locale::Po4a::Org - PO ファイルとOrg文書の変換。"
 #: lib/Locale/Po4a/Org.pm:4
 #, no-wrap
 msgid ""
-" [type:org] /path/to/master.org\t\t\t\t\\\n"
-"\t    $lang:/path/to/translation.$lang.org\t\\\n"
-"\t    opt:\"\t\t\t\t\t\\\n"
-"\t\t--option skip_keywords='\t\t\\\n"
-"\t\t    include\t\t\t\t\\\n"
-"\t\t    export_file_name\t\t\t\\\n"
-"\t\t    link'\t\t\t\t\\\n"
-"\t\t--option skip_properties='\t\t\\\n"
-"\t\t    copying\t\t\t\t\\\n"
-"\t\t    NOBLOCKING\t\t\t\t\\\n"
-"\t\t    ORDERED'\"\n"
+" [type:org] /path/to/master.org              \\\n"
+"        $lang:/path/to/translation.$lang.org \\\n"
+"        opt:\"                                \\\n"
+"        --option skip_keywords='             \\\n"
+"            include                          \\\n"
+"            export_file_name                 \\\n"
+"            link'                            \\\n"
+"        --option skip_properties='           \\\n"
+"            copying                          \\\n"
+"            NOBLOCKING                       \\\n"
+"            ORDERED'\"\n"
 "\n"
 msgstr ""
-" [type:org] /path/to/master.org\t\t\t\t\\\n"
-"\t    $lang:/path/to/translation.$lang.org\t\\\n"
-"\t    opt:\"\t\t\t\t\t\\\n"
-"\t\t--option skip_keywords='\t\t\\\n"
-"\t\t    include\t\t\t\t\\\n"
-"\t\t    export_file_name\t\t\t\\\n"
-"\t\t    link'\t\t\t\t\\\n"
-"\t\t--option skip_properties='\t\t\\\n"
-"\t\t    copying\t\t\t\t\\\n"
-"\t\t    NOBLOCKING\t\t\t\t\\\n"
-"\t\t    ORDERED'\"\n"
+" [type:org] マスター文書へのパス.org              \\\n"
+"        $lang:翻訳へのパス.$lang.org \\\n"
+"        opt:\"                                \\\n"
+"        --option skip_keywords='             \\\n"
+"            include                          \\\n"
+"            export_file_name                 \\\n"
+"            link'                            \\\n"
+"        --option skip_properties='           \\\n"
+"            copying                          \\\n"
+"            NOBLOCKING                       \\\n"
+"            ORDERED'\"\n"
 "\n"
 
 #. type: textblock
@@ -11125,11 +11145,13 @@ msgid ""
 "file.  See also L<Writing help files|https://vimhelp.org/helphelp.txt."
 "html#help-writing> for its syntax."
 msgstr ""
-"C<Locale::Po4a::VimHelp> "
-"はVimのヘルプファイルの翻訳を補助するモジュールです。構文については "
-"L<ヘルプファイルの書き方|https://vimhelp.org/helphelp.txt.html#help-writing> "
-"（ L<日本語訳|https://vim-jp.org/vimdoc-ja/helphelp.html#help-writing> "
-"）もご参照ください。"
+"C<Locale::Po4a::VimHelp> はVimのヘルプファイルの翻訳を補助するモジュールで"
+"す。構文については L<ヘルプファイルの書き方|https://vimhelp.org/helphelp.txt."
+"html#help-writing> （ L<日本語訳|https://vim-jp.org/vimdoc-ja/helphelp."
+"html#help-writing> ）もご参照ください。C<Locale::Po4a::VimHelp> はVimのヘルプ"
+"ファイルの翻訳を補助するモジュールです。構文については L<ヘルプファイルの書き"
+"方|https://vimhelp.org/helphelp.txt.html#help-writing> （ L<日本語訳|https://"
+"vim-jp.org/vimdoc-ja/helphelp.html#help-writing> ）もご参照ください。"
 
 #. type: =item
 #: lib/Locale/Po4a/VimHelp.pm:7
@@ -11173,8 +11195,9 @@ msgid ""
 "patch (with additional test cases)."
 msgstr ""
 "po4aでVimヘルプを構文解析することは困難です。以下はこのモジュールを開発すると"
-"きに支障となる点です。もっといい考えがあったら、ぜひパッチ（と追加のテストケ"
-"ース）をご提案ください。"
+"きに支障となる点です。もっといい考えがあったら、ぜひパッチ（と追加のテスト"
+"ケース）をご提案ください。きに支障となる点です。もっといい考えがあったら、ぜ"
+"ひパッチ（と追加のテストケース）をご提案ください。"
 
 #. type: =item
 #: lib/Locale/Po4a/VimHelp.pm:13
@@ -11198,6 +11221,7 @@ msgstr ""
 " 1. He's using his cloning technique.\n"
 "\n"
 
+# I fixed a few syntax errors manually in this po file (resulting from a harsh merge commit), but I don't read one word of Japanese. Please check fuzzy strings [Mt]
 #. type: textblock
 #: lib/Locale/Po4a/VimHelp.pm:16
 msgid ""
@@ -12814,6 +12838,34 @@ msgstr ""
 " Copyright © 2017 Brian Exelbierd.\n"
 " Copyright © 2022 Martin Quinson <mquinson#debian.org>.\n"
 "\n"
+
+#, no-wrap
+#~ msgid ""
+#~ " [type:org] /path/to/master.org\t\t\t\t\\\n"
+#~ "\t    $lang:/path/to/translation.$lang.org\t\\\n"
+#~ "\t    opt:\"\t\t\t\t\t\\\n"
+#~ "\t\t--option skip_keywords='\t\t\\\n"
+#~ "\t\t    include\t\t\t\t\\\n"
+#~ "\t\t    export_file_name\t\t\t\\\n"
+#~ "\t\t    link'\t\t\t\t\\\n"
+#~ "\t\t--option skip_properties='\t\t\\\n"
+#~ "\t\t    copying\t\t\t\t\\\n"
+#~ "\t\t    NOBLOCKING\t\t\t\t\\\n"
+#~ "\t\t    ORDERED'\"\n"
+#~ "\n"
+#~ msgstr ""
+#~ " [type:org] /path/to/master.org\t\t\t\t\\\n"
+#~ "\t    $lang:/path/to/translation.$lang.org\t\\\n"
+#~ "\t    opt:\"\t\t\t\t\t\\\n"
+#~ "\t\t--option skip_keywords='\t\t\\\n"
+#~ "\t\t    include\t\t\t\t\\\n"
+#~ "\t\t    export_file_name\t\t\t\\\n"
+#~ "\t\t    link'\t\t\t\t\\\n"
+#~ "\t\t--option skip_properties='\t\t\\\n"
+#~ "\t\t    copying\t\t\t\t\\\n"
+#~ "\t\t    NOBLOCKING\t\t\t\t\\\n"
+#~ "\t\t    ORDERED'\"\n"
+#~ "\n"
 
 #~ msgid ""
 #~ "Column at which we should wrap the resulting file if the format supports "
