@@ -5,19 +5,18 @@
 
 package Po4aBuilder;
 
-use 5.16.0;
-use strict;
+use v5.16.0;
 use warnings;
 
 use parent qw(Module::Build);
 
-use File::Basename;
+use File::Basename qw(fileparse);
 use File::Path qw(mkpath rmtree);
-use File::Spec;
+use File::Spec ();
 use File::Copy qw(copy);
-use File::stat;
+use File::stat qw(lstat stat);
 
-use IPC::Open3;
+use IPC::Open3 qw(open3);
 
 sub ACTION_build {
     my $self = shift;
@@ -46,7 +45,6 @@ sub perl_scripts {
 # Update po/bin/*.po files
 sub ACTION_binpo {
     my $self = shift;
-    my ($cmd, $sources);
 
     $self->depends_on('code');
     $self->make_files_writable("po/bin");
@@ -55,32 +53,32 @@ sub ACTION_binpo {
     unless ($self->up_to_date(\@all_files, "po/bin/po4a.pot")) {
         print "XX Update po/bin/po4a.pot\n";
         chdir "po/bin";
-        $sources = join ("", map {" ../../".$_ } @all_files);
-        $cmd = "xgettext ";
-        $cmd .= "--from-code=utf-8 ";
-        $cmd .= "-L Perl ";
-        $cmd .= "--add-comments ";
-        $cmd .= "--msgid-bugs-address po4a\@packages.debian.org ";
-        $cmd .= "--package-name po4a ";
-        $cmd .= "--package-version ".$self->dist_version()." ";
-        $cmd .= "$sources ";
-        $cmd .= "-o po4a.pot.new";
-        system($cmd) && die;
+        my @sources = map { "../../".$_ } @all_files;
+        my @cmd = ("xgettext");
+        push @cmd, "--from-code=utf-8";
+        push @cmd, "-L", "Perl";
+        push @cmd, "--add-comments";
+        push @cmd, "--msgid-bugs-address", "po4a\@packages.debian.org";
+        push @cmd, "--package-name", "po4a";
+        push @cmd, "--package-version", $self->dist_version();
+        push @cmd, @sources;
+        push @cmd, "-o", "po4a.pot.new";
+        system(@cmd) && die;
 	
         chdir "../..";
 	
         if ( -e "po/bin/po4a.pot") {
             my $diff = qx(diff -q -I'#:' -I'POT-Creation-Date:' -I'PO-Revision-Date:' po/bin/po4a.pot po/bin/po4a.pot.new);
             if ( $diff eq "" ) {
-                unlink "po/bin/po4a.pot.new" || die;
+                unlink "po/bin/po4a.pot.new" or die;
                 # touch it
                 my ($atime, $mtime) = (time,time);
                 utime $atime, $mtime, "po/bin/po4a.pot";
             } else {
-                rename "po/bin/po4a.pot.new", "po/bin/po4a.pot" || die;
+                rename "po/bin/po4a.pot.new", "po/bin/po4a.pot" or die;
             }
         } else {
-            rename "po/bin/po4a.pot.new", "po/bin/po4a.pot" || die;
+            rename "po/bin/po4a.pot.new", "po/bin/po4a.pot" or die;
         }
     } else {
         print "XX po/bin/po4a.pot uptodate.\n";
@@ -92,18 +90,18 @@ sub ACTION_binpo {
       if ($lang eq 'de') {
         unless ($self->up_to_date("po/bin/po4a.pot", $_)) {
             print "XX Sync $_: ";
-            system("msgmerge --previous $_ po/bin/po4a.pot -o $_.new") && die;
+            system("msgmerge", "--previous", $_, "po/bin/po4a.pot", "-o", "$_.new") && die;
             # Typically all that changes was a date. I'd
             # prefer not to commit such changes, so detect
             # and ignore them.
             my $diff = qx(diff -q -I'#:' -I'POT-Creation-Date:' -I'PO-Revision-Date:' $_ $_.new);
             if ($diff eq "") {
-                unlink "$_.new" || die;
+                unlink "$_.new" or die;
                 # touch it
                 my ($atime, $mtime) = (time,time);
                 utime $atime, $mtime, $_;
             } else {
-                rename "$_.new", $_ || die;
+                rename "$_.new", $_ or die;
             }
         } else {
             print "XX $_ uptodate.\n";
@@ -111,7 +109,7 @@ sub ACTION_binpo {
       }
         unless ($self->up_to_date($_,"blib/po/$lang/LC_MESSAGES/po4a.mo")) {
             mkpath( File::Spec->catdir( 'blib', 'po', $lang, "LC_MESSAGES" ), 0, oct(755) );
-            system("msgfmt -o blib/po/$lang/LC_MESSAGES/po4a.mo $_") && die;
+            system("msgfmt", "-o", "blib/po/$lang/LC_MESSAGES/po4a.mo", $_) && die;
         }
     }
 }
@@ -149,7 +147,7 @@ sub ACTION_dist {
 
     if ( -e "$dist_dir.tar.gz") {
         # Delete the distfile if it already exists
-        unlink "$dist_dir.tar.gz" || die;
+        unlink "$dist_dir.tar.gz" or die;
     }
 
     $self->make_tarball($dist_dir);
@@ -161,15 +159,15 @@ sub ACTION_docpo {
     $self->depends_on('code');
     $self->make_files_writable("po/pod");
 
-    my $cmd = "perl -Ilib po4a "; # Use this version of po4a
-    $cmd .= "--previous ";
-    $cmd .= "--no-translations ";
-    $cmd .= "--msgid-bugs-address devel\@lists.po4a.org ";
-    $cmd .= "--package-name po4a ";
-    $cmd .= "--package-version ".$self->dist_version()." ";
-    $cmd .= $ENV{PO4AFLAGS}." " if defined($ENV{PO4AFLAGS});
-    $cmd .= "po/pod.cfg";
-    system($cmd)
+    my @cmd = ("perl", "-Ilib", "po4a"); # Use this version of po4a
+    push @cmd, "--previous";
+    push @cmd, "--no-translations";
+    push @cmd, "--msgid-bugs-address", "devel\@lists.po4a.org";
+    push @cmd, "--package-name", "po4a";
+    push @cmd, "--package-version", $self->dist_version();
+    push @cmd, split(" ", $ENV{PO4AFLAGS}) if defined($ENV{PO4AFLAGS});
+    push @cmd, "po/pod.cfg";
+    system(@cmd)
         and die;
 }
 
@@ -188,10 +186,10 @@ sub ACTION_man {
     my $manpath = File::Spec->catdir( 'blib', 'man' );
     File::Path::rmtree( $manpath, 0, 1 );
 
-    my $cmd = "perl -Ilib po4a ";    # Use this version of po4a
-    $cmd .= $ENV{PO4AFLAGS} . " " if defined( $ENV{PO4AFLAGS} );
-    $cmd .= "--previous po/pod.cfg";
-    system($cmd) and die;
+    my @cmd = ("perl", "-Ilib", "po4a");    # Use this version of po4a
+    push @cmd, split(" ", $ENV{PO4AFLAGS}) if defined( $ENV{PO4AFLAGS} );
+    push @cmd, "--previous", "po/pod.cfg";
+    system(@cmd) and die;
 
     my $man1path = File::Spec->catdir( $manpath, 'man1' );
     my $man3path = File::Spec->catdir( $manpath, 'man3' );
@@ -245,8 +243,8 @@ sub ACTION_man {
         }
         $parser->parse_from_file( $file, $out );
 
-        system("gzip -9 -n -f $out") and die;
-        unlink "$file" || die;
+        system("gzip", "-9", "-n", "-f", $out) and die;
+        unlink "$file" or die;
     }
 
     if ( $^O ne 'MSWin32' ) {
@@ -272,14 +270,14 @@ sub ACTION_man {
                 my ( $outdir, $section, $outfile ) = ( $1, $2, $3 );
                 if ($local_docbook_xsl) {
                     print "Convert $outdir/$outfile.$section (local docbook.xsl file). ";
-                    system("xsltproc -o $outdir/$outfile.$section --nonet $local_docbook_xsl $file") and die;
+                    system("xsltproc", "-o", "$outdir/$outfile.$section", "--nonet", $local_docbook_xsl, $file) and die;
                 } else {    # Not found locally, use the XSL file online
                     print "Convert $outdir/$outfile.$section (online docbook.xsl file). ";
-                    system("xsltproc -o $outdir/$outfile.$section --nonet $docbook_xsl_url $file") and die;
+                    system("xsltproc", "-o", "$outdir/$outfile.$section", "--nonet", $docbook_xsl_url, $file) and die;
                 }
-                system("gzip -9 -n -f $outdir/$outfile.$section") and die;
+                system("gzip", "-9", "-n", "-f", "$outdir/$outfile.$section") and die;
             }
-            unlink "$file" || die;
+            unlink "$file" or die;
         }
     }
 }

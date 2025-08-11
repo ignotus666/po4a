@@ -1,17 +1,40 @@
 This file presents the major changes of each version, focusing on
 user-visible changes while the day to day changes are in the git logs.
 
+
+=======================================================================
+        ___  _____ ____
+__   __/ _ \|___  | ___|
+\ \ / / | | |  / /|___ \          (unamed)
+ \ V /| |_| | / /  ___) |
+  \_/  \___(_)_/  |____/          (unreleased)
+
+TexInfo:
+ * Partial support of @documentencoding (hardcoded to the english value) and
+   @documentlanguage (to be manually translated by the humans in the PO file)
+   (GitHub's #597 and #598) [Fat-Zer, vindicatorr and mquinson]
+
+Documentation:
+ * Fix some typos [Rafael Fontenelle]
+
+Translations:
+ * Updated: Italian, thanks Marco Ciampa.
+ * Updated: Tamil, thanks தமிழ்நேரம்.
+
 =======================================================================
         ___  _____ _  _
 __   __/ _ \|___  | || |
-\ \ / / | | |  / /| || |_         (unamed)
+\ \ / / | | |  / /| || |_         The Simone Weil release.
  \ V /| |_| | / / |__   _|
-  \_/  \___(_)_/     |_|          (unreleased)
+  \_/  \___(_)_/     |_|          July 12. 2025.
 
+Simone Weil was a a French philosopher whose ideas continue to inspire me.
 
 General:
  * Fix a failure with Perl 5.40.
  * Add --target-lang option to po4a [jnavila]
+ * Include bash_completion files (GitHub's #542) [Fat-Zer]
+   Copy the share/bash-completion/completions/ files under /usr to use them.
 
 Scripts:
  * po4a-updatepo: remove --width as no localized file will ever be
@@ -29,6 +52,16 @@ Markdown:
 
 Org:
  * New module (GitHub's #485) [gemmaro].
+
+Pod:
+ * Add an announcement warning to the Pod module. (GitHub's #573) [gemmaro].
+   It is based on a deprecated Perl module that will disappear at some point.
+
+SimplePod:
+ * New module (GitHub's #573), meant as a drop-in to the deprecated Pod [gemmaro].
+   We think that it is production-ready, even if it was never tested
+   in battlefield conditions, so bugs are expected in some cases.
+   Please help us improving it as it will become the only Pod module.
 
 TeX:
  * Fix read error of input/include files in TeX files (thanks Alex Karabanov)
@@ -53,19 +86,39 @@ Internal refactorings:
 Translations:
  * New translation: Romanian, thanks to Remus-Gabriel Chelu.
  * New translation: Tamil, thanks தமிழ்நேரம்.
- * Updated: Chinese (Traditional), thanks Ricky From Hong Kong.
+ * Updated: Chinese (Traditional), thanks Ricky From Hong Kong and ZW.
  * Updated: Croatian, thanks Milo Ivir.
  * Updated: Dutch, thanks Frans Spiesschaert and Henk De Groot.
  * Updated: Georgian, thanks Temuri Doghonadze.
  * Updated: German, thanks Helge Kreutzmann.
  * Updated: Italian, thanks Marco Ciampa.
  * Updated: Japanese, thanks gemmaro.
- * Updated: Russian, thanks Alex Karabanov and Golubev Alexander.
+ * Updated: Russian, thanks Alex Karabanov, Golubev Alexander and Yurt Page.
  * Updated: Serbian, thanks Ivan Pesic.
  * Updated: Spanish, thanks gallegonovato and Francisco Serrador.
+ * Updated: Swedish, thanks Anders Jonsson.
  * Updated: Portuguese (Brazil), thanks Rafael Fontenelle.
- * Updated: Portuguese, thanks ssantos.
+ * Updated: Portuguese, thanks ssantos and Américo Monteiro.
  * Updated: Ukrainian, thanks Yuri Chornoivan.
+
+Status of the binary translation:
+ * 7 languages = 100%: de, ja, pt, ro, ru, sr, uk.
+ * 7 languages >= 95%: es (98%), fr (96%), it (98%), nl (98%), pt_BR (98%), sr_Cyrl (95%), ta (98%).
+ * 2 languages >= 90%: hr (93%), nb (92%).
+ * 4 languages >= 80%: eo (85%), hu (81%), zh_Hans (83%), zh_Hant (84%).
+ * 9 languages >= 50%: cs (51%), da (62%), et (60%), eu (50%), id (68%), pl (55%), sl (50%), sv (64%), vi (60%).
+ * 1 language  >= 33%: ca (40%).
+ * 6 starting languages: ace (2%), af (6%), ar (12%), ka (15%), kn (6%), ko (17%).
+
+Status of the documentation translation:
+ * 6 languages = 100%: de, ja, pt, ro, sr, uk.
+ * 2 languages >= 95%: pt_BR (99%), ru (97%).
+ * 1 language  >= 90%: it (91%).
+ * 5 languages >= 80%: es (89%), fr (86%), nl (89%), sr_Cyrl (86%), ta (89%).
+ * 2 languages >= 70%: zh_Hans (76%), zh_Hant (76%).
+ * 1 language  >= 50%: pl (54%).
+ * 1 language  >= 33%: ca (36%).
+ * 4 starting languages: eo (3%), hr (0%), hu (0%), nb (3%).
 
 =======================================================================
         ___  _____ _____

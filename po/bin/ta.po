@@ -5,9 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: po4a 0.73\n"
-"Report-Msgid-Bugs-To: martin.quinson@debian.org\n"
-"POT-Creation-Date: 2025-03-07 18:41+0100\n"
-"PO-Revision-Date: 2025-04-20 14:13+0000\n"
+"Report-Msgid-Bugs-To: po4a@packages.debian.org\n"
+"POT-Creation-Date: 2025-06-29 14:32+0200\n"
+"PO-Revision-Date: 2025-05-29 17:02+0000\n"
 "Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/po4a/po4a/ta/>\n"
 "Language: ta\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.11.1-dev\n"
+"X-Generator: Weblate 5.12-dev\n"
 
 #: ../../lib/Locale/Po4a/AsciiDoc.pm:233 ../../lib/Locale/Po4a/Man.pm:488
 #: ../../lib/Locale/Po4a/Org.pm:45 ../../lib/Locale/Po4a/Po.pm:225
@@ -34,7 +34,7 @@ msgstr "தவறான பொருந்தக்கூடிய அமைப�
 #: ../../lib/Locale/Po4a/AsciiDoc.pm:309
 #, perl-format
 msgid "Unable to parse macro definition: %s"
-msgstr "மேக்ரோ வரையறையை அலச முடியவில்லை: %s"
+msgstr "பெரிய வரையறையை அலச முடியவில்லை: %s"
 
 #: ../../lib/Locale/Po4a/AsciiDoc.pm:356 ../../lib/Locale/Po4a/TeX.pm:1047
 #: ../../po4a:1087 ../../po4a:1180 ../../po4a:1449 ../../po4a-translate:284
@@ -58,9 +58,9 @@ msgid ""
 "are too short or too long compared to the title length. You may want to fix "
 "your master document."
 msgstr ""
-"'%s' '%s' உடன் அடிக்கோடிட்டுக் காட்டப்பட்ட இரண்டு கோடுகள் தலைப்பாகத் தெரிகிறது, ஆனால் "
+"'%s' இரண்டு கோடுகள் '%s' உடன் அடிக்கோடிட்டுக் காட்டப்பட்ட தலைப்பாகத் தெரிகிறது, ஆனால் "
 "அடிக்குறிப்புகள் தலைப்பு நீளத்துடன் ஒப்பிடும்போது மிகக் குறுகியதாகவோ அல்லது மிக நீளமாகவோ "
-"இருக்கும். உங்கள் முதன்மை ஆவணத்தை சரிசெய்ய விரும்பலாம்."
+"இருக்கும். உங்கள் முதன்மை ஆவணத்தைச் சரிசெய்ய விரும்பலாம்."
 
 #: ../../lib/Locale/Po4a/AsciiDoc.pm:748
 msgid ""
@@ -86,101 +86,107 @@ msgstr ""
 msgid "Please provide a module name"
 msgstr "தயவுசெய்து ஒரு தொகுதி பெயரை வழங்கவும்"
 
-#: ../../lib/Locale/Po4a/Chooser.pm:52
+#: ../../lib/Locale/Po4a/Chooser.pm:54
 #, perl-format
 msgid "Unknown format type: %s."
 msgstr "அறியப்படாத வடிவமைப்பு வகை: %s."
 
-#: ../../lib/Locale/Po4a/Chooser.pm:53
+#: ../../lib/Locale/Po4a/Chooser.pm:55
 #, perl-format
 msgid "Module loading error: %s"
 msgstr "தொகுதி ஏற்றுதல் பிழை: %s"
 
-#: ../../lib/Locale/Po4a/Chooser.pm:63
+#: ../../lib/Locale/Po4a/Chooser.pm:65
 msgid "List of valid formats:"
 msgstr "செல்லுபடியாகும் வடிவங்களின் பட்டியல்:"
 
-#: ../../lib/Locale/Po4a/Chooser.pm:67
+#: ../../lib/Locale/Po4a/Chooser.pm:69
 msgid "asciidoc: AsciiDoc format."
 msgstr "அச்கிடோக்: அச்கிடோக் வடிவம்."
 
-#: ../../lib/Locale/Po4a/Chooser.pm:69
+#: ../../lib/Locale/Po4a/Chooser.pm:71
 msgid "dia: uncompressed Dia diagrams."
 msgstr "தியா: சுருக்கப்படாத டிஐஏ வரைபடங்கள்."
 
-#: ../../lib/Locale/Po4a/Chooser.pm:71
+#: ../../lib/Locale/Po4a/Chooser.pm:73
 msgid "docbook: DocBook XML."
 msgstr "டாக் புக்: டாக் புக் எக்ச்எம்எல்."
 
-#: ../../lib/Locale/Po4a/Chooser.pm:73
+#: ../../lib/Locale/Po4a/Chooser.pm:75
 msgid "gemtext: Gemini's native plain text format."
 msgstr "செம்டெக்ச்ட்: செமினியின் சொந்த எளிய உரை வடிவம்."
 
-#: ../../lib/Locale/Po4a/Chooser.pm:75
+#: ../../lib/Locale/Po4a/Chooser.pm:77
 msgid "guide: Gentoo Linux's XML documentation format."
 msgstr "வழிகாட்டி: சென்டூ லினக்சின் எக்ச்எம்எல் ஆவணப்படுத்தல் வடிவம்."
 
-#: ../../lib/Locale/Po4a/Chooser.pm:77
+#: ../../lib/Locale/Po4a/Chooser.pm:79
 msgid "ini: INI format."
 msgstr "இது: இது வடிவம்."
 
-#: ../../lib/Locale/Po4a/Chooser.pm:79
+#: ../../lib/Locale/Po4a/Chooser.pm:81
 msgid "kernelhelp: Help messages of each kernel compilation option."
 msgstr "கர்னெல்எல்ப்: ஒவ்வொரு கர்னல் தொகுப்பு விருப்பத்தின் செய்திகளுக்கு உதவுங்கள்."
 
-#: ../../lib/Locale/Po4a/Chooser.pm:81
+#: ../../lib/Locale/Po4a/Chooser.pm:83
 msgid "latex: LaTeX format."
 msgstr "லேடெக்ச்: லேடெக்ச் வடிவம்."
 
-#: ../../lib/Locale/Po4a/Chooser.pm:83
+#: ../../lib/Locale/Po4a/Chooser.pm:85
 msgid "man: Good old manual page format."
 msgstr "மனிதன்: நல்ல பழைய கையேடு பக்க வடிவம்."
 
-#: ../../lib/Locale/Po4a/Chooser.pm:85
+#: ../../lib/Locale/Po4a/Chooser.pm:87
 msgid "org: document format for Org mode."
 msgstr "org: org பயன்முறைக்கான ஆவண வடிவம்."
 
-#: ../../lib/Locale/Po4a/Chooser.pm:87
+#: ../../lib/Locale/Po4a/Chooser.pm:89
 msgid "pod: Perl Online Documentation format."
 msgstr "பாட்: பெர்ல் நிகழ்நிலை ஆவணப்படுத்தல் வடிவம்."
 
-#: ../../lib/Locale/Po4a/Chooser.pm:89
+#: ../../lib/Locale/Po4a/Chooser.pm:91
 msgid "rubydoc: Ruby Documentation (RD) format."
 msgstr "ரூபிடாக்: ரூபி ஆவணம் (ஆர்.டி) வடிவம்."
 
-#: ../../lib/Locale/Po4a/Chooser.pm:91
+#: ../../lib/Locale/Po4a/Chooser.pm:93
+#, fuzzy
+#| msgid "pod: Perl Online Documentation format."
+msgid "simplepod: Perl Online Documentation format (new option)."
+msgstr "பாட்: பெர்ல் நிகழ்நிலை ஆவணப்படுத்தல் வடிவம்."
+
+#: ../../lib/Locale/Po4a/Chooser.pm:95
 msgid "sgml: either DebianDoc or DocBook DTD."
 msgstr "எச்சிஎம்எல்: டெபியாண்டாக் அல்லது டாக் புக் டி.டி.டி."
 
-#: ../../lib/Locale/Po4a/Chooser.pm:93
+#: ../../lib/Locale/Po4a/Chooser.pm:97
 msgid "texinfo: The info page format."
 msgstr "டெக்சின்ஃபோ: செய்தி பக்க வடிவம்."
 
-#: ../../lib/Locale/Po4a/Chooser.pm:95
+#: ../../lib/Locale/Po4a/Chooser.pm:99
 msgid "tex: generic TeX documents (see also latex)."
 msgstr "டெக்ச்: பொதுவான டெக்ச் ஆவணங்கள் (லேடெக்ச் மேலும் காண்க)."
 
-#: ../../lib/Locale/Po4a/Chooser.pm:97
+#: ../../lib/Locale/Po4a/Chooser.pm:101
 msgid "text: simple text document."
 msgstr "உரை: எளிய உரை ஆவணம்."
 
-#: ../../lib/Locale/Po4a/Chooser.pm:99
+#: ../../lib/Locale/Po4a/Chooser.pm:103
 msgid "vimhelp: Vim help documents."
 msgstr "விம்எல்ப்: விஐஎம் உதவி ஆவணங்கள்."
 
-#: ../../lib/Locale/Po4a/Chooser.pm:101
+#: ../../lib/Locale/Po4a/Chooser.pm:105
 msgid "wml: WML documents."
 msgstr "WML: WML ஆவணங்கள்."
 
-#: ../../lib/Locale/Po4a/Chooser.pm:103
+#: ../../lib/Locale/Po4a/Chooser.pm:107
 msgid "xhtml: XHTML documents."
 msgstr "XHTML: XHTML ஆவணங்கள்."
 
-#: ../../lib/Locale/Po4a/Chooser.pm:105
+#: ../../lib/Locale/Po4a/Chooser.pm:109
 msgid "xml: generic XML documents (see also docbook)."
 msgstr "எக்ச்எம்எல்: பொதுவான எக்ச்எம்எல் ஆவணங்கள் (டாக் புக் ஐயும் காண்க)."
 
-#: ../../lib/Locale/Po4a/Chooser.pm:107
+#: ../../lib/Locale/Po4a/Chooser.pm:111
 msgid "yaml: YAML documents."
 msgstr "YAML: YAML ஆவணங்கள்."
 
@@ -352,9 +358,8 @@ msgid ""
 "Unknown macro '%s'. Remove it from the document, or refer to the Locale::"
 "Po4a::Man manpage to see how po4a can handle new macros."
 msgstr ""
-"அறியப்படாத மேக்ரோ '%s'. ஆவணத்திலிருந்து அதை அகற்றவும், அல்லது பார்க்கவும் "
-"Locale::Po4a::Man கையேடுபக்கம் PO4A புதிய மேக்ரோக்களை எவ்வாறு கையாள முடியும் என்பதைப்"
-" பார்க்க."
+"அறியப்படாத மேக்ரோ '%s'. ஆவணத்திலிருந்து அதை அகற்றவும், அல்லது பார்க்கவும் Locale::"
+"Po4a::Man கையேடுபக்கம் PO4A புதிய மேக்ரோக்களை எவ்வாறு கையாள முடியும் என்பதைப் பார்க்க."
 
 #: ../../lib/Locale/Po4a/Man.pm:1694
 #, perl-format
@@ -530,7 +535,6 @@ msgstr ""
 #: ../../lib/Locale/Po4a/Po.pm:404 ../../lib/Locale/Po4a/TeX.pm:1013
 #: ../../lib/Locale/Po4a/TransTractor.pm:495 ../../lib/Locale/Po4a/Xhtml.pm:144
 #, perl-format
-#, fuzzy
 msgid "Cannot close %s after reading: %s"
 msgstr "படித்தபிறகு %s மூட முடியாது: %s"
 
@@ -567,7 +571,6 @@ msgstr "இரண்டு பன்மை வடிவங்களுடன் 
 
 #: ../../lib/Locale/Po4a/Po.pm:643
 #, perl-format
-#, fuzzy
 msgid "Cannot close %s after writing: %s\n"
 msgstr "எழுதியபிறகு %s மூட முடியாது: %s\n"
 
@@ -629,7 +632,7 @@ msgstr ""
 " %s\n"
 " பழைய மொழிபெயர்ப்பு நிராகரிக்கப்பட்டது."
 
-#: ../../lib/Locale/Po4a/Pod.pm:92 ../../lib/Locale/Po4a/Xml.pm:917
+#: ../../lib/Locale/Po4a/Pod.pm:98 ../../lib/Locale/Po4a/Xml.pm:917
 #, perl-format
 msgid ""
 "The file %s declares %s as encoding, but you provided %s as master charset. "
@@ -637,6 +640,16 @@ msgid ""
 msgstr ""
 "%s கோப்பு %s ஐ குறியாக்கமாக அறிவிக்கிறது, ஆனால் நீங்கள் %s மாச்டர் சார்ச்செட்டாக "
 "வழங்கினீர்கள். தயவுசெய்து அமைப்பை மாற்றவும்."
+
+#: ../../lib/Locale/Po4a/Pod.pm:173
+msgid ""
+"A new SimplePod parser is now available.  Please consider using it instead "
+"of the current Pod module. If you encounter any bugs, your reports would be "
+"greatly appreciated.  To use it, add the following line at the top of your "
+"po4a configuration file: \"[po4a_alias:Pod] SimplePod\".  You can disable "
+"this message by setting the no-warn-simple option.  Sorry for the noise, and "
+"thank you!"
+msgstr ""
 
 #: ../../lib/Locale/Po4a/Sgml.pm:224
 msgid ""
@@ -773,6 +786,12 @@ msgid ""
 msgstr ""
 "பிழை செய்தியைக் காண, இந்தக் கூடுதல் வாதங்களுடன் po4a ஐ மீண்டும் இயக்கவும்:\n"
 "   -o debug=onsgmls"
+
+#: ../../lib/Locale/Po4a/SimplePod/Parser.pm:261
+msgid ""
+"An unexpected error has occurred.  Please report this issue to the po4a "
+"project."
+msgstr ""
 
 #: ../../lib/Locale/Po4a/TeX.pm:505 ../../lib/Locale/Po4a/TeX.pm:589
 #, perl-format
@@ -925,8 +944,8 @@ msgid ""
 "--master-charset or other similar flags."
 msgstr ""
 "சார்ச்செட் %s: %s உடன் கோப்பு %s இலிருந்து படிக்கும்போது தவறாகக் குறியாக்கம்\n"
-"%s எதிர்பார்க்கப்படும் சார்ச்செட் இல்லையென்றால், நீங்கள் சரியான ஒன்றை --master-charset அல்லது"
-" பிற ஒத்த கொடிகளுடன் உள்ளமைக்க வேண்டும்."
+"%s எதிர்பார்க்கப்படும் சார்ச்செட் இல்லையென்றால், நீங்கள் சரியான ஒன்றை --master-charset "
+"அல்லது பிற ஒத்த கொடிகளுடன் உள்ளமைக்க வேண்டும்."
 
 #: ../../lib/Locale/Po4a/TransTractor.pm:487
 #, perl-format
@@ -939,14 +958,13 @@ msgstr ""
 
 #: ../../lib/Locale/Po4a/TransTractor.pm:551
 #, perl-format
-#, fuzzy
 msgid ""
 "Malformed encoding while writing char '%s' to file %s with charset %s: %s\n"
 "If %s is not the expected charset, you need to configure the right one with "
 "--localized-charset or other similar flags."
 msgstr ""
 "எழுத்துஅணி %s உடன் %s ஐ தாக்கல் செய்ய எழுதும்போது தவறான குறியாக்கம்: %s: %s\n"
-"%s எதிர்பார்க்கப்படும் சார்ச்செட் இல்லையென்றால், நீங்கள் சரியான ஒன்றை --localized-charset "
+"%s எதிர்பார்க்கப்படும் எழுத்துஅணி இல்லையென்றால், நீங்கள் சரியான ஒன்றை --localized-charset "
 "அல்லது பிற ஒத்த கொடிகளுடன் உள்ளமைக்க வேண்டும்."
 
 #: ../../lib/Locale/Po4a/TransTractor.pm:561
@@ -962,7 +980,6 @@ msgstr ""
 
 #: ../../lib/Locale/Po4a/TransTractor.pm:570
 #, perl-format
-#, fuzzy
 msgid "Cannot close %s after writing: %s"
 msgstr "எழுதியபிறகு %s மூட முடியாது: %s"
 
@@ -1051,11 +1068,6 @@ msgstr "சேர்க்கைக்குப் பிறகு கூடு�
 #, perl-format
 msgid "Addendum '%s' applied at the end of the file."
 msgstr "கோப்பின் முடிவில் கூடுதல் '%s' பயன்படுத்தப்படுகிறது."
-
-#: ../../lib/Locale/Po4a/VimHelp.pm:347
-#, perl-format
-msgid "line#%s has columns %s (> %s)"
-msgstr "வரி# %s நெடுவரிசைகள் %s (> %s)"
 
 #: ../../lib/Locale/Po4a/Wml.pm:89
 #, perl-format
@@ -1377,7 +1389,6 @@ msgstr "அடைவு '%s' '%s' அல்லது '%s' அல்லது '%s
 
 #: ../../po4a:1281
 #, perl-format
-#, fuzzy
 msgid "Language '%s' found twice in '%s' and '%s'."
 msgstr "'%s' மொழி '%s' மற்றும் '%s' இல் இரண்டு முறை காணப்படுகிறது."
 
@@ -1503,7 +1514,6 @@ msgstr ""
 
 #: ../../po4a:1576
 #, perl-format
-#, fuzzy
 msgid "Document %s kept for update (--translate-only)."
 msgstr "புதுப்பிப்புக்காக வைக்கப்பட்ட ஆவணம் %s (--translate-only)."
 
@@ -1515,12 +1525,10 @@ msgstr "கோரப்பட்டபடி %s புதுப்பிப்�
 #: ../../po4a:1599
 #, perl-format
 msgid "Languages skipped because of --translate-only: %s; kept languages: %s."
-msgstr ""
-"மொழிகள் தவிர்க்கப்பட்ட --translate-only காரணம்: %s; வைத்திருந்த மொழிகள்: %s."
+msgstr "மொழிகள் தவிர்க்கப்பட்ட --translate-only காரணம்: %s; வைத்திருந்த மொழிகள்: %s."
 
 #: ../../po4a:1636
 #, perl-format
-#, fuzzy
 msgid "NOT updating %s as requested (--no-update)."
 msgstr "கோரப்பட்டபடி %s புதுப்பிக்கவில்லை (--no-update)."
 
@@ -1531,7 +1539,6 @@ msgstr "%s புதுப்பித்தல்:"
 
 #: ../../po4a:1644
 #, perl-format
-#, fuzzy
 msgid "NOT creating %s as requested (--no-update)."
 msgstr "கோரப்பட்டபடி %s உருவாக்கவில்லை (--no-update)."
 
@@ -1587,8 +1594,7 @@ msgstr ""
 msgid ""
 "The translation of master file '%s' in language '%s' is missing (file: %s) "
 "-- skipping."
-msgstr ""
-"முதன்மைகோப்பு '%s' மொழியில் '%s' மொழிபெயர்ப்பு இல்லை (கோப்பு:%s) -- தவிர்."
+msgstr "முதன்மைகோப்பு '%s' மொழியில் '%s' மொழிபெயர்ப்பு இல்லை (கோப்பு:%s) -- தவிர்."
 
 #: ../../po4a:1858
 #, perl-format
@@ -1667,11 +1673,10 @@ msgid ""
 msgstr ""
 "\n"
 "GetTextization தோல்வியுற்றது (மீண்டும்). விட்டுவிடாதீர்கள், GetTextiging ஒரு நுட்பமான "
-"கலை, ஆனால் ஒரு திட்டத்தை PO4A ஆல் வழங்கப்படும் அழகிய ஆடம்பரமானதாக மொழிபெயர்ப்பாளர்களுக்கு"
-" மாற்ற இது ஒரு முறை மட்டுமே தேவைப்படுகிறது.\n"
-" தயவுசெய்து po4a(7) ஆவணங்கள், "
-"\"முன்பே இருக்கும் மொழிபெயர்ப்பை PO4A க்கு மாற்றுவது எப்படி?\" உங்கள் பணியில் உங்களுக்கு "
-"உதவ பல குறிப்புகள் உள்ளன"
+"கலை, ஆனால் ஒரு திட்டத்தை PO4A ஆல் வழங்கப்படும் அழகிய ஆடம்பரமானதாக "
+"மொழிபெயர்ப்பாளர்களுக்கு மாற்ற இது ஒரு முறை மட்டுமே தேவைப்படுகிறது.\n"
+" தயவுசெய்து po4a(7) ஆவணங்கள், \"முன்பே இருக்கும் மொழிபெயர்ப்பை PO4A க்கு மாற்றுவது "
+"எப்படி?\" உங்கள் பணியில் உங்களுக்கு உதவ பல குறிப்புகள் உள்ளன"
 
 #: ../../po4a-gettextize:382
 #, perl-format
@@ -1692,9 +1697,9 @@ msgid ""
 "way each time. Remove one of the translations, and you're fine."
 msgstr ""
 "அசல் மொழிபெயர்ப்பைவிட குறைவான சரங்களைக் கொண்டுள்ளது (%d <%d). மொழிபெயர்க்கப்பட்ட "
-"கோப்பிலிருந்து கூடுதல் உள்ளீட்டை அகற்றுவதன் மூலம் அதைச் சரிசெய்யவும். GetTextization க்குப்"
-" பிறகு அந்த இடத்தைப் புகழ்வதற்கு உங்களுக்கு ஒரு சேர்க்கை (CF po4a(7)) தேவைப்படலாம். ஒரு "
-"சாத்தியமான காரணம் என்னவென்றால், அசலில் நகலெடுக்கப்பட்ட ஒரு உரை ஒவ்வொரு முறையும் ஒரே "
+"கோப்பிலிருந்து கூடுதல் உள்ளீட்டை அகற்றுவதன் மூலம் அதைச் சரிசெய்யவும். GetTextization "
+"க்குப் பிறகு அந்த இடத்தைப் புகழ்வதற்கு உங்களுக்கு ஒரு சேர்க்கை (CF po4a(7)) தேவைப்படலாம். "
+"ஒரு சாத்தியமான காரணம் என்னவென்றால், அசலில் நகலெடுக்கப்பட்ட ஒரு உரை ஒவ்வொரு முறையும் ஒரே "
 "மாதிரியாக மொழிபெயர்க்கப்படவில்லை. மொழிபெயர்ப்புகளில் ஒன்றை அகற்றவும், நீங்கள் நன்றாக "
 "இருக்கிறீர்கள்."
 
@@ -1741,9 +1746,9 @@ msgid ""
 "translations."
 msgstr ""
 "முன்னர் இருக்கும் மொழிபெயர்ப்புகளை PO அடிப்படையிலான பணிப்பாய்வுகளுக்கு மாற்ற மட்டுமே "
-"PO4A-GetTextize பயனுள்ளதாக இருக்கும். உங்கள் திட்டத்தை PO4A ஆக வெற்றிகரமாக மாற்றியதும்"
-", அதைப் பராமரிக்கவும், உங்கள் மொழிபெயர்ப்புகளைப் புதுப்பிக்கவும் po4a(1) திட்டத்தைப் "
-"பயன்படுத்த வேண்டும்."
+"PO4A-GetTextize பயனுள்ளதாக இருக்கும். உங்கள் திட்டத்தை PO4A ஆக வெற்றிகரமாக "
+"மாற்றியதும், அதைப் பராமரிக்கவும், உங்கள் மொழிபெயர்ப்புகளைப் புதுப்பிக்கவும் po4a(1) "
+"திட்டத்தைப் பயன்படுத்த வேண்டும்."
 
 #: ../../po4a-gettextize:601
 msgid ""
@@ -1828,3 +1833,7 @@ msgstr "முடிந்தது."
 #, perl-format
 msgid "Could not copy the PO file (%s -> %s): %s"
 msgstr "PO கோப்பை ( %s -> %s) நகலெடுக்க முடியவில்லை: %s"
+
+#, perl-format
+#~ msgid "line#%s has columns %s (> %s)"
+#~ msgstr "வரி# %s நெடுவரிசைகள் %s (> %s)"

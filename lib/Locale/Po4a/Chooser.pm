@@ -18,6 +18,8 @@ use strict;
 use warnings;
 use Locale::Po4a::Common qw(wrap_msg wrap_mod gettext);
 
+my %_mod_lookup = map { lc($_) => $_ } qw( AsciiDoc BibTex KernelHelp LaTeX NewsDebian RubyDoc SimplePod TeX VimHelp );
+
 sub new {
     my ($module)  = shift;
     my (%options) = @_;
@@ -26,22 +28,10 @@ sub new {
       unless defined $module;
 
     my $modname;
-    if ( $module eq 'kernelhelp' ) {
-        $modname = 'KernelHelp';
-    } elsif ( $module eq 'newsdebian' ) {
-        $modname = 'NewsDebian';
-    } elsif ( $module eq 'latex' ) {
-        $modname = 'LaTeX';
-    } elsif ( $module eq 'bibtex' ) {
-        $modname = 'BibTex';
-    } elsif ( $module eq 'tex' ) {
-        $modname = 'TeX';
-    } elsif ( $module eq 'asciidoc' ) {
-        $modname = 'AsciiDoc';
-    } elsif ( $module eq 'Rd' || $module eq 'rubydoc' ) {
+    if ( exists($_mod_lookup{$module}) ) {
+        $modname = $_mod_lookup{$module};
+    } elsif ( $module eq 'Rd' ) {
         $modname = 'RubyDoc';
-    } elsif ( $module eq 'vimhelp' ) {
-        $modname = 'VimHelp';
     } else {
         $modname = ucfirst($module);
     }
@@ -87,6 +77,8 @@ sub list {
           . gettext("pod: Perl Online Documentation format.")
           . "\n  - "
           . gettext("rubydoc: Ruby Documentation (RD) format.")
+          . "\n  - "
+          . gettext("simplepod: Perl Online Documentation format (new option).")
           . "\n  - "
           . gettext("sgml: either DebianDoc or DocBook DTD.")
           . "\n  - "
@@ -162,6 +154,7 @@ L<Locale::Po4a::Org(3pm)>,
 L<Locale::Po4a::Pod(3pm)>,
 L<Locale::Po4a::RubyDoc(3pm)>,
 L<Locale::Po4a::Sgml(3pm)>,
+L<Locale::Po4a::SimplePod(3pm)>,
 L<Locale::Po4a::TeX(3pm)>,
 L<Locale::Po4a::Texinfo(3pm)>,
 L<Locale::Po4a::Text(3pm)>,

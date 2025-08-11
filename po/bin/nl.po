@@ -6,13 +6,13 @@
 # itronic
 # Pieter Maes <rest.in.pieces.pm@gmail.com>, 2007.
 # Frans Spiesschaert <Frans.Spiesschaert@yucom.be>, 2015, 2017.
-# Frans Spiesschaert <frans.spiesschaert@gmail.com>, 2020, 2021, 2022, 2024.
+# Frans Spiesschaert <frans.spiesschaert@gmail.com>, 2020, 2021, 2022, 2024, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: po4a_0.52-1\n"
 "Report-Msgid-Bugs-To: po4a@packages.debian.org\n"
-"POT-Creation-Date: 2025-03-07 18:41+0100\n"
-"PO-Revision-Date: 2024-10-27 22:00+0000\n"
+"POT-Creation-Date: 2025-06-29 14:32+0200\n"
+"PO-Revision-Date: 2025-05-15 12:58+0000\n"
 "Last-Translator: Frans Spiesschaert <frans.spiesschaert@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/po4a/po4a/nl/>\n"
 "Language: nl\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.8.2-dev\n"
+"X-Generator: Weblate 5.12-dev\n"
 "X-Rosetta-Version: 0.1\n"
 "X-Rosetta-Export-Date: 2007-08-12 16:08:40+0000\n"
 
@@ -95,103 +95,107 @@ msgstr ""
 msgid "Please provide a module name"
 msgstr "Gelieve een modulenaam op te geven"
 
-#: ../../lib/Locale/Po4a/Chooser.pm:52
+#: ../../lib/Locale/Po4a/Chooser.pm:54
 #, perl-format
 msgid "Unknown format type: %s."
 msgstr "Onbekend bestandstype: %s."
 
-#: ../../lib/Locale/Po4a/Chooser.pm:53
+#: ../../lib/Locale/Po4a/Chooser.pm:55
 #, perl-format
 msgid "Module loading error: %s"
 msgstr "Fout bij het laden van de module: %s"
 
-#: ../../lib/Locale/Po4a/Chooser.pm:63
+#: ../../lib/Locale/Po4a/Chooser.pm:65
 msgid "List of valid formats:"
 msgstr "Lijst van geldige formaten:"
 
-#: ../../lib/Locale/Po4a/Chooser.pm:67
+#: ../../lib/Locale/Po4a/Chooser.pm:69
 msgid "asciidoc: AsciiDoc format."
 msgstr "asciidoc: het AsciiDoc-formaat."
 
-#: ../../lib/Locale/Po4a/Chooser.pm:69
+#: ../../lib/Locale/Po4a/Chooser.pm:71
 msgid "dia: uncompressed Dia diagrams."
 msgstr "dia: niet-gecomprimeerde diagrammen van Dia."
 
-#: ../../lib/Locale/Po4a/Chooser.pm:71
+#: ../../lib/Locale/Po4a/Chooser.pm:73
 msgid "docbook: DocBook XML."
 msgstr "docbook: DocBook-XML."
 
-#: ../../lib/Locale/Po4a/Chooser.pm:73
+#: ../../lib/Locale/Po4a/Chooser.pm:75
 msgid "gemtext: Gemini's native plain text format."
 msgstr "gemtext: Gemini's standaard platte tekstformaat."
 
-#: ../../lib/Locale/Po4a/Chooser.pm:75
+#: ../../lib/Locale/Po4a/Chooser.pm:77
 msgid "guide: Gentoo Linux's XML documentation format."
 msgstr "guide: het XML-formaat voor documentatie van Gentoo Linux."
 
-#: ../../lib/Locale/Po4a/Chooser.pm:77
+#: ../../lib/Locale/Po4a/Chooser.pm:79
 msgid "ini: INI format."
 msgstr "ini: het INI-formaat."
 
-#: ../../lib/Locale/Po4a/Chooser.pm:79
+#: ../../lib/Locale/Po4a/Chooser.pm:81
 msgid "kernelhelp: Help messages of each kernel compilation option."
 msgstr "kernelhelp: Hulpteksten bij elk van de compilatieopties van de kernel."
 
-#: ../../lib/Locale/Po4a/Chooser.pm:81
+#: ../../lib/Locale/Po4a/Chooser.pm:83
 msgid "latex: LaTeX format."
 msgstr "latex: het LaTeX-formaat."
 
-#: ../../lib/Locale/Po4a/Chooser.pm:83
+#: ../../lib/Locale/Po4a/Chooser.pm:85
 msgid "man: Good old manual page format."
 msgstr "man: het goede oude formaat van man-pagina's."
 
-#: ../../lib/Locale/Po4a/Chooser.pm:85
+#: ../../lib/Locale/Po4a/Chooser.pm:87
 msgid "org: document format for Org mode."
 msgstr "org: documentformaat voor Org-modus."
 
-#: ../../lib/Locale/Po4a/Chooser.pm:87
+#: ../../lib/Locale/Po4a/Chooser.pm:89
 msgid "pod: Perl Online Documentation format."
 msgstr "pod: het formaat van Perl Online-Documentatie."
 
-#: ../../lib/Locale/Po4a/Chooser.pm:89
+#: ../../lib/Locale/Po4a/Chooser.pm:91
 msgid "rubydoc: Ruby Documentation (RD) format."
 msgstr "rubydoc: het formaat van Ruby Documentatie (RD)."
 
-#: ../../lib/Locale/Po4a/Chooser.pm:91
+#: ../../lib/Locale/Po4a/Chooser.pm:93
+#, fuzzy
+#| msgid "pod: Perl Online Documentation format."
+msgid "simplepod: Perl Online Documentation format (new option)."
+msgstr "pod: het formaat van Perl Online-Documentatie."
+
+#: ../../lib/Locale/Po4a/Chooser.pm:95
 msgid "sgml: either DebianDoc or DocBook DTD."
 msgstr "sgml: zowel DebianDoc als DocBook DTD."
 
-#: ../../lib/Locale/Po4a/Chooser.pm:93
+#: ../../lib/Locale/Po4a/Chooser.pm:97
 msgid "texinfo: The info page format."
 msgstr "texinfo: het formaat van info-pagina's."
 
-#: ../../lib/Locale/Po4a/Chooser.pm:95
+#: ../../lib/Locale/Po4a/Chooser.pm:99
 msgid "tex: generic TeX documents (see also latex)."
 msgstr "tex: generieke TeX-documenten (zie ook latex)."
 
-#: ../../lib/Locale/Po4a/Chooser.pm:97
+#: ../../lib/Locale/Po4a/Chooser.pm:101
 msgid "text: simple text document."
 msgstr "text: eenvoudig tekstdocument."
 
-#: ../../lib/Locale/Po4a/Chooser.pm:99
-#, fuzzy
-#| msgid "wml: WML documents."
+#: ../../lib/Locale/Po4a/Chooser.pm:103
 msgid "vimhelp: Vim help documents."
-msgstr "wml: WML-documenten."
+msgstr "vimhelp: Vim-hulpdocumenten."
 
-#: ../../lib/Locale/Po4a/Chooser.pm:101
+#: ../../lib/Locale/Po4a/Chooser.pm:105
 msgid "wml: WML documents."
 msgstr "wml: WML-documenten."
 
-#: ../../lib/Locale/Po4a/Chooser.pm:103
+#: ../../lib/Locale/Po4a/Chooser.pm:107
 msgid "xhtml: XHTML documents."
 msgstr "xhtml: XHTML-documenten."
 
-#: ../../lib/Locale/Po4a/Chooser.pm:105
+#: ../../lib/Locale/Po4a/Chooser.pm:109
 msgid "xml: generic XML documents (see also docbook)."
 msgstr "xml: generieke XML-documenten (zie ook docbook)."
 
-#: ../../lib/Locale/Po4a/Chooser.pm:107
+#: ../../lib/Locale/Po4a/Chooser.pm:111
 msgid "yaml: YAML documents."
 msgstr "yaml: YAML-documenten."
 
@@ -267,7 +271,7 @@ msgid ""
 "This file was generated with docbook-to-man. Translate the source file with "
 "the sgml module of po4a."
 msgstr ""
-"Dit bestand werd aangemaakt met docbook2man. Vertaal het bronbestand met "
+"Dit bestand werd aangemaakt met docbook-to-man. Vertaal het bronbestand met "
 "behulp van de sgml-module van po4a."
 
 #: ../../lib/Locale/Po4a/Man.pm:695
@@ -533,28 +537,22 @@ msgid "Cannot read from %s: %s"
 msgstr "Kan niet lezen uit %s: %s"
 
 #: ../../lib/Locale/Po4a/Po.pm:379
-#, fuzzy, perl-format
-#| msgid ""
-#| "The file %s starts with a BOM char indicating that its encoding is UTF-8, "
-#| "but you specified %s instead."
+#, perl-format
 msgid ""
 "The file %s starts with a BOM char indicating that its encoding is UTF-8, "
 "but '%s' was detected."
 msgstr ""
 "Het bestand %s begint met een BOM-teken dat aangeeft dat de codering UTF-8 "
-"is, maar u heeft in plaats daarvan %s opgegeven."
+"is, maar '%s' werd gedetecteerd."
 
 #: ../../lib/Locale/Po4a/Po.pm:381
-#, fuzzy, perl-format
-#| msgid ""
-#| "The file %s starts with a BOM char indicating that its encoding is UTF-8, "
-#| "but you specified %s instead."
+#, perl-format
 msgid ""
 "The file %s starts with a BOM char indicating that its encoding is UTF-8, "
 "but you specified '%s' instead."
 msgstr ""
 "Het bestand %s begint met een BOM-teken dat aangeeft dat de codering UTF-8 "
-"is, maar u heeft in plaats daarvan %s opgegeven."
+"is, maar u heeft in plaats daarvan '%s' opgegeven."
 
 #: ../../lib/Locale/Po4a/Po.pm:404 ../../lib/Locale/Po4a/TeX.pm:1013
 #: ../../lib/Locale/Po4a/TransTractor.pm:495 ../../lib/Locale/Po4a/Xhtml.pm:144
@@ -661,7 +659,7 @@ msgstr ""
 "%s\n"
 " Oude afgedankte vertaling."
 
-#: ../../lib/Locale/Po4a/Pod.pm:92 ../../lib/Locale/Po4a/Xml.pm:917
+#: ../../lib/Locale/Po4a/Pod.pm:98 ../../lib/Locale/Po4a/Xml.pm:917
 #, perl-format
 msgid ""
 "The file %s declares %s as encoding, but you provided %s as master charset. "
@@ -669,6 +667,16 @@ msgid ""
 msgstr ""
 "Het bestand %s declareert %s als codering, maar u heeft %s opgegeven als "
 "hoofdtekenset. Wijzig een van beide instellingen."
+
+#: ../../lib/Locale/Po4a/Pod.pm:173
+msgid ""
+"A new SimplePod parser is now available.  Please consider using it instead "
+"of the current Pod module. If you encounter any bugs, your reports would be "
+"greatly appreciated.  To use it, add the following line at the top of your "
+"po4a configuration file: \"[po4a_alias:Pod] SimplePod\".  You can disable "
+"this message by setting the no-warn-simple option.  Sorry for the noise, and "
+"thank you!"
+msgstr ""
 
 #: ../../lib/Locale/Po4a/Sgml.pm:224
 msgid ""
@@ -807,6 +815,12 @@ msgstr ""
 "Om de foutmelding te zien, moet u po4a opnieuw uitvoeren met dit extra "
 "argument:\n"
 "   -o debug=onsgmls"
+
+#: ../../lib/Locale/Po4a/SimplePod/Parser.pm:261
+msgid ""
+"An unexpected error has occurred.  Please report this issue to the po4a "
+"project."
+msgstr ""
 
 #: ../../lib/Locale/Po4a/TeX.pm:505 ../../lib/Locale/Po4a/TeX.pm:589
 #, perl-format
@@ -959,11 +973,7 @@ msgstr ""
 #: ../../lib/Locale/Po4a/TransTractor.pm:475
 #: ../../lib/Locale/Po4a/TransTractor.pm:667
 #: ../../lib/Locale/Po4a/TransTractor.pm:745
-#, fuzzy, perl-format
-#| msgid ""
-#| "Malformed encoding while reading from file %s with charset %s: %s\n"
-#| "If %s is not the expected charset, you need to configure the right one "
-#| "with with --master-charset or other similar flags."
+#, perl-format
 msgid ""
 "Malformed encoding while reading from file %s with charset %s: %s\n"
 "If %s is not the expected charset, you need to configure the right one with "
@@ -983,12 +993,7 @@ msgstr ""
 "is, maar u heeft in plaats daarvan %s opgegeven."
 
 #: ../../lib/Locale/Po4a/TransTractor.pm:551
-#, fuzzy, perl-format
-#| msgid ""
-#| "Malformed encoding while writing char '%s' to file %s with charset %s: "
-#| "%s\n"
-#| "If %s is not the expected charset, you need to configure the right one "
-#| "with with --localized-charset or other similar flags."
+#, perl-format
 msgid ""
 "Malformed encoding while writing char '%s' to file %s with charset %s: %s\n"
 "If %s is not the expected charset, you need to configure the right one with "
@@ -1000,11 +1005,7 @@ msgstr ""
 "localized-charset of andere soortgelijke vlaggen."
 
 #: ../../lib/Locale/Po4a/TransTractor.pm:561
-#, fuzzy, perl-format
-#| msgid ""
-#| "Malformed encoding while writing to file %s with charset %s: %s\n"
-#| "If %s is not the expected charset, you need to configure the right one "
-#| "with with --localized-charset or other similar flags."
+#, perl-format
 msgid ""
 "Malformed encoding while writing to file %s with charset %s: %s\n"
 "If %s is not the expected charset, you need to configure the right one with "
@@ -1062,8 +1063,8 @@ msgstr "De po4a-header van %s definieert de positie niet."
 #: ../../lib/Locale/Po4a/TransTractor.pm:722
 msgid "No ending boundary given in the po4a header, but mode=after."
 msgstr ""
-"In de po4a-header werd geen begrenzing voor het einde opgegeven, maar de "
-"modus=after."
+"In de po4a-header werd geen begrenzing voor het einde opgegeven, maar "
+"mode=after."
 
 #: ../../lib/Locale/Po4a/TransTractor.pm:726
 msgid "No position needed when mode=eof."
@@ -1071,7 +1072,7 @@ msgstr "Er is geen position vereist bij mode=eof."
 
 #: ../../lib/Locale/Po4a/TransTractor.pm:730
 msgid "No ending boundary needed when mode=eof."
-msgstr "Geen eindbegrenzing nodig wanneer mode = eof."
+msgstr "Geen eindbegrenzing nodig wanneer mode=eof."
 
 #: ../../lib/Locale/Po4a/TransTractor.pm:770
 msgid "Cannot apply addendum when not given the filename"
@@ -1108,11 +1109,6 @@ msgstr "Addendum '%s' werd toegepast na de regel: %s."
 #, perl-format
 msgid "Addendum '%s' applied at the end of the file."
 msgstr "Addendum '%s' werd toegepast aan het einde van het bestand."
-
-#: ../../lib/Locale/Po4a/VimHelp.pm:347
-#, perl-format
-msgid "line#%s has columns %s (> %s)"
-msgstr ""
 
 #: ../../lib/Locale/Po4a/Wml.pm:89
 #, perl-format
@@ -1349,7 +1345,7 @@ msgstr "Fout: %s"
 #: ../../po4a:1065
 #, perl-format
 msgid "Specified destination language '%s' not found in the list of languages."
-msgstr ""
+msgstr "Opgegeven doeltaal '%s' niet gevonden in de lijst met talen."
 
 #: ../../po4a:1101 ../../po4a:1189 ../../po4a:1459
 #, perl-format
@@ -1898,6 +1894,10 @@ msgstr "klaar."
 #, perl-format
 msgid "Could not copy the PO file (%s -> %s): %s"
 msgstr "Kon het PO-bestand niet kopiëren (%s -> %s): %s"
+
+#, perl-format
+#~ msgid "line#%s has columns %s (> %s)"
+#~ msgstr "line#%s heeft %s kolommen (> %s)"
 
 #, perl-format
 #~ msgid "Malformed encoding while reading from file %s with charset %s: %s"
