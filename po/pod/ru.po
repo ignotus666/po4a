@@ -18,8 +18,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: devel@lists.po4a.org\n"
-"POT-Creation-Date: 2025-07-22 01:18+0200\n"
-"PO-Revision-Date: 2025-07-04 19:50+0000\n"
+"POT-Creation-Date: 2025-08-07 13:05+0200\n"
+"PO-Revision-Date: 2025-08-13 22:02+0000\n"
 "Last-Translator: Golubev Alexander <fatzer2@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/po4a/po4a-doc/ru/"
 ">\n"
@@ -1170,11 +1170,11 @@ msgstr ""
 #. type: textblock
 #: po4a:90 po4a-updatepo:44
 msgid ""
-"Based on the value of this option appropriate flags (B<--no-wrap> or B<--"
-"width>=I<number>) will be passed to underlying gettext tutilities.  "
-"Unfortunately getext doesn't prowide any counterpart for B<--wrap-po> I<no>, "
-"so in that case B<--no-wrap> will be passed (the same as for B<--wrap-po> "
-"I<newlines>)."
+"Based on the value of this option, appropriate flags (B<--no-wrap> or B<--"
+"width>=I<number>) will be passed to underlying gettext utilities.  "
+"Unfortunately gettext doesn't provide any counterpart for B<--wrap-po> "
+"I<no>, so in that case B<--no-wrap> will be passed (the same as for B<--wrap-"
+"po> I<newlines>)."
 msgstr ""
 
 #. type: textblock
@@ -3371,10 +3371,9 @@ msgstr "L<po4a(7)>"
 
 #. type: verbatim
 #: msguntypot:33
-#, fuzzy, no-wrap
-#| msgid " Martin Quinson (mquinson#debian,org)"
+#, no-wrap
 msgid " Martin Quinson (mquinson#debian.org)"
-msgstr " Мартин Кенсон (Martin Quinson) (mquinson#debian,org)"
+msgstr " Мартин Кенсон (Martin Quinson) (mquinson#debian.org)"
 
 #. type: textblock
 #: msguntypot:35
@@ -8362,16 +8361,14 @@ msgstr ""
 
 #. type: =item
 #: lib/Locale/Po4a/Po.pm:88
-#, fuzzy
-#| msgid "gettext($)"
 msgid "gettext_wrap_opts($)"
-msgstr "gettext($)"
+msgstr "gettext_wrap_opts($)"
 
 #. type: textblock
 #: lib/Locale/Po4a/Po.pm:89
 msgid ""
 "A small utility function that returns a string with appropriate C<--no-wrap>/"
-"C<--width> gettext utilities' options coresponding to the given B<wrap-po> "
+"C<--width> gettext utilities' options corresponding to the given B<wrap-po> "
 "value."
 msgstr ""
 
