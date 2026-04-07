@@ -6,10 +6,10 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - 'my-build'
+      - 'deb-build'
   pull_request:
     branches:
-      - 'my-build'
+      - 'deb-build'
 
 jobs:
   build-deb:
