@@ -24,7 +24,7 @@ jobs:
     - name: Install Debian build dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y build-essential debhelper dpkg-dev fakeroot
+        sudo apt-get install -y build-essential debhelper dpkg-dev fakeroot libmodule-build-perl
 
     - name: Build Debian package
       run: |
