@@ -65,8 +65,8 @@ use warnings;
 use parent qw(Locale::Po4a::TransTractor);
 
 use Locale::Po4a::Common qw(wrap_mod wrap_ref_mod dgettext);
-use File::Basename qw(dirname);
-use Carp           qw(croak);
+use File::Basename       qw(dirname);
+use Carp                 qw(croak);
 
 use Encode;
 use Encode::Guess;
@@ -1632,8 +1632,6 @@ sub initialize {
     $self->{options}{'exclude_include'} = '';
     $self->{options}{'no_wrap'}         = '';
     $self->{options}{'verbatim'}        = '';
-    $self->{options}{'debug'}           = '';
-    $self->{options}{'verbose'}         = '';
     $self->{options}{'no-warn'}         = 0;    # TexInfo option to not warn about the state of the module
 
     %debug = ();
@@ -1649,8 +1647,8 @@ sub initialize {
         }
     }
 
-    if ( $options{'debug'} ) {
-        foreach ( $options{'debug'} ) {
+    if ( $self->{options}{'debug'} ) {
+        foreach ( $self->{options}{'debug'} ) {
             $debug{$_} = 1;
         }
     }

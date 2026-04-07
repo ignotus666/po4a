@@ -118,9 +118,9 @@ sub parse {
             }
 
             $eval .= ")\n";
-            print STDERR $eval if $self->{options}{'debug'};
+            print STDERR $eval if $self->debug;
             eval $eval;
-            print STDERR "XXXXXXXXXXXXXXXXX\n" if $self->{options}{'debug'};
+            print STDERR "XXXXXXXXXXXXXXXXX\n" if $self->debug;
 
             # two leading _: split on coma and multi-translate each part. No extended value.
         } elsif ( $undercount == 2 ) {
@@ -140,7 +140,7 @@ sub parse {
             }
             $eval .= ")\n";
 
-            print $eval if $self->{options}{'debug'};
+            print $eval if $self->debug;
             eval $eval;
 
             # no leading _: don't touch it
@@ -184,7 +184,7 @@ sub parse {
 
             $bit =~ s/\s*$//;
 
-            $extended .= ( $verb        ? "\n" : ' ' ) if length $extended && $extended !~ /[\n ]$/;
+            $extended .= ( $verb ? "\n" : ' ' ) if length $extended && $extended !~ /[\n ]$/;
             $extended .= $bit . ( $verb ? "\n" : "" );
 
             # this may be an empty line closing the stanza, a comment or even a parse error (if file not DebConf-clean).

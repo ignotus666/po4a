@@ -84,6 +84,19 @@ ensure that bugs won't resurface in the future.
   `perl-SGML-Parser-OpenSP perl-TermReadKey perl-Text-WrapI18N perl-Module-Build
   perl-Test-Simple perl-Unicode-LineBreak perl-HTML-TokeParser-Simple
   docbook-dtds`
+- On GNU Guix: `guix shell tidyall perl perl-tidy --development po4a`.
+  If you use [Direnv](https://direnv.net/), `.envrc` can be used to
+  load and unload environment variables automatically when navigating
+  directories, for example:
+  
+  ```sh
+  use guix tidyall perl perl-tidy --development po4a
+  path_add PERL5LIB lib
+  path_add PERL5LIB t
+
+  BUILD_FILE_PATH=$(find_up Build)
+  export BUILD_FILE_PATH
+  ```
 
 When writing or improving a test, you probably want to select the test
 to run, and make it verbose. The tests are executed from the "_t_"
@@ -237,8 +250,44 @@ Request on [mquinson/po4a](https://salsa.debian.org/mquinson/po4a)
 salsa instance of GitLab. If you go for the salsa server, please do
 not fill your MR against the debian/po4a repository that is dedicated
 to the packaging of the software (unless, of course, your change is
-against the packaging). Your request should be based on the latest
-code in the master branch. Please rebase your work as needed.
+against the packaging).  In general, to submit a PR you should [fork the
+main repository](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo),
+and then create a branch for each PR:
+
+```
+git checkout -b my_pr_branch
+```
+
+After working on the branch, you should have one or more commits
+that you can push on your repository and then you can
+[create a new PR](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork)
+based on your branch and the main repository ``master`` branch difference.  If
+you add commits later on your branch, for example following PR reviews, they
+will automatically appear in the PR.
+
+Your request should be based on the latest code in the master branch.
+Please rebase your work as needed. To follow the main repository,
+you can add the main repository as the upstream of your forked
+repository (you need to do that only once):
+```
+git remote add upstream https://github.com/mquinson/po4a.git
+```
+
+Rebasing on the main repository master branch can be done from the local PR
+branch with:
+```
+git fetch upstream
+git rebase upstream/master
+```
+
+After rebasing on master, you may need to force push on your public
+PR branch with:
+```
+git push --force-with-lease
+```
+This workflow requires that there is
+[only one person](https://git-scm.com/book/en/v2/Git-Branching-Rebasing),
+the PR submitter, who adds commits on the PR branch.
 
 Finally, all PRs should include an update the the NEWS file. Please follow
 the format and briefly describe the change and provide a reference to

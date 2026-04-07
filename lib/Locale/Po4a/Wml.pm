@@ -73,7 +73,7 @@ sub initialize {
 
     $self->SUPER::initialize(%options);
 
-    print "Call treat_options\n" if $self->{options}{'debug'};
+    print "Call treat_options\n" if $self->debug;
     $self->treat_options;
 }
 
@@ -108,8 +108,7 @@ sub read {
     # Mask mp4h cruft
     while ( $file =~ s|^#(.*)$|<!--PO4ASHARPBEGIN$1PO4ASHARPEND-->|m ) {
         my $line = $1;
-        print STDERR "PROTECT HEADER: $line\n"
-          if $self->{options}{'debug'};
+        print STDERR "PROTECT HEADER: $line\n" if $self->debug;
 
         # If the wml tag has a title attribute, use a fake
         # <title> xml tag to enable the extraction
@@ -142,9 +141,12 @@ sub parse {
         my $org_filename = $self->{DOCWML}{$filename};
 
         # Fix the references
-        foreach my $msgid ( keys %{ $self->{TT}{po_out}{po} } ) {
-            $self->{TT}{po_out}{po}{$msgid}{'reference'} =~ s|$filename(:\d+)|$org_filename$1|o;
-        }
+        $self->{TT}{po_out}->each_message(
+            sub {
+                my ( $_msgid, $message ) = @_;
+                $message->{reference} =~ s|$filename(:\d+)|$org_filename$1|o;
+            }
+        );
 
         # Get the document back (undoing our WML masking)
         # FIXME: need to join the file first, and then split?

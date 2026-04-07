@@ -37,8 +37,6 @@ sub initialize {
     $self->{options}{skip_keywords}   = [];
     $self->{options}{skip_properties} = [];
     $self->{options}{skip_heading}    = 0;
-    $self->{options}{debug}           = 0;
-    $self->{options}{verbose}         = 0;
 
     foreach my $opt ( keys %options ) {
         exists $self->{options}{$opt}
@@ -46,8 +44,6 @@ sub initialize {
     }
 
     $self->{options}{skip_heading} = $options{skip_heading};
-    $self->{options}{debug}        = $options{debug};
-    $self->{options}{verbose}      = $options{verbose};
 
     foreach my $option_name ( 'skip_keywords', 'skip_properties' ) {
         my $option = $options{$option_name} or next;
@@ -254,7 +250,7 @@ sub parse_plain_list {
             $self->pushline("$content\n");
         }
     } else {
-        my $ref = $self->parse_plain_list_following_paragraph( \@content, $margin );
+        my $ref     = $self->parse_plain_list_following_paragraph( \@content, $margin );
         my $content = $self->translate( join( "\n", @content ), $ref, "plain list $type" );
         $content =~ s/ ^ /$margin/mgxs;
         $content =~ s/ \A \Q$margin\E //xsm;
@@ -294,7 +290,7 @@ sub parse_table {
     if ( $cells =~ / \A [-+|]* \Z /xsm ) {
         $self->pushline("$line\n");
     } else {
-        my @cells = split / [ ]* [|] [ ]* /xsm, $cells;
+        my @cells   = split / [ ]* [|] [ ]* /xsm, $cells;
         my $content = join( ' | ', map { $self->translate( $cells[$_], $ref, "cell column $_" ) } ( 0 .. $#cells ) );
         $self->pushline("$prefix$content |\n");
     }
@@ -354,7 +350,7 @@ sub parse_paragraph {
 }
 
 sub handle_paragraph_if_any {
-    my ( $self ) = @_;
+    my ($self) = @_;
 
     $self->{paragraph} or return;
     my $type = 'paragraph';
@@ -372,9 +368,7 @@ sub handle_paragraph_if_any {
         }
     }
 
-    my $content = $self->translate( $self->{paragraph},
-                                    $self->{paragraph_ref},
-                                    $type, wrap => $wrap );
+    my $content = $self->translate( $self->{paragraph}, $self->{paragraph_ref}, $type, wrap => $wrap );
     $content =~ s/ ^ /$self->{paragraph_margin}/mgxs;
     $self->pushline("$content\n");
 

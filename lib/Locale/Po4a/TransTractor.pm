@@ -376,6 +376,9 @@ sub new {
     $self->{options}{'package-version'}    = '';
     $self->{options}{'wrap-po'}            = '';
     $self->{options}{'wrapcol'}            = '';
+    $self->{options}{'verbose'}            = delete $options{verbose};
+    $self->{options}{'debug'}              = delete $options{debug};
+    my $context_module = delete $options{context_module};
 
     # let the plugin parse the options and such
     $self->initialize(%options);
@@ -399,11 +402,11 @@ sub new {
     #  [0] is the line content, [1] is the reference $filename:$linenum
     $self->{TT}{doc_in}  = ();
     $self->{TT}{doc_out} = ();
-    if ( defined $options{'verbose'} ) {
-        $self->{TT}{verbose} = $options{'verbose'};
+    if ( defined $self->{options}{verbose} ) {
+        $self->{TT}{verbose} = $self->{options}{verbose};
     }
-    if ( defined $options{'debug'} ) {
-        $self->{TT}{debug} = $options{'debug'};
+    if ( defined $self->{options}{'debug'} ) {
+        $self->{TT}{debug} = $self->{options}{'debug'};
     }
     if ( defined $options{'wrapcol'} ) {
         if ( $options{'wrapcol'} < 0 ) {
@@ -413,6 +416,19 @@ sub new {
         }
     } else {
         $self->{TT}{wrapcol} = 76;
+    }
+
+    if ($context_module) {
+        use Module::Load qw(load);
+        load $context_module;
+
+        # The "get_msgctxt" value is a code reference pointing to the
+        # subroutine responsible for retrieving the msgctxt from a
+        # message.  It is subsequently called by the "translate"
+        # subroutine.
+        $self->{TT}{get_msgctxt} = $context_module->can('get_msgctxt')
+          or
+          die wrap_mod( "po4a::transtractor::new", dgettext( "po4a", "context module has no get_msgctxt subroutine" ) );
     }
 
     return $self;
@@ -1037,14 +1053,36 @@ sub translate {
     } elsif ( $options{'wrapcol'} < 0 ) {
         $options{'wrapcol'} = $self->{TT}{wrapcol} + $options{'wrapcol'};
     }
+    my $msgctxt;
+
+    # When "get_msgctxt" is a code reference, it indicates that a
+    # context‑generation module has been provided. The current message
+    # is passed to this module, which is sufficient for generating the
+    # context string. To incorporate the previous message, the value
+    # is saved in "_last_message_for_context" and passed on the
+    # following iteration.
+    if ( $self->{TT}{get_msgctxt} ) {
+        my $message = {
+            msgid     => $string,
+            reference => $ref,
+            type      => $type,
+            previous  => $self->{TT}{_last_message_for_context},
+            others    => $options{context_arguments},
+        };
+        $msgctxt = $self->{TT}{get_msgctxt}->($message);
+        $self->{TT}{_last_message_for_context} = $message;
+    }
+
     my $transstring = $self->{TT}{po_in}->gettext(
         $string,
         'wrap'    => $options{'wrap'} || 0,
-        'wrapcol' => $options{'wrapcol'}
+        'wrapcol' => $options{'wrapcol'},
+        'msgctxt' => $msgctxt,
     );
 
     # the comments provided by the modules are automatic comments from the PO point of view
     $self->{TT}{po_out}->push(
+        'msgctxt'   => $msgctxt,
         'msgid'     => $string,
         'reference' => $ref,
         'type'      => $type,
@@ -1130,6 +1168,10 @@ sub get_out_charset {
     return 'UTF-8';
 }
 
+# See also "2.2 Structures" section[1].
+# [1] https://yaml.org/spec/1.2.2/#22-structures
+use constant YAML_SEPARATOR => "---";
+
 # Push the translation of a Yaml document or Yaml Front-Matter header, parsed by YAML::Tiny in any case
 # $is_yfm is a boolean indicating whether we are dealing with a Front Matter (true value) or whole document (false value)
 sub handle_yaml {
@@ -1142,13 +1184,13 @@ sub handle_yaml {
 
         # An empty document
         if ( !defined $cursor ) {
-            $self->pushline("---\n");
+            $self->pushline( YAML_SEPARATOR . "\n" );
 
             # Do nothing
 
             # A scalar document
         } elsif ( !ref $cursor ) {
-            $self->pushline("---\n");
+            $self->pushline( YAML_SEPARATOR . "\n" );
             $self->pushline(
                 format_scalar(
                     $self->translate(
@@ -1162,19 +1204,19 @@ sub handle_yaml {
             # A list at the root
         } elsif ( ref $cursor eq 'ARRAY' ) {
             if (@$cursor) {
-                $self->pushline("---\n");
+                $self->pushline( YAML_SEPARATOR . "\n" );
                 do_array( $self, $is_yfm, $blockref, $cursor, $indent, $ctx, $yfm_keys, $yfm_skip_array, $yfm_paths );
             } else {
-                $self->pushline("---[]\n");
+                $self->pushline( YAML_SEPARATOR . "[]\n" );
             }
 
             # A hash at the root
         } elsif ( ref $cursor eq 'HASH' ) {
             if (%$cursor) {
-                $self->pushline("---\n");
+                $self->pushline( YAML_SEPARATOR . "\n" );
                 do_hash( $self, $is_yfm, $blockref, $cursor, $indent, $ctx, $yfm_keys, $yfm_skip_array, $yfm_paths );
             } else {
-                $self->pushline("--- {}\n");
+                $self->pushline( YAML_SEPARATOR . " {}\n" );
             }
 
         } else {

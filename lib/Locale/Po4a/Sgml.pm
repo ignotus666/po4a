@@ -212,6 +212,8 @@ use warnings;
 
 use parent qw(Locale::Po4a::TransTractor);
 
+use File::Spec qw();
+
 use Locale::Po4a::Common qw(wrap_mod wrap_ref_mod dgettext);
 
 eval qq{use SGMLS};
@@ -253,9 +255,6 @@ sub initialize {
 
     $self->{options}{'force'} = '';
 
-    $self->{options}{'verbose'} = '';
-    $self->{options}{'debug'}   = '';
-
     foreach my $opt ( keys %options ) {
         if ( $options{$opt} ) {
             die wrap_mod( "po4a::sgml", dgettext( "po4a", "Unknown option: %s" ), $opt )
@@ -263,8 +262,8 @@ sub initialize {
             $self->{options}{$opt} = $options{$opt};
         }
     }
-    if ( $options{'debug'} ) {
-        foreach ( split /\s+/, $options{'debug'} ) {
+    if ( $self->{options}{'debug'} ) {
+        foreach ( split /\s+/, $self->{options}{'debug'} ) {
             die wrap_mod( "po4a::sgml", dgettext( "po4a", "Unknown debug category: %s. Known categories:\n%s" ),
                 $_, join( " ", keys %debug ) )
               unless exists $debug{$_};
@@ -861,7 +860,8 @@ sub parse_file {
     print $tmpfh $origfile;
     close $tmpfh or die wrap_mod( "po4a::sgml", dgettext( "po4a", "Cannot close tempfile: %s" ), $! );
 
-    my $cmd = "onsgmls -l -E 0 -wno-valid $tmpfile" . ( $debug{'onsgmls'} ? "" : " 2>/dev/null" ) . " |";
+    my $devnull = File::Spec->devnull;
+    my $cmd     = "onsgmls -l -E 0 -wno-valid $tmpfile" . ( $debug{'onsgmls'} ? "" : " 2>$devnull" ) . " |";
     print STDERR "CMD=$cmd\n" if ( $debug{'generic'} or $debug{'onsgmls'} );
 
     open( IN, $cmd ) || die wrap_mod( "po4a::sgml", dgettext( "po4a", "Cannot run onsgmls: %s" ), $! );

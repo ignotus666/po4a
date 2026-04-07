@@ -237,6 +237,14 @@ L<Pod::Simple> as its parser.  Since it is newly created, some bugs are
 expected.  If you notice any strange behavior, please let us know.
 Eventually, this module will replace I<pod>.
 
+=item CommonMark (newly introduced in 2026)
+
+L<CommonMark|https://commonmark.org/> is the standard, unambiguous
+syntax specification for Markdown.  This is similar to the C<Text>
+module with the option C<markdown>.  Since it is newly created, some
+bugs are expected.  If you notice any strange behavior or want some
+new features, please let us know.
+
 =item Others supported formats
 
 Po4a can also handle some more rare or specialized formats, such as the
@@ -708,6 +716,12 @@ documentation is maintained in multiple languages using po4a.
 
 =item
 
+L<YunoHost|https://yunohost.org/> (markdown): a system that installs
+itself on a server and allows you to install and maintain - with very
+little technical knowledge - digital services (apps) that you control.
+
+=item
+
 Other item to sort out:
 L<https://gitlab.com/fdroid/fdroid-website/>
 L<https://github.com/fsfe/reuse-docs/pull/61>
@@ -878,14 +892,14 @@ L<Locale::Po4a::Dia(3pm)>, L<Locale::Po4a::Gemtext(3pm)>,
 L<Locale::Po4a::Guide(3pm)>, L<Locale::Po4a::Ini(3pm)>,
 L<Locale::Po4a::KernelHelp(3pm)>, L<Locale::Po4a::Man(3pm)>,
 L<Locale::Po4a::RubyDoc(3pm)>, L<Locale::Po4a::Texinfo(3pm)>,
-L<Locale::Po4a::Text(3pm)>, L<Locale::Po4a::Xhtml(3pm)>,
-L<Locale::Po4a::Yaml(3pm)>, L<Locale::Po4a::BibTeX(3pm)>,
-L<Locale::Po4a::Docbook(3pm)>, L<Locale::Po4a::Halibut(3pm)>,
-L<Locale::Po4a::LaTeX(3pm)>, L<Locale::Po4a::Org(3pm)>,
-L<Locale::Po4a::Pod(3pm)>, L<Locale::Po4a::SimplePod(3pm)>,
-L<Locale::Po4a::Sgml(3pm)>, L<Locale::Po4a::TeX(3pm)>,
-L<Locale::Po4a::VimHelp>, L<Locale::Po4a::Wml(3pm)>,
-L<Locale::Po4a::Xml(3pm)>.
+L<Locale::Po4a::Text(3pm)>, L<Locale::Po4a::CommonMark(3pm)>,
+L<Locale::Po4a::Xhtml(3pm)>, L<Locale::Po4a::Yaml(3pm)>,
+L<Locale::Po4a::BibTeX(3pm)>, L<Locale::Po4a::Docbook(3pm)>,
+L<Locale::Po4a::Halibut(3pm)>, L<Locale::Po4a::LaTeX(3pm)>,
+L<Locale::Po4a::Org(3pm)>, L<Locale::Po4a::Pod(3pm)>,
+L<Locale::Po4a::SimplePod(3pm)>, L<Locale::Po4a::Sgml(3pm)>,
+L<Locale::Po4a::TeX(3pm)>, L<Locale::Po4a::VimHelp>,
+L<Locale::Po4a::Wml(3pm)>, L<Locale::Po4a::Xml(3pm)>.
 
 =item
 

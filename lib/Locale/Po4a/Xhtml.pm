@@ -99,7 +99,7 @@ use vars qw(@tag_types);
 *tag_types = \@Locale::Po4a::Xml::tag_types;
 
 use Locale::Po4a::Common qw(wrap_mod dgettext);
-use Carp qw(croak);
+use Carp                 qw(croak);
 
 sub tag_extract_SSI {
     my ( $self, $remove ) = ( shift, shift );
@@ -223,7 +223,7 @@ sub initialize {
 
     $self->{options}{'optionalclosingtag'} = 1;
 
-    print "Call treat_options\n" if $self->{options}{'debug'};
+    print "Call treat_options\n" if $self->debug;
     $self->treat_options;
 
     if ( defined $self->{options}{'includessi'}

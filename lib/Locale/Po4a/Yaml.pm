@@ -96,8 +96,6 @@ sub initialize {
 
     $self->{options}{'keys'}       = '';
     $self->{options}{'paths'}      = '';
-    $self->{options}{'debug'}      = 0;
-    $self->{options}{'verbose'}    = 1;
     $self->{options}{'skip_array'} = 0;
 
     foreach my $opt ( keys %options ) {
